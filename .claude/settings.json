@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python*)",
+      "Bash(pip*)",
+      "Bash(pytest*)",
+      "Bash(cat*)",
+      "Bash(ls*)",
+      "Bash(wc*)",
+      "Read(*)",
+      "Write(src/*)",
+      "Write(data/output/*)",
+      "Write(data/flagged/*)",
+      "Write(tests/*)",
+      "Write(rules/*)"
+    ],
+    "deny": [
+      "Bash(rm -rf*)",
+      "Write(data/input/*)",
+      "Write(reference/*)"
+    ]
+  }
+}
