@@ -65,7 +65,9 @@ Produces:
 3. Apply the rule from rules/ that fits best
 4. If it's a new pattern not in rules/ — document it in `rules/special_cases.md`
 5. Write corrections to `data/flagged/FILENAME_corrections.json`
-6. Run `python src/main.py data/input/FILENAME.txt --merge`
+6. **REQUIRED — do not skip:** Run `python src/main.py data/input/FILENAME.txt --merge`
+   This appends resolved cases to the clean file and writes weird cases to weirdCases.txt.
+   The task is NOT complete until this command runs and you confirm the output.
 
 Corrections format — one entry per unique case_number:
 ```json
@@ -120,3 +122,9 @@ If any test fails, fix the code before touching the data.
 - Print summaries only, not line-by-line corrections
 - Use /compact if context grows large mid-session
 - Process one file fully before starting the next
+
+## After every code change
+Before ending any session where you modified src/ files:
+1. Update the corresponding rules/ markdown file
+2. Run python tests/test_rules.py and confirm all pass
+3. Report: X tests passing, Y files updated

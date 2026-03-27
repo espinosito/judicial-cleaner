@@ -12,6 +12,11 @@ from __future__ import annotations
 import re
 
 
+class FlagForReview(Exception):
+    """Raised when a B record is too ambiguous or weird to process automatically."""
+    pass
+
+
 # ---------------------------------------------------------------------------
 # Business prefixes that appear at the START and must move to the END (B-2)
 # These are terms that belong after the proper name, not before it
@@ -28,7 +33,7 @@ BUSINESS_PREFIXES = [
     # Institutional terms placed at front (Grayson-specific)
     "ISD", "ESD",
     # Organizational types
-    "ASSOCIATION", "ASSOC", "PARTNERSHIP", "COMPANY", "ENTERPRISES",
+    "ASSOCIATION", "ASSOC", "ASSOCIATES", "PARTNERSHIP", "COMPANY", "ENTERPRISES",
     # Financial
     "BANK", "SAVINGS",
     # Geographic/governmental placed at front
@@ -37,6 +42,8 @@ BUSINESS_PREFIXES = [
     "LODGE", "POST", "CLUB", "UNIT", "DIVISION", "OFFICE", "DEPT",
     # NA prefix (banking: NA CITIBANK → CITIBANK NA)
     "NA",
+    # Vehicle-related prefixes (CAR/CARS go at end: CARS QUALITY USED → QUALITY USED CARS)
+    "CAR", "CARS",
 ]
 
 # Phrases that must NOT be split even though they contain AND (B-4 exceptions)
@@ -54,6 +61,9 @@ NO_SPLIT_PATTERNS = [
     r"\bFOOD AND COMMERCIAL\b",
     r"\bS AND S INDEPENDENT\b",
     r"^SERVICE\b",              # SERVICE records are businesses, not people
+    # Whole name ends with a hard legal suffix → single entity (e.g. LANGFORD AND MONTGOMERY SURVEY COMPANY INC)
+    r"\bINC\s*$", r"\bLLC\s*$", r"\bLTD\s*$", r"\bLP\s*$", r"\bLLP\s*$",
+    r"\bCORPORATION\s*$", r"\bCORP\s*$",
 ]
 
 # Words that indicate the whole B record is actually a person (B-8)
@@ -74,6 +84,10 @@ BUSINESS_INDICATORS = {
     "RESTAURANT", "CAFE", "FOOD", "MARKET", "STORE", "SHOP", "SALON",
     "ISD", "ESD", "NA", "FSB", "CBIC",
     "AND",  # most real businesses with AND are firms (SMITH AND JONES PC)
+    # Additional confirmed business indicators
+    "LUMBER", "FITNESS", "GYM", "CAR", "CARS", "HOMES", "MOBILE",
+    "STREET", "AVE", "AVENUE", "BLVD", "BOULEVARD", "USA",
+    "MANUFACTURER", "MANUFACTURERS", "DISTRIBUTOR", "DISTRIBUTORS",
 }
 
 PERSONAL_SUFFIXES = {"JR", "SR", "II", "III", "IV", "MD", "PA", "DDS"}
@@ -126,10 +140,17 @@ def apply_b3(name: str) -> str | None:
         place = m.group(1).strip()
         return f"STATE OF {place}"
 
-    # Pattern: "WORD COUNTY OF" → drop OF  (e.g. GRAYSON COUNTY OF → GRAYSON COUNTY)
-    m = re.match(r"^(.+?\s+COUNTY)\s+OF\s*$", stripped, re.IGNORECASE)
+    # Pattern: "PLACE COUNTY OF" → "COUNTY OF PLACE"  (e.g. GRAYSON COUNTY OF → COUNTY OF GRAYSON)
+    m = re.match(r"^(.+?)\s+COUNTY\s+OF\s*$", stripped, re.IGNORECASE)
     if m:
-        return m.group(1).strip()
+        place = m.group(1).strip()
+        return f"COUNTY OF {place}"
+
+    # Pattern: "PLACE CITY OF" → "CITY OF PLACE"  (e.g. VAN ALSTYNE CITY OF → CITY OF VAN ALSTYNE)
+    m = re.match(r"^(.+?)\s+CITY\s+OF\s*$", stripped, re.IGNORECASE)
+    if m:
+        place = m.group(1).strip()
+        return f"CITY OF {place}"
 
     # Pattern: anything ending in bare OF → drop the OF
     m = re.match(r"^(.+?)\s+OF\s*$", stripped, re.IGNORECASE)
@@ -203,6 +224,12 @@ def apply_b4(name: str) -> list[dict] | None:
     if not parts:
         return None
 
+    # Flag if any part consists entirely of single-letter tokens (e.g. "C P")
+    for part in parts:
+        tokens = part.strip().split()
+        if tokens and all(len(t) == 1 for t in tokens):
+            raise FlagForReview(f"split part has only single-letter tokens: {part!r} in {name!r}")
+
     # If at least one side is clearly a business, split both as B
     # (EMERSON RADIO has no suffix but is still a business in context)
     has_business_side = any(not _looks_like_person(p) for p in parts)
@@ -252,6 +279,12 @@ def apply_b5(name: str, classifier=None) -> list[dict] | None:
     if m:
         person1_raw = m.group(1).strip()
         extra = m.group(3).strip()
+
+        # Single last name + AND WIFE/HUSBAND + first name → B: LASTNAME, FIRSTNAME
+        # (e.g. HEROD AND WIFE STACYE → B: HEROD, STACYE)
+        if len(person1_raw.split()) == 1 and extra and len(extra.split()) <= 2:
+            return [{"marker": "B", "name": f"{person1_raw}, {extra}"}]
+
         # person1 is a B-format name (e.g. MILLS JAMES E) → convert to I
         person1 = _b_name_to_i(person1_raw)
         results = [{"marker": "I", "name": person1}]
@@ -274,6 +307,12 @@ def apply_b5(name: str, classifier=None) -> list[dict] | None:
     parts = _split_on_and(clean_name)
     if not parts or len(parts) != 2:
         return None
+
+    # Flag if any part consists entirely of single-letter tokens (e.g. "C P")
+    for part in parts:
+        toks = part.strip().split()
+        if toks and all(len(t) == 1 for t in toks):
+            raise FlagForReview(f"split part has only single-letter tokens: {part!r} in {name!r}")
 
     # Both sides look like people → split into I records
     if all(_looks_like_person(p) for p in parts):
@@ -427,6 +466,13 @@ def apply_b8(name: str, classifier=None) -> dict | None:
 # ---------------------------------------------------------------------------
 def apply_all_b_rules(name: str, classifier=None) -> tuple:
     original = name
+
+    # Early guard: flag B records containing alphanumeric tokens (e.g. A-1, B2)
+    # Pure numbers are excluded — only mixed letter+digit tokens trigger this.
+    _tokens = name.upper().split()
+    _clean = [t for t in _tokens if not re.match(r"^\d+$", t)]
+    if any(re.search(r'\d', t) for t in _clean):
+        raise FlagForReview(f"B record with alphanumeric token: {name!r}")
 
     # B-6 first — N K A splits are unambiguous
     result = apply_b6(name)

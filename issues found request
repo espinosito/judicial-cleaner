@@ -1,0 +1,187 @@
+ I found 2 bug sin the pipeline fix them, add a test for them, and verify all the test still pass                                                                                           
+ -street name transformed into a person name
+                                                                                                                                                   input:19880104    880100        JDG    04    B    LUMBER MAIN STREET                                                                                                                         expected:19880104    880100        JDG    04    B    LUMBER MAIN STREET                                                                                                                      got:19880104    880100        JDG    04    I    LUMBER, MAIN STREET                                                                                                                          
+
+-gambling games and board games elements with no more information are B elements
+input: 19880825    881374        JDG    04    I    BINGO,
+expected: 19880825    881374        JDG    04    B    BINGO
+got: 19880825    881374        JDG    04    I    BINGO
+
+-gym name implemented as I it should be B
+input:19880129    880246        JDG    04    B    FITNESS USA
+expected: 19880129    880246        JDG    04    B    FITNESS USA
+got:19880129    880246        JDG    04    I    FITNESS, USA
+
+-weird element implemented as I it should be sent to flagged folder
+input: 19880928    881552        JDG    04    B    HOMES A-1 MOBILE
+expected: block removed and moved to the flagged folder to make claude analize it
+got: 19880928    881552        JDG    04    I    HOMES, A-1 MOBILE
+
+-name and last name splitted in 2 rows
+input: 19880315    880469        JDG    05    B    HEROD AND WIFE STACYE
+expected: 19880315    880469        JDG    05    B    HEROD, STACYE                                                                                                                          
+got: 19880315    880469        JDG    05    I    HEROD                                                                                                                                       
+19880315    880469        JDG    05    I    STACYE                                                                                                                                           
+                                                                                                                                                                                             
+-weird element converted to I it should be passed to flagged folder                                                                                                                          
+input: 19880325    880533        JDG    04    B    C P AND ASSOCIIATESINC                                                                                                                    
+expected: sent to flagged folder                                                                                                                                                             
+got: 19880325    880533        JDG    04    I    C, P                                                                                                                                        
+19880325    880533        JDG    04    I    C, ASSOCIIATESINC                                                                                                                                
+                                                                                                                                                                                             
+-company name converted to I some companies could contain person names, you decide if send it to flagged folder or process it correctly                                                      
+input: 19881012    881636        JDG    05    B    LANGFORD AND MONTGOMERY SURVEY COMPANY INC                                                                                                
+expected: 19881012    881636        JDG    05    B    LANGFORD AND MONTGOMERY SURVEY COMPANY INC                                                                                             
+got:19881012    881636        JDG    05    B    LANGFORD                                                                                                                                     
+19881012    881636        JDG    05    B    MONTGOMERY SURVEY COMPANY INC                                                                                                                    
+                                                                                                                                                                                             
+-mc characters need to be cleaned                                                                                                                                                            
+input: 19880309    880417        DIV    04    I    MC, DADE WILLIE MAE                                                                                                                       
+expected: 19880309    880417        DIV    04    I    MCDADE, WILLIE MAE                                                                                                                     
+got: 19880309    880417        DIV    04    I    MC, DADE WILLIE MAE                                                                                                                         
+                                                                                                                                                                                             
+-MANUFACTURER word need to be cleaned and added to business word detector                                                                                                                    
+input: 19880929    881558        JDG    04    I    MANUFACTURER, JOHN DOOR                                                                                                                   
+expected:19880929    881558        JDG    04    B    JOHN DOOR MANUFACTURER                                                                                                                  
+got: 19880929    881558        JDG    04    I    MANUFACTURER, JOHN DOOR                                                                                                                     
+                                                                                                                                                                                             
+-MANUFACTURERS word need to be cleaned and added to business word detector                                                                                                                   
+input: 19881007    881609        JDG    04    I    CONSOLIDATION, MANUFACTURERS                                                                                                              
+expected: 19881007    881609        JDG    04    I    MANUFACTURERS CONSOLIDATION                                                                                                            
+got 19881007    881609        JDG    04    I    CONSOLIDATION, MANUFACTURERS                                                                                                                 
+                                                                                                                                                                                             
+-3 letters or less elements should be processed as business if it is not a first name or last name example: ana is a first name MCI is a Business name, if you are not sure send it to       
+flagged folder                                                                                                                                                                               
+input: 19880519    880842        JDG    05    I    MCI,                                                                                                                                      
+expected:19880519    880842        JDG    05    B    MCI                                                                                                                                     
+got: 19880519    880842        JDG    05    I    MCI                                                                                                                                         
+                                                                                                                                                                                             
+-LUCILLES is not on the name list so process it as buisness name, if you are not sure send it to flagged name                                                                                
+input:19880226    883180        JDG    04    I    LUCILLES,                                                                                                                                  
+expected: 19880226    883180        JDG    04    B    LUCILLES                                                                                                                               
+got 19880226    883180        JDG    04    I    LUCILLES                                                                                                                                     
+                                                                                                                                                                                             
+-element marked as I if a record has CAR or CARS it should be handled as B and CARS or CAR must be at the end of the B name                                                                  
+input: 19880226    883192        JDG    04    B    CARS QUALITY USED                                                                                                                         
+expected: 19880226    883192        JDG    04    B    QUALITY USED CARS                                                                                                                      
+got: 19880226    883192        JDG    04    I    CARS, QUALITY USED                                                                                                                          
+                                                                                                                                                                                             
+-city of removed from the element, it should be at the start of the name if it has a city name or it includes city                                                                           
+input: 19880531    883380        JDG    05    B    VAN ALSTYNE CITY OF                                                                                                                       
+expected: 19880531    883380        JDG    05    B    CITY OF VAN ALSTYNE                                                                                                                    
+got: 19880531    883380        JDG    05    B    VAN ALSTYNE CITY                                                                                                                            
+                                                                                                                                                                                             
+-if a name does not contain a real name but it is marked as I send it to flagged elements to be analized by claude                                                                           
+input: 19880916    883478        JDG    04    I    WHOPPER-STOPPER,                                                                                                                          
+expected: block sent to flagged elements                                                                                                                                                     
+got: 19880916    883478        JDG    04    I    WHOPPER-STOPPER  
+
+
+
+
+I found bugs in the pipeline fix them, add a test for them, and verify all the test still pass
+
+-elements like this should be analyzed in a deeper way
+input: 19880531	883384    	JDG	04	I	MOVERS-MILLER, HOUSE
+expected: they could be business or individuals, that depends on the claude analisis, if claude is not sure should be moved to weird elements file
+got: 19880531	883384    	JDG	04	I	MOVERS-MILLER, HOUSE
+
+-business names should be business elements in this case the key word is WRECKING YARD
+input: 19880602	883396    	JDG	04	I	YARD, EARL RATCLIFF WRECKING	
+expected: 19880602	883396    	JDG	04	B	EARL RATCLIFF WRECKING YARD	
+got: 19880602	883396    	JDG	04	I	YARD, EARL RATCLIFF WRECKING	
+
+-full names should be displayes like this
+input: 19880812	881297    	DIV	04	I	GARNER, DEBORAH MARGARET ROGERS	
+expected: 19880812	881297    	DIV	04	I	ROGERS-GARNER, DEBORAH MARGARET	
+got: 19880812	881297    	DIV	04	I	GARNER, DEBORAH MARGARET ROGERS	
+
+-churches or places like that should be B elements
+input: 19881005	883553    	JDG	04	I	CHURCH, OPEN DOOR DEL APOSTOLIC	
+expected: 19881005	883553    	JDG	04	B	OPEN DOOR DEL APOSTOLIC CHURCH
+got: 19881005	883553    	JDG	04	I	CHURCH, OPEN DOOR DEL APOSTOLIC	
+
+-clubes also be marked as B elements
+input: 19881031	883603    	JDG	04	I	CLUB, BANSHEE MOTORCYCLE	
+expected: 19881031	883603    	JDG	04	B	BANSHEE MOTORCYCLE CLUB
+got: 19881031	883603    	JDG	04	I	CLUB, BANSHEE MOTORCYCLE	
+
+-if a element starts with associates the word must be moved at the end of the element 
+input: 19880828	881399    	JDG	04	B	ASSOCIATES DONALD L JARVIS AND 	
+expected: 19880828	881399    	JDG	04	B	DONALD L JARVIS AND ASSOCIATES 
+got: 19880828	881399    	JDG	04	B	ASSOCIATES DONALD L JARVIS AND 	
+
+-if a element starts with council the word must be moved at the end of the element and convert the element to a B if it is an I element
+input: 19881027	881713    	JDG	04	I	COUNCIL, DENISON CITY	
+expected: 19881027	881713    	JDG	04	I	DENISON CITY COUNCIL
+got: 19881027	881713    	JDG	04	I	COUNCIL, DENISON CITY	
+
+
+ 
+
+
+
+
+-if a element has COUNTY OF and a county you must move COUNTY OF at the begining of the sentence
+input: 19880819	881336    	JDG	04	B	GRAYSON COUNTY OF	
+expected: 19880819	881336    	JDG	04	B	COUNTY OF GRAYSON	
+got: 19880819	881336    	JDG	04	B	GRAYSON COUNTY OF	
+
+
+found some bugs on your fixes
+
+-you are displaying the name in a wrong way
+action: 881552                  │ No change — HOMES A-1 MOBILE is a real business name
+expected: 881552                  │ change on the name: A-1 HOMES MOBILE it is a business name
+
+-remove elements that are not part of the name if it is an individual
+action: 881995                  │ Delete bare GOSNELL, row (duplicate);
+expected: 881552                  │ Delete bare GOSNELL, row (duplicate) and change GOSNELL, DORTHEA AS ADM OF SONNY to GOSNELL, DORTHEA
+
+remember that if u were not able to fix an issue you need to create a new file named weirdCases.txt and pase there the case in the origina format, example: 
+19880119	880188    	JDG	02	INJURY/DAMAGE: OTHER INJURY OR DAMAGE		
+19880119	880188    	JDG	04	B	COMPANY GILLORD-HILL AND 	
+19880119	880188    	JDG	04	B	COMPANY RUSHING PAVING	
+19880119	880188    	JDG	04	B	LP LATTIMORE MATERIALS COMPANY	
+19880119	880188    	JDG	05	I	POOL, JERRY BELL	
+19880119	880188    	JDG	05	I	POOL, MARY HELEN	
+
+i dont want json on the weirdCases.txt files
+
+
+If you were able to solve the issues you must need to paste the results on the clean file at the bottom of everitihng in the original format but with the fix applied 
+
+put this instructions on the rules in order to never forget do this 
+
+
+I found issues with your last fixes. Please correct them.
+
+## Bug 1 — Business name left in wrong order
+Case 881552: name tokens are in the wrong order.
+Claude confirmed it is a business (correct), but left the name unchanged.
+The name must be reordered — same tokens, correct order.
+
+  Original (wrong order) : HOMES A-1 MOBILE  
+  Expected (correct order): A-1 HOMES MOBILE
+
+This is NOT a new element — just reorder what is already there.
+If the correct order is unclear, send to weirdCases.txt instead.
+
+## Bug 2 — Legal text not stripped from individual name  
+Case 881995:
+  - Delete the bare "GOSNELL," row (duplicate) ✓ already correct
+  - Also strip legal text from: GOSNELL, DORTHEA AS ADM OF SONNY
+    Expected: GOSNELL, DORTHEA
+    Rule: I-3 (strip legal fragments)
+
+## When you cannot fix a case
+Write the full original TSV block to data/flagged/weirdCases.txt.
+Plain text only — no JSON. One blank line between cases.
+
+## When you can fix a case
+Append the corrected TSV block to the bottom of data/output/FILE_clean.txt.
+Plain text, same tab-separated format as the original file.
+
+## Before finishing
+Update rules/special_cases.md with any new pattern you handled.
+Run python tests/test_rules.py and confirm all tests pass.

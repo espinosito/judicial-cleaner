@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(gh --version)",
-      "Bash(git --version)"
+      "Bash(git --version)",
+      "Bash(PYTHONIOENCODING=utf-8 python tests/test_rules.py 2>&1)"
     ]
   }
 }

@@ -13,12 +13,15 @@ if _src.exists():
     sys.path.insert(0, str(_src))
 sys.path.insert(0, str(Path(__file__).parent))
 
+import pytest
 from rules_i import (
     apply_i1, apply_i2, apply_i3, apply_i4, apply_i5,
     apply_i6, apply_i7, apply_i8, apply_i9, apply_i10,
-    apply_all_i_rules,
+    apply_all_i_rules, AmbiguousCase, ReclassifyAsB,
+    apply_mc_prefix, apply_business_before_comma, apply_business_after_comma,
+    check_hyphenated_business_before_comma, apply_maiden_name_rule,
 )
-from rules_b import apply_all_b_rules
+from rules_b import apply_all_b_rules, FlagForReview
 from dedup import deduplicate
 
 
@@ -52,17 +55,23 @@ class TestI2:
     def test_comma_space(self):
         assert apply_i2(", ") is None
 
-    def test_movant(self):
-        assert apply_i2("MOVANT, ") is None
-
-    def test_lienholder_alone(self):
-        assert apply_i2("LIENHOLDER,") is None
+    def test_empty_string(self):
+        assert apply_i2("") is None
 
     def test_real_name_kept(self):
         assert apply_i2("SMITH, JOHN") == "SMITH, JOHN"
 
-    def test_empty_string(self):
-        assert apply_i2("") is None
+    def test_movant_not_deleted(self):
+        # MOVANT is ambiguous — not auto-deleted, whole case goes to weird
+        assert apply_i2("MOVANT, ") == "MOVANT, "
+
+    def test_lienholder_not_deleted(self):
+        # LIENHOLDER is ambiguous — not auto-deleted, whole case goes to weird
+        assert apply_i2("LIENHOLDER,") == "LIENHOLDER,"
+
+    def test_respondent_not_deleted(self):
+        # RESPONDENT is ambiguous — not auto-deleted, whole case goes to weird
+        assert apply_i2("RESPONDENT, ") == "RESPONDENT, "
 
 
 # ===========================================================================
@@ -269,7 +278,7 @@ class TestBRules:
 
     def test_b3_county_of(self):
         result, rule = apply_all_b_rules("GRAYSON COUNTY OF")
-        assert result == "GRAYSON COUNTY"
+        assert result == "COUNTY OF GRAYSON"
         assert rule == "B-3"
 
     def test_b4_two_businesses(self):
@@ -393,6 +402,216 @@ class TestDedup:
 
 
 # ===========================================================================
+# Bug-fix regression tests
+# ===========================================================================
+
+class TestBugFixes:
+    # --- rules_b.py: B-8 must NOT convert records with known business words to I ---
+
+    def test_lumber_street_stays_b(self):
+        """LUMBER is a business indicator — must not convert to I"""
+        result, rule = apply_all_b_rules("LUMBER MAIN STREET")
+        assert result == "LUMBER MAIN STREET"
+        assert rule == "B-1"
+
+    def test_fitness_usa_stays_b(self):
+        """FITNESS is a business indicator — must not convert to I"""
+        result, rule = apply_all_b_rules("FITNESS USA")
+        assert result == "FITNESS USA"
+        assert rule == "B-1"
+
+    def test_cars_quality_used_moved(self):
+        """CAR/CARS prefix must move to end via B-2"""
+        result, rule = apply_all_b_rules("CARS QUALITY USED")
+        assert result == "QUALITY USED CARS"
+        assert rule == "B-2"
+
+    def test_homes_a1_mobile_flagged(self):
+        """Alphanumeric token A-1 must trigger FlagForReview"""
+        with pytest.raises(FlagForReview):
+            apply_all_b_rules("HOMES A-1 MOBILE")
+
+    # --- rules_b.py: B-3 CITY OF pattern ---
+
+    def test_city_of_moved_to_front(self):
+        """VAN ALSTYNE CITY OF → CITY OF VAN ALSTYNE"""
+        result, rule = apply_all_b_rules("VAN ALSTYNE CITY OF")
+        assert result == "CITY OF VAN ALSTYNE"
+        assert rule == "B-3"
+
+    # --- rules_b.py: B-4 no-split for name ending with legal suffix ---
+
+    def test_company_inc_not_split(self):
+        """Name ending with INC must not be split even when AND is present"""
+        result, rule = apply_all_b_rules("LANGFORD AND MONTGOMERY SURVEY COMPANY INC")
+        assert result == "LANGFORD AND MONTGOMERY SURVEY COMPANY INC"
+        assert rule == "B-1"
+
+    # --- rules_b.py: B-4 flag when part has only single-letter tokens ---
+
+    def test_single_letter_parts_flagged(self):
+        """C P AND ASSOCIIATESINC — 'C P' is all single letters, must flag"""
+        with pytest.raises(FlagForReview):
+            apply_all_b_rules("C P AND ASSOCIIATESINC")
+
+    # --- rules_b.py: B-5 WIFE pattern with single surname ---
+
+    def test_wife_single_surname_stays_b(self):
+        """HEROD AND WIFE STACYE → B: HEROD, STACYE"""
+        result, rule = apply_all_b_rules("HEROD AND WIFE STACYE")
+        assert result == [{"marker": "B", "name": "HEROD, STACYE"}]
+        assert rule == "B-5"
+
+    def test_wife_full_name_still_i(self):
+        """Existing: MILLS JAMES E AND WIFE LINDA D MILLS still produces I records"""
+        result, rule = apply_all_b_rules("MILLS JAMES E AND WIFE LINDA D MILLS")
+        assert isinstance(result, list)
+        assert all(r["marker"] == "I" for r in result)
+
+    # --- rules_i.py: MC prefix ---
+
+    def test_mc_prefix_joined(self):
+        """MC, DADE WILLIE MAE → MCDADE, WILLIE MAE"""
+        result = apply_mc_prefix("MC, DADE WILLIE MAE")
+        assert result == "MCDADE, WILLIE MAE"
+
+    def test_mac_prefix_joined(self):
+        """MAC, DONALD JAMES → MACDONALD, JAMES"""
+        result = apply_mc_prefix("MAC, DONALD JAMES")
+        assert result == "MACDONALD, JAMES"
+
+    def test_mc_prefix_in_pipeline(self):
+        result, rule = apply_all_i_rules("MC, DADE WILLIE MAE")
+        assert result == "MCDADE, WILLIE MAE"
+        assert rule == "I-MC"
+
+    # --- rules_i.py: business indicator before comma → B ---
+
+    def test_manufacturer_before_comma_raises(self):
+        """MANUFACTURER, JOHN DOOR → ReclassifyAsB with new_name 'JOHN DOOR MANUFACTURER'"""
+        with pytest.raises(ReclassifyAsB) as exc:
+            apply_business_before_comma("MANUFACTURER, JOHN DOOR")
+        assert exc.value.new_name == "JOHN DOOR MANUFACTURER"
+
+    # --- rules_i.py: business indicator after comma → swap ---
+
+    def test_manufacturers_after_comma_swapped(self):
+        """CONSOLIDATION, MANUFACTURERS → MANUFACTURERS CONSOLIDATION (stays I)"""
+        result = apply_business_after_comma("CONSOLIDATION, MANUFACTURERS")
+        assert result == "MANUFACTURERS CONSOLIDATION"
+
+    def test_manufacturers_after_comma_in_pipeline(self):
+        result, rule = apply_all_i_rules("CONSOLIDATION, MANUFACTURERS")
+        assert result == "MANUFACTURERS CONSOLIDATION"
+        assert rule == "I-BAC"
+
+    # --- rules_i.py: game names → B ---
+
+    def test_bingo_reclassified_as_b(self):
+        """BINGO, (gambling name) → ReclassifyAsB"""
+        with pytest.raises(ReclassifyAsB) as exc:
+            apply_all_i_rules("BINGO,")
+        assert exc.value.new_name == "BINGO"
+
+    # --- rules_i.py: short abbreviation → B ---
+
+    def test_mci_short_abbreviation_b(self):
+        """MCI, (≤3 chars, not a first name) → ReclassifyAsB"""
+        with pytest.raises(ReclassifyAsB) as exc:
+            apply_all_i_rules("MCI,")
+        assert exc.value.new_name == "MCI"
+
+    # --- rules_i.py: hyphenated non-name → flag ---
+
+    def test_hyphenated_nonname_flagged(self):
+        """WHOPPER-STOPPER → AmbiguousCase"""
+        with pytest.raises(AmbiguousCase):
+            apply_all_i_rules("WHOPPER-STOPPER,")
+
+
+# ===========================================================================
+# New bug-fix regression tests (2026-03-26)
+# ===========================================================================
+
+class TestNewBugFixes:
+    # Tiny stub that acts as a name DB for maiden-name tests
+    class _DB:
+        FIRST_NAMES = {"DEBORAH", "MARGARET", "MARY", "JANE", "ALICE", "SARAH", "LINDA"}
+
+        def is_first_name(self, name: str) -> bool:
+            return name.upper() in self.FIRST_NAMES
+
+    # --- 1. Ambiguous hyphenated business name → flag ---
+
+    def test_movers_miller_house_flagged(self):
+        """MOVERS-MILLER, HOUSE → AmbiguousCase (MOVERS is a business word)"""
+        with pytest.raises(AmbiguousCase):
+            apply_all_i_rules("MOVERS-MILLER, HOUSE")
+
+    def test_hyphenated_normal_name_not_flagged(self):
+        """SMITH-JONES, MARY → no exception (no business word in hyphen)"""
+        result, _ = apply_all_i_rules("SMITH-JONES, MARY")
+        assert result == "SMITH-JONES, MARY"
+
+    # --- 2. Business keyword before comma in I record → reclassify as B ---
+
+    def test_yard_wrecking_reclassified_as_b(self):
+        """YARD, EARL RATCLIFF WRECKING → ReclassifyAsB('EARL RATCLIFF WRECKING YARD')"""
+        with pytest.raises(ReclassifyAsB) as exc:
+            apply_all_i_rules("YARD, EARL RATCLIFF WRECKING")
+        assert exc.value.new_name == "EARL RATCLIFF WRECKING YARD"
+
+    def test_church_before_comma_reclassified_as_b(self):
+        """CHURCH, OPEN DOOR DEL APOSTOLIC → ReclassifyAsB"""
+        with pytest.raises(ReclassifyAsB) as exc:
+            apply_all_i_rules("CHURCH, OPEN DOOR DEL APOSTOLIC")
+        assert exc.value.new_name == "OPEN DOOR DEL APOSTOLIC CHURCH"
+
+    def test_club_before_comma_reclassified_as_b(self):
+        """CLUB, BANSHEE MOTORCYCLE → ReclassifyAsB"""
+        with pytest.raises(ReclassifyAsB) as exc:
+            apply_all_i_rules("CLUB, BANSHEE MOTORCYCLE")
+        assert exc.value.new_name == "BANSHEE MOTORCYCLE CLUB"
+
+    def test_council_before_comma_reclassified_as_b(self):
+        """COUNCIL, DENISON CITY → ReclassifyAsB"""
+        with pytest.raises(ReclassifyAsB) as exc:
+            apply_all_i_rules("COUNCIL, DENISON CITY")
+        assert exc.value.new_name == "DENISON CITY COUNCIL"
+
+    # --- 3. Maiden name appended at end → hyphenated surname ---
+
+    def test_maiden_name_appended(self):
+        """GARNER, DEBORAH MARGARET ROGERS → ROGERS-GARNER, DEBORAH MARGARET"""
+        result, _ = apply_all_i_rules("GARNER, DEBORAH MARGARET ROGERS", db=self._DB())
+        assert result == "ROGERS-GARNER, DEBORAH MARGARET"
+
+    def test_maiden_name_rule_skipped_when_second_not_first_name(self):
+        """SMITH, MARY ROGERS JONES — second token ROGERS not a confirmed first name, no transform"""
+        result, _ = apply_all_i_rules("SMITH, MARY ROGERS JONES", db=self._DB())
+        assert result == "SMITH, MARY ROGERS JONES"
+
+    def test_maiden_name_rule_skipped_on_suffix(self):
+        """CHAMBERS, MARY JANE JR — JR is a suffix, no maiden-name transform"""
+        result, _ = apply_all_i_rules("CHAMBERS, MARY JANE JR", db=self._DB())
+        assert result == "CHAMBERS, MARY JANE JR"
+
+    # --- 4. ASSOCIATES prefix in B record moves to end ---
+
+    def test_county_of_moved_to_front(self):
+        """GRAYSON COUNTY OF → COUNTY OF GRAYSON (not drop OF)"""
+        result, rule = apply_all_b_rules("GRAYSON COUNTY OF")
+        assert result == "COUNTY OF GRAYSON"
+        assert rule == "B-3"
+
+    def test_associates_prefix_moved_to_end(self):
+        """ASSOCIATES DONALD L JARVIS AND → DONALD L JARVIS AND ASSOCIATES"""
+        result, rule = apply_all_b_rules("ASSOCIATES DONALD L JARVIS AND")
+        assert result == "DONALD L JARVIS AND ASSOCIATES"
+        assert rule == "B-2"
+
+
+# ===========================================================================
 # Runner (when not using pytest)
 # ===========================================================================
 if __name__ == "__main__":
@@ -401,7 +620,7 @@ if __name__ == "__main__":
     classes = [
         TestI1, TestI2, TestI3, TestI4, TestI5,
         TestI6, TestI7, TestI8, TestI9, TestI10,
-        TestApplyAllIRules, TestBRules, TestDedup,
+        TestApplyAllIRules, TestBRules, TestDedup, TestBugFixes, TestNewBugFixes,
     ]
 
     passed = 0

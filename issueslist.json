@@ -24,18 +24,6 @@
     ]
   },
   {
-    "case_number": "880348",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "raw_block": [
-      "19881103\t880348    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t\n",
-      "19881103\t880348    \tJDG\t04\tI\tPECOR, ROY LEE\t\n",
-      "19881103\t880348    \tJDG\t04\tI\tMOVANT, \t\n",
-      "19881103\t880348    \tJDG\t05\tI\tBLASS, FRANCIS ELIZABETH\t\n"
-    ]
-  },
-  {
     "case_number": "881552",
     "original_marker": "B",
     "original_name": "HOMES A-1 MOBILE",
@@ -274,36 +262,10 @@
     ]
   },
   {
-    "case_number": "101624",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "raw_block": [
-      "19881101\t101624    \tDIV\t02\tDIVORCE - NO CHILDREN\t\t\n",
-      "19881101\t101624    \tDIV\t04\tI\tMOVANT, \t\n",
-      "19881101\t101624    \tDIV\t04\tI\tHUNTER, HOWARD DOUGLAS\t\n",
-      "19881101\t101624    \tDIV\t05\tI\tHUNTER, MARY SUE\t\n",
-      "19881101\t101624    \tDIV\t05\tI\tMOVANT, ALSO\t\n"
-    ]
-  },
-  {
     "case_number": "102822",
     "original_marker": "I",
     "original_name": "RESPONDENT,",
     "reason": "single-token name not in database: 'RESPONDENT'",
-    "raw_block": [
-      "19881209\t102822    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t\n",
-      "19881209\t102822    \tJDG\t04\tI\tRESPONDENT, \t\n",
-      "19881209\t102822    \tJDG\t04\tI\tSAMPLE, MAY B\t\n",
-      "19881209\t102822    \tJDG\t05\tI\tMOVANT, \t\n",
-      "19881209\t102822    \tJDG\t05\tI\tSAMPLE, DAVID J\t\n"
-    ]
-  },
-  {
-    "case_number": "102822",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
     "raw_block": [
       "19881209\t102822    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t\n",
       "19881209\t102822    \tJDG\t04\tI\tRESPONDENT, \t\n",

@@ -12,10 +12,18 @@ If none of B-2 through B-8 apply, leave the record exactly as-is.
 When a business/institutional term appears at the START of the name, move it to the END.
 
 Known prefixes: `INC`, `CORP`, `LLC`, `LTD`, `LP`, `LLP`, `PC`, `CO`, `NA`,
-`ISD`, `ESD`, `ASSOCIATION`, `ASSOC`, `PARTNERSHIP`, `COMPANY`, `ENTERPRISES`,
+`ISD`, `ESD`, `ASSOCIATION`, `ASSOC`, `ASSOCIATES`, `PARTNERSHIP`, `COMPANY`, `ENTERPRISES`,
 `BANK`, `SAVINGS`, `HOSPITAL`, `CLINIC`, `DISTRICT`, `AUTHORITY`, `JAIL`,
 `ESTATE`, `COURT`, `BOARD`, `BUREAU`, `FUND`, `LODGE`, `POST`, `CLUB`,
-`UNIT`, `DIVISION`, `OFFICE`, `DEPT`
+`UNIT`, `DIVISION`, `OFFICE`, `DEPT`,
+`CAR`, `CARS`
+
+**CAR/CARS rule:** vehicle-related words at the start must move to the end.
+- `CARS QUALITY USED` → `QUALITY USED CARS`
+- `CAR LOT FIRST CLASS` → `FIRST CLASS CAR LOT`
+
+**ASSOCIATES rule:** when a record starts with ASSOCIATES, move it to the end.
+- `ASSOCIATES DONALD L JARVIS AND` → `DONALD L JARVIS AND ASSOCIATES`
 
 Examples:
 - `ISD POTTSBORO` → `POTTSBORO ISD`
@@ -28,7 +36,12 @@ Examples:
 
 ## B-3 — Reversed geographic/governmental names
 - `TEXAS STATE OF` → `STATE OF TEXAS`
-- `GRAYSON COUNTY OF` → `GRAYSON COUNTY` (trailing OF dropped)
+- `GRAYSON COUNTY OF` → `COUNTY OF GRAYSON` (**COUNTY OF** moves to front)
+- `VAN ALSTYNE CITY OF` → `CITY OF VAN ALSTYNE` (**CITY OF** moves to front)
+
+**COUNTY OF pattern:** any record of the form `PLACE COUNTY OF` becomes `COUNTY OF PLACE`.
+
+**CITY OF pattern:** any record of the form `PLACE CITY OF` becomes `CITY OF PLACE`.
 
 ## B-4 — Split on AND → two B records
 When both sides of AND are businesses, split into two B records.
@@ -44,6 +57,12 @@ When both sides of AND are businesses, split into two B records.
 - `LOCAL UNION 540 UNITED FOOD AND COMMERCIAL WORKER` — union
 - `DISTRICT S AND S INDEPENDENT SCHOOL` — school
 - Any record ending in `IND AND` — truncated, do not split
+- **Any record whose last token is `INC`, `LLC`, `LTD`, `LP`, `LLP`, `CORP`, or `CORPORATION`** — the whole name is a single entity
+  - `LANGFORD AND MONTGOMERY SURVEY COMPANY INC` → leave as-is (B)
+
+**Flag for review — do NOT split:**
+- Any record where a split part would consist entirely of single-letter tokens (e.g. `C P`)
+  - `C P AND ASSOCIIATESINC` → flagged (likely typo or garbled text)
 
 ## B-5 — Split on AND → two I records
 When both sides of AND are people, split into two I records.
@@ -53,8 +72,14 @@ Convert each part from B-format (SURNAME FIRSTNAME) to I-format (SURNAME, FIRSTN
 - `STRAIN DONALD AND DOROTHY STRAIN` → `STRAIN, DONALD` + `STRAIN, DOROTHY`
 - `YOUNG MARSHA AND DAVID` → `YOUNG, MARSHA` + `YOUNG, DAVID`
 
-**WIFE/HUSBAND pattern:** extract only the named person and their spouse.
-- `HEROD JAMES ROBERT SR AND WI` → keep only `HEROD, JAMES ROBERT SR` (WI = truncated WIFE)
+**WIFE/HUSBAND pattern — single surname:**
+When the pattern is `SURNAME AND WIFE FIRSTNAME` (single last name only, no first name on left),
+produce ONE B record in the format `SURNAME, FIRSTNAME`.
+- `HEROD AND WIFE STACYE` → B: `HEROD, STACYE`
+
+**WIFE/HUSBAND pattern — full name:**
+When the left side has a full name (surname + first name), produce two I records as usual.
+- `HEROD JAMES ROBERT SR AND WIFE` → I: `HEROD, JAMES ROBERT SR` (spouse omitted if unnamed)
 
 ## B-6 — N K A (now known as) split
 Split into two records at the N K A marker.
@@ -70,6 +95,20 @@ Strip trailing ID/license numbers.
 
 - `VANVORST MICHAEL J 8207424` → I: `VANVORST, MICHAEL J`
 - `ROBERT LEE KITCHEN` → I: `KITCHEN, ROBERT LEE`
+
+**Business indicators (B-8 will NOT convert these to I):**
+The following words protect a record from B-8 conversion. This list includes:
+`INC`, `LLC`, `CORP`, `COMPANY`, `BANK`, `HOSPITAL`, `SCHOOL`, `DISTRICT`,
+`LUMBER`, `FITNESS`, `GYM`, `CAR`, `CARS`, `HOMES`, `MOBILE`, `STREET`,
+`AVE`, `AVENUE`, `BLVD`, `BOULEVARD`, `USA`,
+`MANUFACTURER`, `MANUFACTURERS`, `DISTRIBUTOR`, `DISTRIBUTORS`,
+and many others — see `BUSINESS_INDICATORS` in `src/rules_b.py` for the full list.
+
+**Flag for review instead of converting:**
+- Records containing **alphanumeric tokens** (letters mixed with digits, e.g. `A-1`, `B2`) are
+  flagged rather than converted. Pure trailing numbers (ID/license codes) are still stripped normally.
+  - `HOMES A-1 MOBILE` → flagged
+  - `VANVORST MICHAEL J 8207424` → I: `VANVORST, MICHAEL J` (pure number stripped, not flagged)
 
 ---
 

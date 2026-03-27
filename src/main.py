@@ -21,8 +21,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from parser import parse_file, print_summary, Line, Case
 from classifier import get_classifier
-from rules_i import apply_all_i_rules, AmbiguousCase
-from rules_b import apply_all_b_rules
+from rules_i import apply_all_i_rules, AmbiguousCase, ReclassifyAsB
+from rules_b import apply_all_b_rules, FlagForReview
 from dedup import deduplicate
 
 
@@ -85,7 +85,8 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str]]:
 
         try:
             if marker == "I":
-                corrected, rule = apply_all_i_rules(name)
+                db = clf.db if clf is not None else None
+                corrected, rule = apply_all_i_rules(name, db=db)
                 if corrected is None:
                     continue
                 corrected_lines.append(rebuild_line(line, corrected))
@@ -106,7 +107,11 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str]]:
                 else:
                     corrected_lines.append(rebuild_line(line, result))
 
-        except AmbiguousCase as e:
+        except ReclassifyAsB as e:
+            # I record that turned out to be a business
+            corrected_lines.append(rebuild_line(line, e.new_name, new_marker="B"))
+
+        except (AmbiguousCase, FlagForReview) as e:
             flagged.append({
                 "case_number": case.case_number,
                 "original_marker": marker,
