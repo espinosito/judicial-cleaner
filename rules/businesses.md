@@ -16,7 +16,7 @@ Known prefixes: `INC`, `CORP`, `LLC`, `LTD`, `LP`, `LLP`, `PC`, `CO`, `NA`,
 `BANK`, `SAVINGS`, `HOSPITAL`, `CLINIC`, `DISTRICT`, `AUTHORITY`, `JAIL`,
 `ESTATE`, `COURT`, `BOARD`, `BUREAU`, `FUND`, `LODGE`, `POST`, `CLUB`,
 `UNIT`, `DIVISION`, `OFFICE`, `DEPT`,
-`CAR`, `CARS`
+`CAR`, `CARS`, `APPAREL`
 
 **CAR/CARS rule:** vehicle-related words at the start must move to the end.
 - `CARS QUALITY USED` → `QUALITY USED CARS`
@@ -24,6 +24,9 @@ Known prefixes: `INC`, `CORP`, `LLC`, `LTD`, `LP`, `LLP`, `PC`, `CO`, `NA`,
 
 **ASSOCIATES rule:** when a record starts with ASSOCIATES, move it to the end.
 - `ASSOCIATES DONALD L JARVIS AND` → `DONALD L JARVIS AND ASSOCIATES`
+
+**APPAREL rule:** retail/clothing type word at the start must move to the end.
+- `APPAREL S AND K` → `S AND K APPAREL`
 
 Examples:
 - `ISD POTTSBORO` → `POTTSBORO ISD`
@@ -49,6 +52,7 @@ When both sides of AND are businesses, split into two B records.
 - `CORP COMMTRON CORPORATION AND EMERSON RADIO` → two B records
 
 **Must NOT split (exceptions):**
+- `SEAFOOD J AND J` — seafood business name (any record containing SEAFOOD)
 - `SEARS ROEBUCK AND CO` — company name containing AND
 - `BRORSON LAHAIE CULLEN AND ADAMS` — law firm
 - `MUNSON MUNSON PIERCE AND CARDWELL PC` — law firm with PC
@@ -71,6 +75,10 @@ Convert each part from B-format (SURNAME FIRSTNAME) to I-format (SURNAME, FIRSTN
 - `MILLS JAMES E AND WIFE LINDA D MILLS` → `MILLS, JAMES E` + `MILLS, LINDA D`
 - `STRAIN DONALD AND DOROTHY STRAIN` → `STRAIN, DONALD` + `STRAIN, DOROTHY`
 - `YOUNG MARSHA AND DAVID` → `YOUNG, MARSHA` + `YOUNG, DAVID`
+- `SCHNITKER RONALD J AND DOROTHY JEAN INDV AS` → `SCHNITKER, RONALD J` + `SCHNITKER, DOROTHY JEAN`
+
+**Trailing legal text stripped before splitting:** `IN THE`, `IN RE`, `ET AL`, `AS NEXT FRIEND`, `INDV AS`
+- Strip these from the end of the full name before splitting on AND.
 
 **WIFE/HUSBAND pattern — single surname:**
 When the pattern is `SURNAME AND WIFE FIRSTNAME` (single last name only, no first name on left),

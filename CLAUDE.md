@@ -58,13 +58,30 @@ python src/main.py data/input/FILENAME.txt
 Produces:
 - `data/output/FILENAME_clean.txt` — corrected file
 - `data/flagged/FILENAME_flagged.json` — cases needing review (ideally 0)
+- `data/flagged/FILENAME_flagged.txt` — same flagged cases as raw TSV blocks, one blank line between cases (only written when there are flagged cases)
+
+## When resolving flagged cases
+Use fast pattern matching only — do not over-analyze.
+Decision logic:
+  - Matches a known rule in rules/ → resolved, apply it
+  - Does not match any rule → weird, no further analysis
+  - Maximum 2 seconds of reasoning per case
+If you are not immediately certain → mark as weird.
+
+## Token efficiency when resolving flagged cases
+- Process cases silently — do not quote or repeat the original data back
+- For each case print only: case_number | action | corrected_name (one line)
+- Do not explain reasoning unless the action is "weird"
+- Do not confirm what you read — just process and output decisions
 
 ## How to resolve flagged cases
-1. Read `data/flagged/FILENAME_flagged.json`
-2. For each flagged case, show the full case context (all lines, same case_number)
+1. Read `data/flagged/FILENAME_flagged.json` — contains `header_line` + `flagged_line` per entry (no raw_block)
+2. Read `data/flagged/FILENAME_flagged.txt` — full original TSV blocks, used to build corrected_block
 3. Apply the rule from rules/ that fits best
 4. If it's a new pattern not in rules/ — document it in `rules/special_cases.md`
 5. Write corrections to `data/flagged/FILENAME_corrections.json`
+   - For `resolved`: copy the full block from flagged.txt and apply corrections → `corrected_block`
+   - For `weird`: no corrected_block needed (main.py reads flagged.txt on --merge)
 6. **REQUIRED — do not skip:** Run `python src/main.py data/input/FILENAME.txt --merge`
    This appends resolved cases to the clean file and writes weird cases to weirdCases.txt.
    The task is NOT complete until this command runs and you confirm the output.

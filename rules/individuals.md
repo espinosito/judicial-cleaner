@@ -25,6 +25,7 @@ Remove these fragments, keep only the real name:
 - `DECEASED`
 - `TRUSTEE`
 - `INDIVIDUALLY`
+- `EXTRIX EST` (executrix of estate — legal role fragment)
 - `AS ADM OF [NAME]` (administrator of an estate — strip entire phrase)
 
 Examples:
@@ -32,6 +33,7 @@ Examples:
 - `RAY, LIENHOLDER IN REM ONLY JOE DEE` → `RAY, JOE DEE`
 - `HOOGENDOORN, LARRY TRUSTEE W` → `HOOGENDOORN, LARRY W`
 - `WHITE, MICHELLE MARIE INDIVIDUALLY` → `WHITE, MICHELLE MARIE`
+- `SCHNITKER, EXTRIX EST EUGENE` → `SCHNITKER, EUGENE`
 
 ## I-4 — Inverted names (NAME, LASTNAME → LASTNAME, NAME)
 Only applies when the token before the comma is a known first name.
@@ -150,6 +152,15 @@ the married name using a hyphen and move it before the comma.
 The last token is treated as the maiden surname regardless of whether it also appears
 in the first-name database (e.g. ROGERS is a rare male first name but here it is the
 birth surname).
+
+## MD suffix — medical professional → flag entire case
+When an I record ends with the suffix `MD`, the name belongs to a medical professional.
+These names have complex structures (e.g. `NOAMAN, GALIL A MD`) that require manual review.
+**The entire case block is excluded from clean output and sent to weirdCases.txt.**
+
+- `NOAMAN, GALIL A MD` → entire case flagged (reason: I record ends with MD)
+
+Detection runs in `main.py` before any I rules are applied.
 
 ## Single-token reclassification (applied after I-3)
 These checks run for any I record that reduces to a single token after stripping:

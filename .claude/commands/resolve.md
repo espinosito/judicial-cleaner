@@ -3,7 +3,8 @@ Resolve flagged cases from data/flagged/$ARGUMENTS_flagged.json.
 Steps:
 1. Read the flagged JSON file — each entry has: case_number, original_marker,
    original_name, reason, and raw_block (the full original TSV lines)
-2. Read rules/individuals.md, rules/businesses.md, rules/special_cases.md
+2. Read rules/individuals.md, rules/businesses.md, rules/special_cases.md 
+   ONCE at the start — do not re-read between cases
 3. For each unique case_number in the flagged list:
    a. Show the raw_block so you can see the full case context
    b. Apply the appropriate rule

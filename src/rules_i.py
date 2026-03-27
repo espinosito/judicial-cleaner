@@ -41,6 +41,7 @@ LEGAL_FRAGMENTS = [
     r"\bTRUSTEE\b",
     r"\bLIENHOLDER\b",
     r"\bINDIVIDUALLY\b",
+    r"\bEXTRIX\s+EST\b",         # executrix estate — legal role fragment
 ]
 
 SUFFIXES = {"JR", "SR", "II", "III", "IV"}

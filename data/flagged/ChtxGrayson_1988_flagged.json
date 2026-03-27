@@ -1,329 +1,274 @@
 [
   {
+    "case_number": "880136",
+    "original_marker": "I",
+    "original_name": "SAUNDERS, JOHN C MD",
+    "reason": "I record ends with MD (medical professional — complex name structure)",
+    "header_line": "19880111\t880136    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19880111\t880136    \tJDG\t04\tI\tSAUNDERS, JOHN C MD\t"
+  },
+  {
+    "case_number": "880137",
+    "original_marker": "I",
+    "original_name": "ALBRAND, OTMAR W MD",
+    "reason": "I record ends with MD (medical professional — complex name structure)",
+    "header_line": "19880111\t880137    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19880111\t880137    \tJDG\t04\tI\tALBRAND, OTMAR W MD\t"
+  },
+  {
+    "case_number": "880137",
+    "original_marker": "I",
+    "original_name": "ZINDEL, PA BARRY L MD",
+    "reason": "I record ends with MD (medical professional — complex name structure)",
+    "header_line": "19880111\t880137    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19880111\t880137    \tJDG\t04\tI\tZINDEL, PA BARRY L MD\t"
+  },
+  {
     "case_number": "881389",
     "original_marker": "B",
     "original_name": "ALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN",
     "reason": "B record with alphanumeric token: 'ALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN'",
-    "raw_block": [
-      "19880826\t881389    \tJDG\t02\tDECLARATORY JUDGMENT\t\t\n",
-      "19880826\t881389    \tJDG\t04\tB\tCITIZENS BANK AND TRUST OF CALVERT TEXAS\t\n",
-      "19880826\t881389    \tJDG\t05\tB\tALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN\t\n",
-      "19880826\t881389    \tJDG\t05\tB\tSUCC IN INT 1ST NATL BANK SHER\t\n"
-    ]
+    "header_line": "19880826\t881389    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19880826\t881389    \tJDG\t05\tB\tALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN\t"
   },
   {
     "case_number": "881389",
     "original_marker": "B",
     "original_name": "SUCC IN INT 1ST NATL BANK SHER",
     "reason": "B record with alphanumeric token: 'SUCC IN INT 1ST NATL BANK SHER'",
-    "raw_block": [
-      "19880826\t881389    \tJDG\t02\tDECLARATORY JUDGMENT\t\t\n",
-      "19880826\t881389    \tJDG\t04\tB\tCITIZENS BANK AND TRUST OF CALVERT TEXAS\t\n",
-      "19880826\t881389    \tJDG\t05\tB\tALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN\t\n",
-      "19880826\t881389    \tJDG\t05\tB\tSUCC IN INT 1ST NATL BANK SHER\t\n"
-    ]
+    "header_line": "19880826\t881389    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19880826\t881389    \tJDG\t05\tB\tSUCC IN INT 1ST NATL BANK SHER\t"
   },
   {
     "case_number": "880348",
     "original_marker": "I",
     "original_name": "MOVANT,",
     "reason": "single-token name not in database: 'MOVANT'",
-    "raw_block": [
-      "19881103\t880348    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t\n",
-      "19881103\t880348    \tJDG\t04\tI\tPECOR, ROY LEE\t\n",
-      "19881103\t880348    \tJDG\t04\tI\tMOVANT, \t\n",
-      "19881103\t880348    \tJDG\t05\tI\tBLASS, FRANCIS ELIZABETH\t\n"
-    ]
+    "header_line": "19881103\t880348    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19881103\t880348    \tJDG\t04\tI\tMOVANT, \t"
   },
   {
     "case_number": "881552",
     "original_marker": "B",
     "original_name": "HOMES A-1 MOBILE",
     "reason": "B record with alphanumeric token: 'HOMES A-1 MOBILE'",
-    "raw_block": [
-      "19880928\t881552    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t\n",
-      "19880928\t881552    \tJDG\t04\tB\tBETTER MANUFACTURED HOMES INC\t\n",
-      "19880928\t881552    \tJDG\t04\tB\tHOMES A-1 MOBILE\t\n",
-      "19880928\t881552    \tJDG\t05\tI\tCARR, WANDA\t\n",
-      "19880928\t881552    \tJDG\t05\tI\tCARR, WAYNE\t\n"
-    ]
+    "header_line": "19880928\t881552    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t",
+    "flagged_line": "19880928\t881552    \tJDG\t04\tB\tHOMES A-1 MOBILE\t"
+  },
+  {
+    "case_number": "880452",
+    "original_marker": "I",
+    "original_name": "GAY, JAMES S MD",
+    "reason": "I record ends with MD (medical professional — complex name structure)",
+    "header_line": "19880311\t880452    \tJDG\t02\tPETITION IN INTERPLEADER\t\t",
+    "flagged_line": "19880311\t880452    \tJDG\t05\tI\tGAY, JAMES S MD\t"
   },
   {
     "case_number": "880533",
     "original_marker": "B",
     "original_name": "C P AND ASSOCIIATESINC",
     "reason": "split part has only single-letter tokens: 'C P' in 'C P AND ASSOCIIATESINC'",
-    "raw_block": [
-      "19880325\t880533    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
-      "19880325\t880533    \tJDG\t04\tI\tBONNER, DON\t\n",
-      "19880325\t880533    \tJDG\t04\tB\tC P AND ASSOCIIATESINC\t\n",
-      "19880325\t880533    \tJDG\t04\tI\tMILLER, JOE BOB\t\n",
-      "19880325\t880533    \tJDG\t05\tI\tCATRON, ARVLENE\t\n"
-    ]
+    "header_line": "19880325\t880533    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19880325\t880533    \tJDG\t04\tB\tC P AND ASSOCIIATESINC\t"
   },
   {
     "case_number": "881642",
     "original_marker": "I",
     "original_name": "NONE,",
     "reason": "single-token name not in database: 'NONE'",
-    "raw_block": [
-      "19881014\t881642    \tJDG\t02\tSUIT ON TRUST\t\t\n",
-      "19881014\t881642    \tJDG\t04\tI\tNONE, \t\n",
-      "19881014\t881642    \tJDG\t05\tI\tPEDIGO, SH\t\n"
-    ]
+    "header_line": "19881014\t881642    \tJDG\t02\tSUIT ON TRUST\t\t",
+    "flagged_line": "19881014\t881642    \tJDG\t04\tI\tNONE, \t"
   },
   {
     "case_number": "880645",
     "original_marker": "B",
     "original_name": "VENTURE SHERMAN I-75 JOINT",
     "reason": "B record with alphanumeric token: 'VENTURE SHERMAN I-75 JOINT'",
-    "raw_block": [
-      "19880418\t880645    \tJDG\t02\tDECLARATORY JUDGMENT\t\t\n",
-      "19880418\t880645    \tJDG\t04\tB\tVENTURE SHERMAN I-75 JOINT\t\n",
-      "19880418\t880645    \tJDG\t05\tI\tMURRAY, KEN\t\n"
-    ]
+    "header_line": "19880418\t880645    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19880418\t880645    \tJDG\t04\tB\tVENTURE SHERMAN I-75 JOINT\t"
   },
   {
     "case_number": "881916",
     "original_marker": "I",
     "original_name": "NONE,",
     "reason": "single-token name not in database: 'NONE'",
-    "raw_block": [
-      "19881206\t881916    \tJDG\t02\tNAME CHANGE PETITION\t\t\n",
-      "19881206\t881916    \tJDG\t04\tI\tNONE, \t\n",
-      "19881206\t881916    \tJDG\t05\tI\tFERGUSON, CAROL LYNN EX-PARTE\t\n"
-    ]
+    "header_line": "19881206\t881916    \tJDG\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19881206\t881916    \tJDG\t04\tI\tNONE, \t"
   },
   {
     "case_number": "881934",
     "original_marker": "I",
     "original_name": "NONE,",
     "reason": "single-token name not in database: 'NONE'",
-    "raw_block": [
-      "19881208\t881934    \tJDG\t02\tREMOVE CLOUD FROM TITLE\t\t\n",
-      "19881208\t881934    \tJDG\t04\tI\tNONE, \t\n",
-      "19881208\t881934    \tJDG\t05\tB\tSTRONG CORTNEY LYNN IN THE MATTER O\t\n"
-    ]
+    "header_line": "19881208\t881934    \tJDG\t02\tREMOVE CLOUD FROM TITLE\t\t",
+    "flagged_line": "19881208\t881934    \tJDG\t04\tI\tNONE, \t"
   },
   {
     "case_number": "881935",
     "original_marker": "I",
     "original_name": "NONE,",
     "reason": "single-token name not in database: 'NONE'",
-    "raw_block": [
-      "19881209\t881935    \tJDG\t02\tNAME CHANGE PETITION\t\t\n",
-      "19881209\t881935    \tJDG\t04\tI\tNONE, \t\n",
-      "19881209\t881935    \tJDG\t05\tI\tGILBERT, ERICH JAMES EX PARTE\t\n"
-    ]
+    "header_line": "19881209\t881935    \tJDG\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19881209\t881935    \tJDG\t04\tI\tNONE, \t"
+  },
+  {
+    "case_number": "881979",
+    "original_marker": "I",
+    "original_name": "ALBRAND, OTMAR W MD",
+    "reason": "I record ends with MD (medical professional — complex name structure)",
+    "header_line": "19881219\t881979    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19881219\t881979    \tJDG\t04\tI\tALBRAND, OTMAR W MD\t"
+  },
+  {
+    "case_number": "881979",
+    "original_marker": "I",
+    "original_name": "PARKS, GARY MD",
+    "reason": "I record ends with MD (medical professional — complex name structure)",
+    "header_line": "19881219\t881979    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19881219\t881979    \tJDG\t04\tI\tPARKS, GARY MD\t"
   },
   {
     "case_number": "882021",
     "original_marker": "I",
     "original_name": "NONE,",
     "reason": "single-token name not in database: 'NONE'",
-    "raw_block": [
-      "19881229\t882021    \tJDG\t02\tNAME CHANGE PETITION\t\t\n",
-      "19881229\t882021    \tJDG\t04\tI\tNONE, \t\n",
-      "19881229\t882021    \tJDG\t05\tI\tDUDLEY-BROWN, PRINCES DEE\t\n"
-    ]
+    "header_line": "19881229\t882021    \tJDG\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19881229\t882021    \tJDG\t04\tI\tNONE, \t"
+  },
+  {
+    "case_number": "881186",
+    "original_marker": "I",
+    "original_name": "KAVANAUGH, EUGENE MD",
+    "reason": "I record ends with MD (medical professional — complex name structure)",
+    "header_line": "19880722\t881186    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19880722\t881186    \tJDG\t04\tI\tKAVANAUGH, EUGENE MD\t"
+  },
+  {
+    "case_number": "881207",
+    "original_marker": "I",
+    "original_name": "GARVIN, CLIFFORD DAVID MD",
+    "reason": "I record ends with MD (medical professional — complex name structure)",
+    "header_line": "19880727\t881207    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19880727\t881207    \tJDG\t05\tI\tGARVIN, CLIFFORD DAVID MD\t"
   },
   {
     "case_number": "883122",
     "original_marker": "B",
     "original_name": "LEASING C AND M",
     "reason": "split part has only single-letter tokens: 'M' in 'LEASING C AND M'",
-    "raw_block": [
-      "19880212\t883122    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880212\t883122    \tJDG\t04\tB\tLEASING C AND M\t\n",
-      "19880212\t883122    \tJDG\t05\tB\tISD DENISON\t\n"
-    ]
+    "header_line": "19880212\t883122    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880212\t883122    \tJDG\t04\tB\tLEASING C AND M\t"
   },
   {
     "case_number": "883161",
     "original_marker": "B",
     "original_name": "G AND G LUMBER CO",
     "reason": "split part has only single-letter tokens: 'G' in 'G AND G LUMBER CO'",
-    "raw_block": [
-      "19880226\t883161    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880226\t883161    \tJDG\t04\tB\tG AND G LUMBER CO\t\n",
-      "19880226\t883161    \tJDG\t05\tB\tISD DENISON\t\n"
-    ]
-  },
-  {
-    "case_number": "883171",
-    "original_marker": "B",
-    "original_name": "SEAFOOD J AND J",
-    "reason": "split part has only single-letter tokens: 'J' in 'SEAFOOD J AND J'",
-    "raw_block": [
-      "19880226\t883171    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880226\t883171    \tJDG\t04\tB\tSEAFOOD J AND J\t\n",
-      "19880226\t883171    \tJDG\t05\tB\tISD DENISON\t\n"
-    ]
+    "header_line": "19880226\t883161    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880226\t883161    \tJDG\t04\tB\tG AND G LUMBER CO\t"
   },
   {
     "case_number": "883180",
     "original_marker": "I",
     "original_name": "LUCILLES,",
     "reason": "single-token name not in database: 'LUCILLES'",
-    "raw_block": [
-      "19880226\t883180    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880226\t883180    \tJDG\t04\tI\tLUCILLES, \t\n",
-      "19880226\t883180    \tJDG\t05\tB\tISD DENISON\t\n"
-    ]
+    "header_line": "19880226\t883180    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880226\t883180    \tJDG\t04\tI\tLUCILLES, \t"
   },
   {
     "case_number": "883193",
     "original_marker": "B",
     "original_name": "CORPORATION R AND L",
     "reason": "split part has only single-letter tokens: 'L' in 'CORPORATION R AND L'",
-    "raw_block": [
-      "19880226\t883193    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880226\t883193    \tJDG\t04\tB\tCORPORATION R AND L\t\n",
-      "19880226\t883193    \tJDG\t05\tB\tISD DENISON\t\n"
-    ]
-  },
-  {
-    "case_number": "883199",
-    "original_marker": "B",
-    "original_name": "APPAREL S AND K",
-    "reason": "split part has only single-letter tokens: 'K' in 'APPAREL S AND K'",
-    "raw_block": [
-      "19880226\t883199    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880226\t883199    \tJDG\t04\tB\tAPPAREL S AND K\t\n",
-      "19880226\t883199    \tJDG\t05\tB\tISD DENISON\t\n"
-    ]
+    "header_line": "19880226\t883193    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880226\t883193    \tJDG\t04\tB\tCORPORATION R AND L\t"
   },
   {
     "case_number": "883384",
     "original_marker": "I",
     "original_name": "MOVERS-MILLER, HOUSE",
     "reason": "hyphenated business word in name position: 'MOVERS-MILLER'",
-    "raw_block": [
-      "19880531\t883384    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880531\t883384    \tJDG\t04\tI\tMILLER, THOMAS V\t\n",
-      "19880531\t883384    \tJDG\t04\tI\tMOVERS-MILLER, HOUSE\t\n",
-      "19880531\t883384    \tJDG\t05\tB\tGRAYSON COUNTY OF\t\n",
-      "19880531\t883384    \tJDG\t05\tB\tTEXAS STATE OF\t\n",
-      "19880531\t883384    \tJDG\t05\tB\tVAN ALSTYNE CITY OF\t\n"
-    ]
+    "header_line": "19880531\t883384    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880531\t883384    \tJDG\t04\tI\tMOVERS-MILLER, HOUSE\t"
   },
   {
     "case_number": "883478",
     "original_marker": "I",
     "original_name": "WHOPPER-STOPPER,",
     "reason": "hyphenated non-name token: 'WHOPPER-STOPPER'",
-    "raw_block": [
-      "19880916\t883478    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880916\t883478    \tJDG\t04\tI\tLURES, FLIPTAIL\t\n",
-      "19880916\t883478    \tJDG\t04\tB\tMARSHALL BOB IND AND \t\n",
-      "19880916\t883478    \tJDG\t04\tI\tWHOPPER-STOPPER, \t\n",
-      "19880916\t883478    \tJDG\t05\tB\tDISTRICT S AND S INDEPENDENT SCHOOL\t\n",
-      "19880916\t883478    \tJDG\t05\tB\tTEXAS STATE OF\t\n"
-    ]
+    "header_line": "19880916\t883478    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880916\t883478    \tJDG\t04\tI\tWHOPPER-STOPPER, \t"
   },
   {
     "case_number": "883709",
     "original_marker": "B",
     "original_name": "VENTURE TWO FB-40 JOINT",
     "reason": "B record with alphanumeric token: 'VENTURE TWO FB-40 JOINT'",
-    "raw_block": [
-      "19881031\t883709    \tJDG\t02\tTAX CASES\t\t\n",
-      "19881031\t883709    \tJDG\t04\tB\tVENTURE TWO FB-40 JOINT\t\n",
-      "19881031\t883709    \tJDG\t05\tB\tISD DENISON\t\n"
-    ]
+    "header_line": "19881031\t883709    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19881031\t883709    \tJDG\t04\tB\tVENTURE TWO FB-40 JOINT\t"
   },
   {
     "case_number": "881840",
     "original_marker": "I",
     "original_name": "ANITA-GREEN,",
     "reason": "hyphenated non-name token: 'ANITA-GREEN'",
-    "raw_block": [
-      "19881118\t881840    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
-      "19881118\t881840    \tJDG\t04\tI\tBARRON, MICHAEL RAY\t\n",
-      "19881118\t881840    \tJDG\t04\tI\tLEWIS, HARVEY\t\n",
-      "19881118\t881840    \tJDG\t04\tI\tMCKINNEY, CARL K\t\n",
-      "19881118\t881840    \tJDG\t04\tI\tTHOMAS, SANDRA LEE\t\n",
-      "19881118\t881840    \tJDG\t05\tI\tANITA-GREEN, \t\n",
-      "19881118\t881840    \tJDG\t05\tI\tGREEN, LINDA\t\n"
-    ]
+    "header_line": "19881118\t881840    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19881118\t881840    \tJDG\t05\tI\tANITA-GREEN, \t"
   },
   {
     "case_number": "881995",
     "original_marker": "I",
     "original_name": "GOSNELL,",
     "reason": "single-token name not in database: 'GOSNELL'",
-    "raw_block": [
-      "19881222\t881995    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
-      "19881222\t881995    \tJDG\t04\tB\tASSOCIATION RESOURCE SAVINGS\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tADAMI, DAROLD P\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tALMOND, CLYDE\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tBRENNAN, JOHN H\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tBROWN, BARRETT KEITH\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tCARLYON, GEORGE H\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tELLIS, JOHN W JR\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tFLOYD, JOHN\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tGOSNELL, \t\n",
-      "19881222\t881995    \tJDG\t05\tI\tGOSNELL, DORTHEA AS ADM OF SONNY\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tHAUPTRIEF, LARRY D\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tHAYES, CORNELIUS JOHN MD\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tHILL, JOHN D\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tKELLER, JAMES E\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tLINDSEY, JAMES A\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tMCKEE, EDGAR G\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tNOAMAN, GALIL A MD\t\n"
-    ]
+    "header_line": "19881222\t881995    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19881222\t881995    \tJDG\t05\tI\tGOSNELL, \t"
+  },
+  {
+    "case_number": "881995",
+    "original_marker": "I",
+    "original_name": "HAYES, CORNELIUS JOHN MD",
+    "reason": "I record ends with MD (medical professional — complex name structure)",
+    "header_line": "19881222\t881995    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19881222\t881995    \tJDG\t05\tI\tHAYES, CORNELIUS JOHN MD\t"
+  },
+  {
+    "case_number": "881995",
+    "original_marker": "I",
+    "original_name": "NOAMAN, GALIL A MD",
+    "reason": "I record ends with MD (medical professional — complex name structure)",
+    "header_line": "19881222\t881995    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19881222\t881995    \tJDG\t05\tI\tNOAMAN, GALIL A MD\t"
   },
   {
     "case_number": "101624",
     "original_marker": "I",
     "original_name": "MOVANT,",
     "reason": "single-token name not in database: 'MOVANT'",
-    "raw_block": [
-      "19881101\t101624    \tDIV\t02\tDIVORCE - NO CHILDREN\t\t\n",
-      "19881101\t101624    \tDIV\t04\tI\tMOVANT, \t\n",
-      "19881101\t101624    \tDIV\t04\tI\tHUNTER, HOWARD DOUGLAS\t\n",
-      "19881101\t101624    \tDIV\t05\tI\tHUNTER, MARY SUE\t\n",
-      "19881101\t101624    \tDIV\t05\tI\tMOVANT, ALSO\t\n"
-    ]
+    "header_line": "19881101\t101624    \tDIV\t02\tDIVORCE - NO CHILDREN\t\t",
+    "flagged_line": "19881101\t101624    \tDIV\t04\tI\tMOVANT, \t"
   },
   {
     "case_number": "102822",
     "original_marker": "I",
     "original_name": "RESPONDENT,",
     "reason": "single-token name not in database: 'RESPONDENT'",
-    "raw_block": [
-      "19881209\t102822    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t\n",
-      "19881209\t102822    \tJDG\t04\tI\tRESPONDENT, \t\n",
-      "19881209\t102822    \tJDG\t04\tI\tSAMPLE, MAY B\t\n",
-      "19881209\t102822    \tJDG\t05\tI\tMOVANT, \t\n",
-      "19881209\t102822    \tJDG\t05\tI\tSAMPLE, DAVID J\t\n"
-    ]
+    "header_line": "19881209\t102822    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19881209\t102822    \tJDG\t04\tI\tRESPONDENT, \t"
   },
   {
     "case_number": "102822",
     "original_marker": "I",
     "original_name": "MOVANT,",
     "reason": "single-token name not in database: 'MOVANT'",
-    "raw_block": [
-      "19881209\t102822    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t\n",
-      "19881209\t102822    \tJDG\t04\tI\tRESPONDENT, \t\n",
-      "19881209\t102822    \tJDG\t04\tI\tSAMPLE, MAY B\t\n",
-      "19881209\t102822    \tJDG\t05\tI\tMOVANT, \t\n",
-      "19881209\t102822    \tJDG\t05\tI\tSAMPLE, DAVID J\t\n"
-    ]
+    "header_line": "19881209\t102822    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19881209\t102822    \tJDG\t05\tI\tMOVANT, \t"
   },
   {
     "case_number": "105793",
     "original_marker": "I",
     "original_name": "HOSP,",
     "reason": "single-token name not in database: 'HOSP'",
-    "raw_block": [
-      "19880304\t105793    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
-      "19880304\t105793    \tJDG\t04\tI\tHOSP, \t\n",
-      "19880304\t105793    \tJDG\t04\tB\tHOSPITAL MEDICAL PLAZA\t\n",
-      "19880304\t105793    \tJDG\t04\tI\tSCHNITKER, EXTRIX EST EUGENE\t\n",
-      "19880304\t105793    \tJDG\t04\tB\tSCHNITKER RONALD J AND DOROTHY JEAN INDV AS\t\n",
-      "19880304\t105793    \tJDG\t05\tB\tTEXAS SOUTHERN GENERAL LIFE INSCO OF\t\n"
-    ]
+    "header_line": "19880304\t105793    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19880304\t105793    \tJDG\t04\tI\tHOSP, \t"
   }
 ]

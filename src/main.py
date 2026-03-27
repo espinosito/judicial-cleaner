@@ -14,6 +14,7 @@ Flagged case behavior:
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -69,8 +70,14 @@ def make_split_line(original: Line, new_name: str, new_marker: str) -> str:
 def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str]]:
     lines, removed = deduplicate(case.lines)
 
-    # Raw block = original lines of this case, used if we need to write to weirdCases
+    # Raw block = original lines of this case, used to write flagged.txt
     raw_block = [l.raw for l in case.lines]
+
+    # Find the header (02) line for context in flagged.json
+    header_line = next(
+        (l.raw.rstrip("\n") for l in case.lines if l.line_type == "02"),
+        ""
+    )
 
     corrected_lines: list[str] = []
     flagged: list[dict] = []
@@ -82,6 +89,18 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str]]:
 
         name = line.name
         marker = line.marker
+
+        # Bug 2: I record ending with MD → medical professional, flag entire case
+        if marker == "I" and re.search(r"\bMD\s*$", name, re.IGNORECASE):
+            flagged.append({
+                "case_number": case.case_number,
+                "original_marker": marker,
+                "original_name": name,
+                "reason": "I record ends with MD (medical professional — complex name structure)",
+                "header_line": header_line,
+                "flagged_line": line.raw.rstrip("\n"),
+            })
+            continue
 
         try:
             if marker == "I":
@@ -117,7 +136,8 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str]]:
                 "original_marker": marker,
                 "original_name": name,
                 "reason": str(e),
-                "raw_block": raw_block,
+                "header_line": header_line,
+                "flagged_line": line.raw.rstrip("\n"),
             })
 
         except Exception as e:
@@ -126,7 +146,8 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str]]:
                 "original_marker": marker,
                 "original_name": name,
                 "reason": f"ERROR: {e}",
-                "raw_block": raw_block,
+                "header_line": header_line,
+                "flagged_line": line.raw.rstrip("\n"),
             })
 
     # If anything was flagged → exclude the whole case from clean output
@@ -140,6 +161,28 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str]]:
 # Merge corrections from Claude back into output
 # ---------------------------------------------------------------------------
 
+def _parse_flagged_txt(flagged_txt_path: Path) -> dict[str, list[str]]:
+    """Parse flagged.txt into a dict of case_number → list of raw lines."""
+    lookup: dict[str, list[str]] = {}
+    if not flagged_txt_path.exists():
+        return lookup
+    with open(flagged_txt_path, encoding="utf-8") as f:
+        raw = f.read()
+    blocks = raw.split("\n\n")
+    for block in blocks:
+        block = block.strip("\n")
+        if not block:
+            continue
+        lines = [l + "\n" for l in block.split("\n") if l]
+        if lines:
+            # case_number is field 2 (index 1) of any line
+            parts = lines[0].split("\t")
+            cn = parts[1].strip() if len(parts) > 1 else ""
+            if cn and cn not in lookup:
+                lookup[cn] = lines
+    return lookup
+
+
 def merge_corrections(output_path: Path, flagged_path: Path, corrections_path: Path):
     """
     Read corrections JSON written by Claude.
@@ -150,7 +193,7 @@ def merge_corrections(output_path: Path, flagged_path: Path, corrections_path: P
       corrected_block: list of corrected TSV line strings (only for "resolved")
 
     Resolved cases → appended to end of clean file.
-    Weird cases    → written to data/flagged/weirdCases.txt (raw original block).
+    Weird cases    → written to data/flagged/weirdCases.txt (raw original block from flagged.txt).
     """
     if not corrections_path.exists():
         print(f"No corrections file found: {corrections_path}")
@@ -159,15 +202,10 @@ def merge_corrections(output_path: Path, flagged_path: Path, corrections_path: P
     with open(corrections_path) as f:
         corrections: list[dict] = json.load(f)
 
-    with open(flagged_path) as f:
-        flagged: list[dict] = json.load(f)
-
-    # Build lookup: case_number → raw_block (for weird cases)
-    raw_lookup: dict[str, list[str]] = {}
-    for entry in flagged:
-        cn = entry["case_number"]
-        if cn not in raw_lookup:
-            raw_lookup[cn] = entry.get("raw_block", [])
+    # Build lookup: case_number → raw_block from flagged.txt
+    flagged_txt_path = flagged_path.parent / flagged_path.stem.replace("_flagged", "_flagged")
+    flagged_txt_path = flagged_path.with_suffix(".txt")
+    raw_lookup = _parse_flagged_txt(flagged_txt_path)
 
     resolved_blocks: list[list[str]] = []
     weird_blocks: list[list[str]] = []
@@ -252,11 +290,15 @@ def main():
     print("Processing cases...")
     all_output: list[str] = []
     all_flagged: list[dict] = []
+    # Separate lookup: case_number → raw_block (for flagged.txt), not stored in JSON
+    flagged_raw: dict[str, list[str]] = {}
 
     for case in cases:
         out_lines, flagged, raw_block = process_case(case, clf)
         all_output.extend(out_lines)
         all_flagged.extend(flagged)
+        if flagged and case.case_number not in flagged_raw:
+            flagged_raw[case.case_number] = raw_block
 
     for orphan in orphans:
         all_output.append(orphan.raw)
@@ -267,6 +309,15 @@ def main():
     with open(flagged_path, "w", encoding="utf-8") as f:
         json.dump(all_flagged, f, indent=2, ensure_ascii=False)
 
+    # Write flagged.txt from the raw blocks collected during processing
+    flagged_txt_path = flagged_dir / f"{stem}_flagged.txt"
+    unique_blocks = list(flagged_raw.values())
+    with open(flagged_txt_path, "w", encoding="utf-8") as f:
+        for i, block in enumerate(unique_blocks):
+            f.writelines(block)
+            if i < len(unique_blocks) - 1:
+                f.write("\n")
+
     total_in  = sum(len(c.lines) for c in cases)
     total_out = len(all_output)
     flagged_cases = len({e["case_number"] for e in all_flagged})
@@ -276,8 +327,10 @@ def main():
     print(f"Output lines  : {total_out}")
     print(f"Difference    : {total_out - total_in:+d}")
     print(f"Flagged cases : {flagged_cases} (entire blocks excluded from output)")
-    print(f"\nOutput  → {output_path}")
-    print(f"Flagged → {flagged_path}")
+    print(f"\nOutput  -> {output_path}")
+    print(f"Flagged -> {flagged_path}")
+    if all_flagged:
+        print(f"        -> {flagged_txt_path}")
     if all_flagged:
         print(f"\nNext step: open Claude Code and run /resolve {stem}")
     else:

@@ -44,10 +44,13 @@ BUSINESS_PREFIXES = [
     "NA",
     # Vehicle-related prefixes (CAR/CARS go at end: CARS QUALITY USED → QUALITY USED CARS)
     "CAR", "CARS",
+    # Retail/apparel type placed at front (APPAREL S AND K → S AND K APPAREL)
+    "APPAREL",
 ]
 
 # Phrases that must NOT be split even though they contain AND (B-4 exceptions)
 NO_SPLIT_PATTERNS = [
+    r"\bSEAFOOD\b",                          # seafood business names (SEAFOOD J AND J)
     r"\bSEARS ROEBUCK AND CO\b",
     r"\bIND AND\b",                          # individual defendant + truncated
     r"\bAND AS ADM",                         # legal role
@@ -81,7 +84,7 @@ BUSINESS_INDICATORS = {
     "REALTY", "REALTORS", "MORTGAGE", "TITLE", "SUPPLY", "SUPPLIES",
     "EQUIPMENT", "TRANSPORT", "TRANSPORTATION", "TRUCKING", "FREIGHT",
     "ELECTRIC", "ELECTRICAL", "UTILITIES", "UTILITY", "PETROLEUM",
-    "RESTAURANT", "CAFE", "FOOD", "MARKET", "STORE", "SHOP", "SALON",
+    "RESTAURANT", "CAFE", "FOOD", "SEAFOOD", "MARKET", "STORE", "SHOP", "SALON",
     "ISD", "ESD", "NA", "FSB", "CBIC",
     "AND",  # most real businesses with AND are firms (SMITH AND JONES PC)
     # Additional confirmed business indicators
@@ -258,6 +261,7 @@ TRAILING_LEGAL = [
     r"\s+IN\s+RE\b.*$",          # IN RE ... (legal case reference)
     r"\s+ET\s+AL\.?\s*$",       # ET AL
     r"\s+AS\s+NEXT\s+FRIEND.*$", # AS NEXT FRIEND OF
+    r"\s+INDV\s+AS\s*$",         # INDV AS (individual as — legal role suffix)
 ]
 
 def _strip_trailing_legal(name: str) -> str:

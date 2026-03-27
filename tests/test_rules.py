@@ -612,6 +612,123 @@ class TestNewBugFixes:
 
 
 # ===========================================================================
+# Bug fixes 2026-03-27
+# ===========================================================================
+
+class TestBugFixes20260327:
+
+    # Bug 1: APPAREL prefix moves to end via B-2
+    def test_apparel_prefix_moved_to_end(self):
+        """APPAREL S AND K → S AND K APPAREL (B-2)"""
+        result, rule = apply_all_b_rules("APPAREL S AND K")
+        assert result == "S AND K APPAREL"
+        assert rule == "B-2"
+
+    # Bug 3: EXTRIX EST stripped from I records via I-3
+    def test_extrix_est_stripped(self):
+        """SCHNITKER, EXTRIX EST EUGENE → SCHNITKER, EUGENE (I-3)"""
+        result = apply_i3("SCHNITKER, EXTRIX EST EUGENE")
+        assert result == "SCHNITKER, EUGENE"
+
+    # Bug 4: INDV AS stripped, then Case D splits into two I records
+    def test_indv_as_split_into_i_records(self):
+        """SCHNITKER RONALD J AND DOROTHY JEAN INDV AS → two I records (B-5)"""
+        result, rule = apply_all_b_rules("SCHNITKER RONALD J AND DOROTHY JEAN INDV AS")
+        assert rule == "B-5"
+        assert result == [
+            {"marker": "I", "name": "SCHNITKER, RONALD J"},
+            {"marker": "I", "name": "SCHNITKER, DOROTHY JEAN"},
+        ]
+
+    # Bug 5: SEAFOOD records are never split on AND
+    def test_seafood_not_split(self):
+        """SEAFOOD J AND J → unchanged, B-1 (no split)"""
+        result, rule = apply_all_b_rules("SEAFOOD J AND J")
+        assert result == "SEAFOOD J AND J"
+        assert rule == "B-1"
+
+    # Bug 2: I record ending with MD is flagged — tested via process_case
+    def test_md_suffix_i_record_flagged(self):
+        """Case with I record ending in MD → flagged, excluded from clean output"""
+        import sys
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+        from parser import Line, Case
+        from main import process_case
+
+        header = Line(
+            raw="19881222\t881995    \tJDG\t02\tDEFENDANT\t\t\n",
+            fields=["19881222", "881995    ", "JDG", "02", "DEFENDANT", "", ""],
+            line_number=1,
+        )
+        name_line = Line(
+            raw="19881222\t881995    \tJDG\t05\tI\tNOAMAN, GALIL A MD\t\n",
+            fields=["19881222", "881995    ", "JDG", "05", "I", "NOAMAN, GALIL A MD", ""],
+            line_number=2,
+        )
+        case = Case(case_number="881995", lines=[header, name_line])
+        out_lines, flagged, _ = process_case(case, None)
+        assert out_lines == [], "MD case must be excluded from clean output"
+        assert len(flagged) == 1
+        assert "MD" in flagged[0]["reason"]
+
+
+# ===========================================================================
+# Integration test: flagged.txt output
+# ===========================================================================
+class TestFlaggedTxt:
+    """Verify that running the pipeline produces FILENAME_flagged.txt."""
+
+    def test_flagged_txt_created_alongside_json(self, tmp_path):
+        import sys
+        from unittest.mock import patch
+
+        # Build a minimal input: one clean case + one that triggers FlagForReview
+        # (B record with alphanumeric token reliably raises FlagForReview)
+        input_dir = tmp_path / "data" / "input"
+        input_dir.mkdir(parents=True)
+        input_file = input_dir / "test_flagged_output.txt"
+        input_file.write_text(
+            # clean case
+            "19880101\t000001    \tJDG\t02\tTEST CASE\t\t\n"
+            "19880101\t000001    \tJDG\t04\tI\tSMITH, JOHN\t\n"
+            # flagged case: B record with alphanumeric token (e.g. "UNIT2")
+            "19880102\t000002    \tJDG\t02\tTEST CASE 2\t\t\n"
+            "19880102\t000002    \tJDG\t04\tB\tACME UNIT2 INC\t\n",
+            encoding="utf-8",
+        )
+
+        output_dir = tmp_path / "data" / "output"
+        flagged_dir = tmp_path / "data" / "flagged"
+        output_dir.mkdir(parents=True)
+        flagged_dir.mkdir(parents=True)
+
+        src_dir = Path(__file__).parent.parent / "src"
+        with patch("sys.argv", ["main.py", str(input_file)]):
+            import importlib, os
+            old_cwd = os.getcwd()
+            os.chdir(tmp_path)
+            try:
+                import main as main_mod
+                importlib.reload(main_mod)
+                main_mod.main()
+            finally:
+                os.chdir(old_cwd)
+
+        json_path = flagged_dir / "test_flagged_output_flagged.json"
+        txt_path  = flagged_dir / "test_flagged_output_flagged.txt"
+
+        assert json_path.exists(), "flagged.json was not created"
+        assert txt_path.exists(),  "flagged.txt was not created"
+
+        content = txt_path.read_text(encoding="utf-8")
+        assert "000002" in content, "flagged case_number not found in .txt"
+        assert "ACME UNIT2 INC" in content, "flagged name not found in .txt"
+        # clean case must NOT appear in flagged.txt
+        assert "000001" not in content, "clean case should not appear in .txt"
+
+
+# ===========================================================================
 # Runner (when not using pytest)
 # ===========================================================================
 if __name__ == "__main__":
@@ -621,6 +738,7 @@ if __name__ == "__main__":
         TestI1, TestI2, TestI3, TestI4, TestI5,
         TestI6, TestI7, TestI8, TestI9, TestI10,
         TestApplyAllIRules, TestBRules, TestDedup, TestBugFixes, TestNewBugFixes,
+        TestBugFixes20260327,
     ]
 
     passed = 0

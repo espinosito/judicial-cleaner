@@ -185,3 +185,64 @@ Plain text, same tab-separated format as the original file.
 ## Before finishing
 Update rules/special_cases.md with any new pattern you handled.
 Run python tests/test_rules.py and confirm all tests pass.
+
+
+
+I need a new output file generated automatically during the pipeline run.
+
+When main.py writes data/flagged/FILENAME_flagged.json, it must also write
+data/flagged/FILENAME_flagged.txt with the same flagged cases in their 
+original TSV format (the raw_block of each case).
+
+Format for FILENAME_flagged.txt:
+- One case block per entry
+- Each block is the original TSV lines exactly as they appear in the source file
+- One blank line between cases
+- No JSON, no headers, no extra text
+
+Example content:
+19880429	880746    	DIV	02	DIVORCE - NO CHILDREN		
+19880429	880746    	DIV	04	I	REED, MARY FRANCES	
+19880429	880746    	DIV	05	I	REED, DARRELL BRUCE	
+
+19880503	880753    	DIV	02	DIVORCE - NO CHILDREN		
+19880503	880753    	DIV	04	I	HAWTHORNE, ROBERT EDWARD	
+19880503	880753    	DIV	05	I	HAWTHORNE, TAWNYA FAY	
+
+19880504	880760    	DIV	02	DIVORCE - NO CHILDREN		
+19880504	880760    	DIV	04	I	CALHOUN, LINDA SUE	
+19880504	880760    	DIV	05	I	CALHOUN, RONALD LEE	
+
+19880505	880763    	JDG	02	INJURY/DAMAGE: OTHER INJURY OR DAMAGE		
+19880505	880763    	JDG	04	I	BUCKNER, LONNIE GENE	
+19880505	880763    	JDG	04	B	LILLIBRIDGE DONNA IND AND 	
+19880505	880763    	JDG	04	I	MOTEL, IND	
+19880505	880763    	JDG	04	B	MOTEL JS DOG AND CAT	
+19880505	880763    	JDG	04	I	WEBSTER, MARJORIE J	
+19880505	880763    	JDG	05	I	SMITH, BETTY L	
+19880505	880763    	JDG	05	I	SMITH, CHARLES E	
+19880505	880763    	JDG	05	I	TOWLES, ALICE JUNE	
+19880505	880763    	JDG	05	I	TOWLES, JOHN C	
+
+Steps:
+1. Modify src/main.py to write the .txt file alongside the .json
+2. Add a test to tests/test_rules.py verifying the .txt is created
+3. Run python tests/test_rules.py — all tests must pass
+4. Run python src/main.py data/input/ChtxGrayson_1988.txt to verify both files appear
+5. Update CLAUDE.md to document that FILENAME_flagged.txt exists
+
+
+
+
+
+I found bugs in the pipeline fix them, add a test for them, and verify all the test still pass
+
+-business names should be business elements in this case the key word is APPAREL, move Apparel to the end of the element
+input: 19880226	883199    	JDG	04	B	APPAREL S AND K	
+expected: 19880226	883199    	JDG	04	B	S AND K	APPAREL
+got: moved to weird elements because of this line	
+
+-elements with MD should be moved directly to weirdCases.txt don process them
+input: 19881222	881995    	JDG	05	I	NOAMAN, GALIL A MD	
+expected: move case to weird cases
+got: 19881222	881995    	JDG	05	I	NOAMAN, GALIL A MD	
