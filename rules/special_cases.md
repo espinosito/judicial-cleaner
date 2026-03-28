@@ -5,19 +5,42 @@ a pattern not covered by the standard rules in individuals.md or businesses.md.
 
 ---
 
+## Grayson County, Texas — 1998 files
+
+### FATHER as role label in family law cases → FILENAME_weirdCases.txt
+In DIV (family law) modification cases, `FATHER,` appears as a placeholder for the
+non-custodial parent when the actual name is unknown or not entered.
+Treat identically to RESPONDENT/MOVANT — send whole case block to FILENAME_weirdCases.txt.
+- `FATHER, ` (marker I) → weird (whole case block)
+Seen in: MODIFICATION OF PRIOR ORDER, ALL OTHER FAMILY LAW MATTERS cases.
+
+### Single-letter B record names (e.g. S AND D PROPERTIES, G AND F COMPANY) → leave as-is
+B records where one part of an AND split would be a single letter cannot be reliably
+split. Leave the full name as-is (B). This is handled by the B-4 flag rule.
+- `S AND D PROPERTIES` → leave as-is (B)
+- `G AND F COMPANY` → leave as-is (B)
+- `C AND D PROPERTIES` → leave as-is (B)
+
+### Alphanumeric ordinal B records (1ST STATE INC) → leave as-is
+Business names starting with ordinal numbers (1ST, 2ND, etc.) are legitimate entities.
+Leave as-is; the ordinal is part of the proper name.
+- `1ST STATE INC` → leave as-is (B)
+
+---
+
 ## Grayson County, Texas — 1988 files
 
-### NONE as party placeholder → weirdCases.txt
+### NONE as party placeholder → FILENAME_weirdCases.txt
 In ex-parte proceedings (name changes, title petitions), the opposing party field is
 filled with `NONE,` to indicate no opposing party. Do NOT delete the row automatically —
-send the entire case block to weirdCases.txt for manual review.
+send the entire case block to FILENAME_weirdCases.txt for manual review.
 - `NONE, ` (marker I) → weird (whole case block)
 Seen in: NAME CHANGE PETITION, REMOVE CLOUD FROM TITLE, SUIT ON TRUST cases.
 
-### RESPONDENT / MOVANT / LIENHOLDER as role labels → weirdCases.txt
+### RESPONDENT / MOVANT / LIENHOLDER as role labels → FILENAME_weirdCases.txt
 These are legal role labels, not real names. They are ambiguous (the real party name
 may be missing entirely). Do NOT delete the row. Send the entire case block to
-weirdCases.txt for manual review.
+FILENAME_weirdCases.txt for manual review.
 - `RESPONDENT, ` (marker I) → weird (whole case block)
 - `MOVANT, ` (marker I) → weird (whole case block)
 - `LIENHOLDER, ` (marker I) → weird (whole case block)

@@ -246,3 +246,20 @@ got: moved to weird elements because of this line
 input: 19881222	881995    	JDG	05	I	NOAMAN, GALIL A MD	
 expected: move case to weird cases
 got: 19881222	881995    	JDG	05	I	NOAMAN, GALIL A MD	
+
+-remove EXTRIX EST from individuals name, if it is not an individual dont remove and send it to flagged elements
+input: 19880304	105793    	JDG	04	I	SCHNITKER, EXTRIX EST EUGENE	
+expected: 19880304	105793    	JDG	04	I	SCHNITKER, EUGENE	or mark case as flagged
+got: 19880304	105793    	JDG	04	I	SCHNITKER, EXTRIX EST EUGENE	
+
+-if you find one last name but multiple first names separeted by word AND you need to create as much elements as multiple names you find note that you also need to remove INDV AS, if it is not clear send it to weirdCases file
+input: 19880304	105793    	JDG	04	B	SCHNITKER RONALD J AND DOROTHY JEAN INDV AS
+expected: 19880304	105793    	JDG	04	B	SCHNITKER, RONALD J
+19880304	105793    	JDG	04	B	SCHNITKER, DOROTHY JEAN
+
+-if the element includes seafood mark it as business 
+input: 19880226	883171    	JDG	04	B	SEAFOOD J AND J	
+expect:19880226	883171    	JDG	04	B	SEAFOOD J AND J	
+got: 19880226	883171    	JDG	04	B	SEAFOOD 
+19880226	883171    	JDG	04	I	J AND J	
+ 

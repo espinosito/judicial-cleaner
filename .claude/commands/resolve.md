@@ -33,7 +33,7 @@ Corrections format — one entry per unique case_number:
 
 Rules:
 - "resolved" → corrected_block must be the COMPLETE corrected case (all lines)
-- "weird"    → no corrected_block needed, raw original goes to weirdCases.txt
+- "weird"    → no corrected_block needed, raw original goes to FILENAME_weirdCases.txt
 - Never guess. If genuinely unclear → use "weird"
 - Preserve exact tab structure of each line
 - Do not add explanatory text inside corrected_block lines

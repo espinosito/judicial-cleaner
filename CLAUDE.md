@@ -58,7 +58,7 @@ python src/main.py data/input/FILENAME.txt
 Produces:
 - `data/output/FILENAME_clean.txt` — corrected file
 - `data/flagged/FILENAME_flagged.json` — cases needing review (ideally 0)
-- `data/flagged/FILENAME_flagged.txt` — same flagged cases as raw TSV blocks, one blank line between cases (only written when there are flagged cases)
+- `data/flagged/FILENAME_flagged.txt` — processed blocks with `>>>` on each unresolvable line; all other lines already corrected (only written when there are flagged cases)
 
 ## When resolving flagged cases
 Use fast pattern matching only — do not over-analyze.
@@ -75,38 +75,47 @@ If you are not immediately certain → mark as weird.
 - Do not confirm what you read — just process and output decisions
 
 ## How to resolve flagged cases
-1. Read `data/flagged/FILENAME_flagged.json` — contains `header_line` + `flagged_line` per entry (no raw_block)
-2. Read `data/flagged/FILENAME_flagged.txt` — full original TSV blocks, used to build corrected_block
-3. Apply the rule from rules/ that fits best
+1. Read `data/flagged/FILENAME_flagged.json` — contains `header_line` + `flagged_line` per entry
+2. Read `data/flagged/FILENAME_flagged.txt` — processed blocks; lines with `>>>` are the ones needing a decision
+3. For each `>>>` line, read surrounding context (same block) and decide:
+   - Matches a known rule → `replace` or `split`
+   - Line should be removed → `delete`
+   - Cannot decide → `weird` (entire case goes to FILENAME_weirdCases.txt)
 4. If it's a new pattern not in rules/ — document it in `rules/special_cases.md`
 5. Write corrections to `data/flagged/FILENAME_corrections.json`
-   - For `resolved`: copy the full block from flagged.txt and apply corrections → `corrected_block`
-   - For `weird`: no corrected_block needed (main.py reads flagged.txt on --merge)
+   - One entry per `>>>` line (not per case)
+   - `flagged_line` must match exactly the text of the `>>>` line (without the `>>>` prefix)
 6. **REQUIRED — do not skip:** Run `python src/main.py data/input/FILENAME.txt --merge`
-   This appends resolved cases to the clean file and writes weird cases to weirdCases.txt.
+   This applies line-level corrections from flagged.txt and writes weird cases to FILENAME_weirdCases.txt.
    The task is NOT complete until this command runs and you confirm the output.
 
-Corrections format — one entry per unique case_number:
+Corrections format — one entry per flagged line:
 ```json
 [
   {
-    "case_number": "883763",
-    "action": "resolved",
-    "corrected_block": [
-      "19881207\t883763    \tJDG\t02\tTAX CASES\t\t\n",
-      "19881207\t883763    \tJDG\t04\tI\tCORNWELL, LORENE\t\n"
+    "case_number": "880275",
+    "flagged_line": "19880623\t880275\tDIV\t04\tB\tDENSMORE SHAWN WESTLY AND CHRISTY LYNN IN THE\t",
+    "action": "split",
+    "replacement_lines": [
+      "19880623\t880275\tDIV\t04\tI\tDENSMORE, SHAWN WESTLY\t",
+      "19880623\t880275\tDIV\t04\tI\tDENSMORE, CHRISTY LYNN\t"
     ]
   },
   {
     "case_number": "881999",
+    "flagged_line": "19881207\t881999\tJDG\t04\tI\tSOME AMBIGUOUS NAME MD\t",
     "action": "weird"
   }
 ]
 ```
-Actions: `resolved` (corrected_block required) | `weird` (goes to weirdCases.txt)
+Actions:
+- `replace`  → `replacement_lines` has exactly 1 line
+- `split`    → `replacement_lines` has 2+ lines
+- `delete`   → `replacement_lines` is empty `[]`
+- `weird`    → no `replacement_lines`; entire original case goes to FILENAME_weirdCases.txt
 
-Resolved cases are appended to the end of the clean file.
-Weird cases go to data/flagged/weirdCases.txt for manual review.
+For replace/split/delete: Python swaps the `>>>` line for your replacement_lines and appends the complete corrected block to the clean file.
+For weird: Python writes the original raw block (from input file) to FILENAME_weirdCases.txt.
 
 ## How to add a new rule to the code
 When you find a pattern that repeats across multiple cases:

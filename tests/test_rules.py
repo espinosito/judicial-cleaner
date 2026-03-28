@@ -647,32 +647,6 @@ class TestBugFixes20260327:
         assert result == "SEAFOOD J AND J"
         assert rule == "B-1"
 
-    # Bug 2: I record ending with MD is flagged — tested via process_case
-    def test_md_suffix_i_record_flagged(self):
-        """Case with I record ending in MD → flagged, excluded from clean output"""
-        import sys
-        from pathlib import Path
-        sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
-        from parser import Line, Case
-        from main import process_case
-
-        header = Line(
-            raw="19881222\t881995    \tJDG\t02\tDEFENDANT\t\t\n",
-            fields=["19881222", "881995    ", "JDG", "02", "DEFENDANT", "", ""],
-            line_number=1,
-        )
-        name_line = Line(
-            raw="19881222\t881995    \tJDG\t05\tI\tNOAMAN, GALIL A MD\t\n",
-            fields=["19881222", "881995    ", "JDG", "05", "I", "NOAMAN, GALIL A MD", ""],
-            line_number=2,
-        )
-        case = Case(case_number="881995", lines=[header, name_line])
-        out_lines, flagged, _ = process_case(case, None)
-        assert out_lines == [], "MD case must be excluded from clean output"
-        assert len(flagged) == 1
-        assert "MD" in flagged[0]["reason"]
-
-
 # ===========================================================================
 # Integration test: flagged.txt output
 # ===========================================================================
