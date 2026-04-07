@@ -1,0 +1,132 @@
+[
+  {
+    "case_number": "881819",
+    "flagged_line": "19941021\t881819    \tJDG\t04\tI\tMOTHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "890293",
+    "flagged_line": "19940414\t890293    \tJDG\t04\tI\tPARENTS, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "940167",
+    "flagged_line": "19940118\t940167    \tJDG\t04\tB\tINVESTMENTS JT AND T\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19940118\t940167    \tJDG\t04\tB\tINVESTMENTS JT AND T\t"
+    ]
+  },
+  {
+    "case_number": "94117CV",
+    "flagged_line": "19940217\t94117CV   \tJDG\t04\tI\tBANKSTON-LARA, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "941107",
+    "flagged_line": "19940711\t941107    \tDIV\t05\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "941109",
+    "flagged_line": "19940711\t941109    \tDIV\t05\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "942122CV",
+    "flagged_line": "19941214\t942122CV  \tJDG\t04\tB\tCORPORATION A K K AND R\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19941214\t942122CV  \tJDG\t04\tB\tA K K AND R CORPORATION\t"
+    ]
+  },
+  {
+    "case_number": "941197",
+    "flagged_line": "19940725\t941197    \tJDG\t04\tI\tHEFTON-ALTA, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "943148",
+    "flagged_line": "19940315\t943148    \tJDG\t04\tB\tANDERSON M AND C\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19940315\t943148    \tJDG\t04\tB\tANDERSON M AND C\t"
+    ]
+  },
+  {
+    "case_number": "940692",
+    "flagged_line": "19940429\t940692    \tJDG\t04\tI\tFATHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "943147",
+    "flagged_line": "19940315\t943147    \tJDG\t04\tI\tMCCLEL-ANDERSON, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "941393",
+    "flagged_line": "19940829\t941393    \tDIV\t05\tI\tFATHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "941621",
+    "flagged_line": "19941014\t941621    \tJDG\t05\tB\t5-T ENTERPRISES INC\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19941014\t941621    \tJDG\t05\tB\t5-T ENTERPRISES INC\t"
+    ]
+  },
+  {
+    "case_number": "941573",
+    "flagged_line": "19941004\t941573    \tJDG\t04\tI\tOUTLAWS, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "94269CV",
+    "flagged_line": "19940713\t94269CV   \tJDG\t04\tB\tTRUCKING M AND S\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19940713\t94269CV   \tJDG\t04\tB\tTRUCKING M AND S\t"
+    ]
+  },
+  {
+    "case_number": "107748",
+    "flagged_line": "19940801\t107748    \tJDG\t05\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "110910",
+    "flagged_line": "19940809\t110910    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "103156",
+    "flagged_line": "19941206\t103156    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "102038",
+    "flagged_line": "19941116\t102038    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "102581",
+    "flagged_line": "19940812\t102581    \tJDG\t05\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "2654",
+    "flagged_line": "19940420\t2654      \tJDG\t05\tI\tNAGELS, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "2750",
+    "flagged_line": "19941012\t2750      \tJDG\t05\tI\tNAGELS, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "094748",
+    "flagged_line": "19940518\t094748    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  }
+]

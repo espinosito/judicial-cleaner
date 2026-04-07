@@ -1,0 +1,72 @@
+[
+  {
+    "case_number": "23570",
+    "action": "resolved",
+    "corrected_block": [
+      "20000530\t23570     \tJDG\t02\tFORCIBLE ENTRY AND DETAINER\t\t\n",
+      "20000530\t23570     \tJDG\t04\tI\tCLEVENGER, TERI\t\n",
+      "20000530\t23570     \tJDG\t05\tB\tS AND D PROPERTIES\t\n"
+    ]
+  },
+  {
+    "case_number": "23728",
+    "action": "resolved",
+    "corrected_block": [
+      "20001002\t23728     \tJDG\t02\tFORCIBLE ENTRY AND DETAINER\t\t\n",
+      "20001002\t23728     \tJDG\t04\tI\tNEILL, JASON\t\n",
+      "20001002\t23728     \tJDG\t05\tB\t1ST STATE INC\t\n"
+    ]
+  },
+  {
+    "case_number": "4012",
+    "action": "resolved",
+    "corrected_block": [
+      "20001010\t4012      \tJDG\t02\tSMALL CLAIMS\t\t\n",
+      "20001010\t4012      \tJDG\t04\tI\tARRIAZOLA, JOHN\t\n",
+      "20001010\t4012      \tJDG\t05\tB\tD AND H DISTRIBUTING\t\n"
+    ]
+  },
+  {
+    "case_number": "23609",
+    "action": "resolved",
+    "corrected_block": [
+      "20000711\t23609     \tJDG\t02\tFORCIBLE ENTRY AND DETAINER\t\t\n",
+      "20000711\t23609     \tJDG\t04\tI\tEVANS, DIANE\t\n",
+      "20000711\t23609     \tJDG\t05\tB\tC AND D PROPERTIES\t\n"
+    ]
+  },
+  {
+    "case_number": "2000229CV",
+    "action": "resolved",
+    "corrected_block": [
+      "20000228\t2000229CV \tJDG\t02\tSUITS ON DEBT\t\t\n",
+      "20000228\t2000229CV \tJDG\t04\tI\tTOOMBS, WELDON\t\n",
+      "20000228\t2000229CV \tJDG\t05\tB\tCITIFINANCIAL\t\n"
+    ]
+  },
+  {
+    "case_number": "20001155CV",
+    "action": "resolved",
+    "corrected_block": [
+      "20000727\t20001155CV\tJDG\t02\tCIVIL CASE - OTHER\t\t\n",
+      "20000727\t20001155CV\tJDG\t04\tB\tSALVAGE J AND C\t\n",
+      "20000727\t20001155CV\tJDG\t05\tI\tFLEMMINGS, JOE E\t\n"
+    ]
+  },
+  {
+    "case_number": "002026",
+    "action": "weird"
+  },
+  {
+    "case_number": "003207",
+    "action": "resolved",
+    "corrected_block": [
+      "20000406\t003207    \tJDG\t02\tTAX CASES\t\t\n",
+      "20000406\t003207    \tJDG\t04\tB\tREC-TEX\t\n",
+      "20000406\t003207    \tJDG\t05\tB\tCOLLEGE GRAYSON COUNTY\t\n",
+      "20000406\t003207    \tJDG\t05\tB\tCOUNTY OF GRAYSON\t\n",
+      "20000406\t003207    \tJDG\t05\tB\tSHERMAN ISD\t\n",
+      "20000406\t003207    \tJDG\t05\tB\tCITY OF SHERMAN\t\n"
+    ]
+  }
+]

@@ -89,6 +89,12 @@ If you are not immediately certain → mark as weird.
    This applies line-level corrections from flagged.txt and writes weird cases to FILENAME_weirdCases.txt.
    The task is NOT complete until this command runs and you confirm the output.
 
+## REQUIRED final step — never skip
+After writing corrections.json, always run immediately:
+    python src/main.py data/input/FILENAME.txt --merge
+Do not tell the user to run it — run it yourself and confirm it completed.
+The task is NOT done until --merge runs successfully.
+
 Corrections format — one entry per flagged line:
 ```json
 [

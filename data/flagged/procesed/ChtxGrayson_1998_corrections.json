@@ -1,0 +1,103 @@
+[
+  {
+    "case_number": "941393",
+    "flagged_line": "19980728\t941393    \tDIV\t05\tI\tFATHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "981132",
+    "flagged_line": "19980715\t981132    \tDIV\t05\tI\tFATHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "981652",
+    "flagged_line": "19981021\t981652    \tDIV\t05\tI\tFATHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "983167",
+    "flagged_line": "19980317\t983167    \tJDG\t04\tI\tHOSTLER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "982218CV",
+    "flagged_line": "19980827\t982218CV  \tJDG\t05\tB\tA-1 ASSOCIATED PLUMBING INC\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19980827\t982218CV  \tJDG\t05\tB\tA-1 ASSOCIATED PLUMBING INC\t"
+    ]
+  },
+  {
+    "case_number": "980701",
+    "flagged_line": "19980421\t980701    \tJDG\t04\tI\tBOUTWELL, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "23013",
+    "flagged_line": "19980522\t23013     \tJDG\t04\tI\tERIAH-SMITH, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "23047",
+    "flagged_line": "19980723\t23047     \tJDG\t05\tB\t1ST STATE INC\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19980723\t23047     \tJDG\t05\tB\t1ST STATE INC\t"
+    ]
+  },
+  {
+    "case_number": "23161",
+    "flagged_line": "19981230\t23161     \tJDG\t04\tI\tRUSSELL-STEPHENS, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "983232",
+    "flagged_line": "19980401\t983232    \tJDG\t04\tI\tVEST, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "983338",
+    "flagged_line": "19980519\t983338    \tJDG\t04\tI\tSHAREHOLDERS, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "23060",
+    "flagged_line": "19980810\t23060     \tJDG\t05\tB\tS AND D PROPERTIES\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19980810\t23060     \tJDG\t05\tB\tS AND D PROPERTIES\t"
+    ]
+  },
+  {
+    "case_number": "JC298099",
+    "flagged_line": "19980602\tJC298099  \tJDG\t05\tB\tG AND F COMPANY\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19980602\tJC298099  \tJDG\t05\tB\tG AND F COMPANY\t"
+    ]
+  },
+  {
+    "case_number": "JC298114",
+    "flagged_line": "19980626\tJC298114  \tJDG\t05\tB\tG AND F COMPANY\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19980626\tJC298114  \tJDG\t05\tB\tG AND F COMPANY\t"
+    ]
+  },
+  {
+    "case_number": "JC298148",
+    "flagged_line": "19980807\tJC298148  \tJDG\t05\tB\tC AND D PROPERTIES\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19980807\tJC298148  \tJDG\t05\tB\tC AND D PROPERTIES\t"
+    ]
+  },
+  {
+    "case_number": "JC298234",
+    "flagged_line": "19981109\tJC298234  \tJDG\t05\tB\tC AND D PROPERTIES\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19981109\tJC298234  \tJDG\t05\tB\tC AND D PROPERTIES\t"
+    ]
+  }
+]

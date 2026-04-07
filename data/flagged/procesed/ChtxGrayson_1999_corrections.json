@@ -1,0 +1,130 @@
+[
+  {
+    "case_number": "950300",
+    "action": "weird"
+  },
+  {
+    "case_number": "941393",
+    "action": "weird"
+  },
+  {
+    "case_number": "104363",
+    "action": "weird"
+  },
+  {
+    "case_number": "104784",
+    "action": "weird"
+  },
+  {
+    "case_number": "991176CV",
+    "flagged_line": "19991005\t991176CV  \tJDG\t05\tB\tAUTOMOTIVE C AND A\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19991005\t991176CV  \tJDG\t05\tB\tAUTOMOTIVE C AND A\t"
+    ]
+  },
+  {
+    "case_number": "9916CV",
+    "flagged_line": "19990114\t9916CV    \tJDG\t04\tI\tNATIONSBANK, \t",
+    "action": "replace",
+    "replacement_lines": [
+      "19990114\t9916CV    \tJDG\t04\tB\tNATIONSBANK\t"
+    ]
+  },
+  {
+    "case_number": "991088",
+    "action": "weird"
+  },
+  {
+    "case_number": "991090",
+    "action": "weird"
+  },
+  {
+    "case_number": "991092",
+    "action": "weird"
+  },
+  {
+    "case_number": "991094",
+    "action": "weird"
+  },
+  {
+    "case_number": "991108",
+    "action": "weird"
+  },
+  {
+    "case_number": "991089",
+    "action": "weird"
+  },
+  {
+    "case_number": "991095",
+    "action": "weird"
+  },
+  {
+    "case_number": "991216",
+    "flagged_line": "19990729\t991216    \tJDG\t04\tB\tINC PP AND J\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19990729\t991216    \tJDG\t04\tB\tPP AND J INC\t"
+    ]
+  },
+  {
+    "case_number": "991442",
+    "flagged_line": "19990908\t991442    \tJDG\t04\tI\tOPTIKS, \t",
+    "action": "replace",
+    "replacement_lines": [
+      "19990908\t991442    \tJDG\t04\tB\tOPTIKS\t"
+    ]
+  },
+  {
+    "case_number": "991779",
+    "action": "weird"
+  },
+  {
+    "case_number": "991905",
+    "flagged_line": "19991210\t991905    \tJDG\t04\tB\tT AND N PLC\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19991210\t991905    \tJDG\t04\tB\tT AND N PLC\t"
+    ]
+  },
+  {
+    "case_number": "992159CV",
+    "flagged_line": "19991110\t992159CV  \tJDG\t05\tB\tINC C-2 AUTOMOTIVE\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19991110\t992159CV  \tJDG\t05\tB\tC-2 AUTOMOTIVE INC\t"
+    ]
+  },
+  {
+    "case_number": "991087",
+    "action": "weird"
+  },
+  {
+    "case_number": "993203",
+    "flagged_line": "19990630\t993203    \tJDG\t04\tI\tGABBERTS, \t",
+    "action": "replace",
+    "replacement_lines": [
+      "19990630\t993203    \tJDG\t04\tB\tGABBERTS\t"
+    ]
+  },
+  {
+    "case_number": "993246",
+    "flagged_line": "19991001\t993246    \tJDG\t04\tI\tNEWBERRYS, \t",
+    "action": "replace",
+    "replacement_lines": [
+      "19991001\t993246    \tJDG\t04\tB\tNEWBERRYS\t"
+    ]
+  },
+  {
+    "case_number": "991091",
+    "action": "weird"
+  },
+  {
+    "case_number": "991093",
+    "action": "weird"
+  },
+  {
+    "case_number": "991965",
+    "action": "weird"
+  }
+]

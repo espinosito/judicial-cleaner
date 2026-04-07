@@ -1,0 +1,66 @@
+[
+  {
+    "case_number": "23570",
+    "original_marker": "B",
+    "original_name": "S AND D PROPERTIES",
+    "reason": "split part has only single-letter tokens: 'S' in 'S AND D PROPERTIES'",
+    "header_line": "20000530\t23570     \tJDG\t02\tFORCIBLE ENTRY AND DETAINER\t\t",
+    "flagged_line": "20000530\t23570     \tJDG\t05\tB\tS AND D PROPERTIES\t"
+  },
+  {
+    "case_number": "23728",
+    "original_marker": "B",
+    "original_name": "1ST STATE INC",
+    "reason": "B record with alphanumeric token: '1ST STATE INC'",
+    "header_line": "20001002\t23728     \tJDG\t02\tFORCIBLE ENTRY AND DETAINER\t\t",
+    "flagged_line": "20001002\t23728     \tJDG\t05\tB\t1ST STATE INC\t"
+  },
+  {
+    "case_number": "4012",
+    "original_marker": "B",
+    "original_name": "D AND H DISTRIBUTING",
+    "reason": "split part has only single-letter tokens: 'D' in 'D AND H DISTRIBUTING'",
+    "header_line": "20001010\t4012      \tJDG\t02\tSMALL CLAIMS\t\t",
+    "flagged_line": "20001010\t4012      \tJDG\t05\tB\tD AND H DISTRIBUTING\t"
+  },
+  {
+    "case_number": "23609",
+    "original_marker": "B",
+    "original_name": "C AND D PROPERTIES",
+    "reason": "split part has only single-letter tokens: 'C' in 'C AND D PROPERTIES'",
+    "header_line": "20000711\t23609     \tJDG\t02\tFORCIBLE ENTRY AND DETAINER\t\t",
+    "flagged_line": "20000711\t23609     \tJDG\t05\tB\tC AND D PROPERTIES\t"
+  },
+  {
+    "case_number": "2000229CV",
+    "original_marker": "I",
+    "original_name": "CITIFINANCIAL,",
+    "reason": "single-token name not in database: 'CITIFINANCIAL'",
+    "header_line": "20000228\t2000229CV \tJDG\t02\tSUITS ON DEBT\t\t",
+    "flagged_line": "20000228\t2000229CV \tJDG\t05\tI\tCITIFINANCIAL, \t"
+  },
+  {
+    "case_number": "20001155CV",
+    "original_marker": "B",
+    "original_name": "SALVAGE J AND C",
+    "reason": "split part has only single-letter tokens: 'C' in 'SALVAGE J AND C'",
+    "header_line": "20000727\t20001155CV\tJDG\t02\tCIVIL CASE - OTHER\t\t",
+    "flagged_line": "20000727\t20001155CV\tJDG\t04\tB\tSALVAGE J AND C\t"
+  },
+  {
+    "case_number": "002026",
+    "original_marker": "I",
+    "original_name": "ENTELSHERM,",
+    "reason": "single-token name not in database: 'ENTELSHERM'",
+    "header_line": "20001227\t002026    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "20001227\t002026    \tJDG\t04\tI\tENTELSHERM, \t"
+  },
+  {
+    "case_number": "003207",
+    "original_marker": "I",
+    "original_name": "REC-TEX,",
+    "reason": "hyphenated non-name token: 'REC-TEX'",
+    "header_line": "20000406\t003207    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "20000406\t003207    \tJDG\t04\tI\tREC-TEX, \t"
+  }
+]

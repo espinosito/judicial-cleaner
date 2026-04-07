@@ -1,0 +1,170 @@
+[
+  {
+    "case_number": "930529",
+    "original_marker": "I",
+    "original_name": "FATHER,",
+    "reason": "single-token name not in database: 'FATHER'",
+    "header_line": "19961104\t930529    \tDIV\t02\tALL OTHER FAMILY LAW MATTERS\t\t",
+    "flagged_line": "19961104\t930529    \tDIV\t05\tI\tFATHER, \t"
+  },
+  {
+    "case_number": "940692",
+    "original_marker": "I",
+    "original_name": "FATHER,",
+    "reason": "single-token name not in database: 'FATHER'",
+    "header_line": "19960827\t940692    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19960827\t940692    \tJDG\t04\tI\tFATHER, \t"
+  },
+  {
+    "case_number": "941393",
+    "original_marker": "I",
+    "original_name": "FATHER,",
+    "reason": "single-token name not in database: 'FATHER'",
+    "header_line": "19960911\t941393    \tDIV\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19960911\t941393    \tDIV\t05\tI\tFATHER, \t"
+  },
+  {
+    "case_number": "960736",
+    "original_marker": "I",
+    "original_name": "NO-DEFENDANT,",
+    "reason": "hyphenated non-name token: 'NO-DEFENDANT'",
+    "header_line": "19960503\t960736    \tJDG\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19960503\t960736    \tJDG\t04\tI\tNO-DEFENDANT, \t"
+  },
+  {
+    "case_number": "960765",
+    "original_marker": "I",
+    "original_name": "OUTLAWS,",
+    "reason": "single-token name not in database: 'OUTLAWS'",
+    "header_line": "19960508\t960765    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19960508\t960765    \tJDG\t05\tI\tOUTLAWS, \t"
+  },
+  {
+    "case_number": "961144CV",
+    "original_marker": "B",
+    "original_name": "A AND J INVESTMENTS A JOINT VENTURE",
+    "reason": "split part has only single-letter tokens: 'A' in 'A AND J INVESTMENTS A JOINT VENTURE'",
+    "header_line": "19961120\t961144CV  \tJDG\t02\tSUITS ON DEBT\t\t",
+    "flagged_line": "19961120\t961144CV  \tJDG\t05\tB\tA AND J INVESTMENTS A JOINT VENTURE\t"
+  },
+  {
+    "case_number": "961190",
+    "original_marker": "I",
+    "original_name": "NONE,",
+    "reason": "single-token name not in database: 'NONE'",
+    "header_line": "19960722\t961190    \tDIV\t02\tALL OTHER FAMILY LAW MATTERS\t\t",
+    "flagged_line": "19960722\t961190    \tDIV\t05\tI\tNONE, \t"
+  },
+  {
+    "case_number": "110910",
+    "original_marker": "I",
+    "original_name": "MOVANT,",
+    "reason": "single-token name not in database: 'MOVANT'",
+    "header_line": "19961226\t110910    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19961226\t110910    \tJDG\t04\tI\tMOVANT, \t"
+  },
+  {
+    "case_number": "961272",
+    "original_marker": "I",
+    "original_name": "NO-DEFENDANT,",
+    "reason": "hyphenated non-name token: 'NO-DEFENDANT'",
+    "header_line": "19960807\t961272    \tJDG\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19960807\t961272    \tJDG\t04\tI\tNO-DEFENDANT, \t"
+  },
+  {
+    "case_number": "963254",
+    "original_marker": "B",
+    "original_name": "MARINE C AND W",
+    "reason": "split part has only single-letter tokens: 'W' in 'MARINE C AND W'",
+    "header_line": "19960717\t963254    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19960717\t963254    \tJDG\t04\tB\tMARINE C AND W\t"
+  },
+  {
+    "case_number": "963549",
+    "original_marker": "I",
+    "original_name": "VEST,",
+    "reason": "single-token name not in database: 'VEST'",
+    "header_line": "19961031\t963549    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19961031\t963549    \tJDG\t04\tI\tVEST, \t"
+  },
+  {
+    "case_number": "963136",
+    "original_marker": "I",
+    "original_name": "ALLISON-BOUTWELL,",
+    "reason": "hyphenated non-name token: 'ALLISON-BOUTWELL'",
+    "header_line": "19960424\t963136    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19960424\t963136    \tJDG\t04\tI\tALLISON-BOUTWELL, \t"
+  },
+  {
+    "case_number": "963466",
+    "original_marker": "I",
+    "original_name": "HEIRS,",
+    "reason": "single-token name not in database: 'HEIRS'",
+    "header_line": "19961022\t963466    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19961022\t963466    \tJDG\t04\tI\tHEIRS, \t"
+  },
+  {
+    "case_number": "3101",
+    "original_marker": "I",
+    "original_name": "CHUCK-JOHNSON,",
+    "reason": "hyphenated non-name token: 'CHUCK-JOHNSON'",
+    "header_line": "19960430\t3101      \tJDG\t02\tSMALL CLAIMS\t\t",
+    "flagged_line": "19960430\t3101      \tJDG\t04\tI\tCHUCK-JOHNSON, \t"
+  },
+  {
+    "case_number": "963437",
+    "original_marker": "B",
+    "original_name": "A-1 LANES INC",
+    "reason": "B record with alphanumeric token: 'A-1 LANES INC'",
+    "header_line": "19960930\t963437    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19960930\t963437    \tJDG\t04\tB\tA-1 LANES INC\t"
+  },
+  {
+    "case_number": "963441",
+    "original_marker": "B",
+    "original_name": "A-1 LANES INC",
+    "reason": "B record with alphanumeric token: 'A-1 LANES INC'",
+    "header_line": "19960930\t963441    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19960930\t963441    \tJDG\t04\tB\tA-1 LANES INC\t"
+  },
+  {
+    "case_number": "3114",
+    "original_marker": "B",
+    "original_name": "F1 COMPUTER CENTER",
+    "reason": "B record with alphanumeric token: 'F1 COMPUTER CENTER'",
+    "header_line": "19960515\t3114      \tJDG\t02\tSMALL CLAIMS\t\t",
+    "flagged_line": "19960515\t3114      \tJDG\t05\tB\tF1 COMPUTER CENTER\t"
+  },
+  {
+    "case_number": "3193",
+    "original_marker": "I",
+    "original_name": "STEVE-BURKHALTER,",
+    "reason": "hyphenated non-name token: 'STEVE-BURKHALTER'",
+    "header_line": "19961028\t3193      \tJDG\t02\tSMALL CLAIMS\t\t",
+    "flagged_line": "19961028\t3193      \tJDG\t04\tI\tSTEVE-BURKHALTER, \t"
+  },
+  {
+    "case_number": "JC296012",
+    "original_marker": "I",
+    "original_name": "MICHAEL-DAVIS,",
+    "reason": "hyphenated non-name token: 'MICHAEL-DAVIS'",
+    "header_line": "19960110\tJC296012  \tJDG\t02\tFORCIBLE ENTRY AND DETAINER\t\t",
+    "flagged_line": "19960110\tJC296012  \tJDG\t04\tI\tMICHAEL-DAVIS, \t"
+  },
+  {
+    "case_number": "JC296027",
+    "original_marker": "B",
+    "original_name": "G AND F COMPANY",
+    "reason": "split part has only single-letter tokens: 'G' in 'G AND F COMPANY'",
+    "header_line": "19960129\tJC296027  \tJDG\t02\tFORCIBLE ENTRY AND DETAINER\t\t",
+    "flagged_line": "19960129\tJC296027  \tJDG\t05\tB\tG AND F COMPANY\t"
+  },
+  {
+    "case_number": "JC296177",
+    "original_marker": "B",
+    "original_name": "M AND M RENTALS",
+    "reason": "split part has only single-letter tokens: 'M' in 'M AND M RENTALS'",
+    "header_line": "19960903\tJC296177  \tJDG\t02\tFORCIBLE ENTRY AND DETAINER\t\t",
+    "flagged_line": "19960903\tJC296177  \tJDG\t05\tB\tM AND M RENTALS\t"
+  }
+]

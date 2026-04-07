@@ -1,0 +1,273 @@
+[
+  {
+    "case_number": "900127",
+    "flagged_line": "19900108\t900127    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901911",
+    "flagged_line": "19901226\t901911    \tJDG\t04\tI\tMISSOURI-KANSAS-TEXAS, \t",
+    "action": "replace",
+    "replacement_lines": [
+      "19901226\t901911    \tJDG\t04\tB\tMISSOURI-KANSAS-TEXAS\t"
+    ]
+  },
+  {
+    "case_number": "903137",
+    "flagged_line": "19900209\t903137    \tJDG\t04\tB\tPROPERTIES C AND D\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19900209\t903137    \tJDG\t04\tB\tPROPERTIES C AND D\t"
+    ]
+  },
+  {
+    "case_number": "901898",
+    "flagged_line": "19901220\t901898    \tJDG\t04\tB\tCONSTRUCTION A AND I\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19901220\t901898    \tJDG\t04\tB\tCONSTRUCTION A AND I\t"
+    ]
+  },
+  {
+    "case_number": "900257",
+    "flagged_line": "19900205\t900257    \tJDG\t05\tI\tMOTHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901019",
+    "flagged_line": "19900626\t901019    \tDIV\t05\tI\tRESPONDENT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901064",
+    "flagged_line": "19900702\t901064    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900720",
+    "flagged_line": "19900426\t900720    \tDIV\t05\tI\tFATHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900285",
+    "flagged_line": "19900209\t900285    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901109",
+    "flagged_line": "19900712\t901109    \tJDG\t05\tB\tCORP 1ST FINANCIAL\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19900712\t901109    \tJDG\t05\tB\t1ST FINANCIAL CORP\t"
+    ]
+  },
+  {
+    "case_number": "900749",
+    "flagged_line": "19900502\t900749    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901562",
+    "flagged_line": "19901017\t901562    \tDIV\t05\tI\tINRE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900833",
+    "flagged_line": "19900517\t900833    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900923",
+    "flagged_line": "19900606\t900923    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901721",
+    "flagged_line": "19901115\t901721    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901788",
+    "flagged_line": "19901128\t901788    \tJDG\t05\tI\tINTERVENTOR, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901154",
+    "flagged_line": "19900719\t901154    \tJDG\t04\tI\tHOSP, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901156",
+    "flagged_line": "19900720\t901156    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "903312",
+    "flagged_line": "19901030\t903312    \tJDG\t04\tB\tCORPORATION 3-G FOODS\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19901030\t903312    \tJDG\t04\tB\t3-G FOODS CORPORATION\t"
+    ]
+  },
+  {
+    "case_number": "901185",
+    "flagged_line": "19900726\t901185    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900377",
+    "flagged_line": "19900301\t900377    \tJDG\t05\tB\tINSULATION A AND F\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19900301\t900377    \tJDG\t05\tB\tINSULATION A AND F\t"
+    ]
+  },
+  {
+    "case_number": "901225",
+    "flagged_line": "19900803\t901225    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900423",
+    "flagged_line": "19900309\t900423    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901272",
+    "flagged_line": "19900815\t901272    \tJDG\t05\tI\tINTERVENOR, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901337",
+    "flagged_line": "19900829\t901337    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901356",
+    "flagged_line": "19900831\t901356    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901363",
+    "flagged_line": "19900904\t901363    \tJDG\t05\tI\tDRAPERIES, \t",
+    "action": "replace",
+    "replacement_lines": [
+      "19900904\t901363    \tJDG\t05\tB\tDRAPERIES\t"
+    ]
+  },
+  {
+    "case_number": "900583",
+    "flagged_line": "19900404\t900583    \tJDG\t04\tB\t6100-0081-7850-1935\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901396",
+    "flagged_line": "19900911\t901396    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900620",
+    "flagged_line": "19900410\t900620    \tDIV\t04\tI\tINTERVENORS, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901406",
+    "flagged_line": "19900913\t901406    \tJDG\t04\tB\t8291-HX VIN 1GCDC14H5CF350697\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901428",
+    "flagged_line": "19900918\t901428    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900685",
+    "flagged_line": "19900420\t900685    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900608",
+    "flagged_line": "19900409\t900608    \tDIV\t04\tI\tINTERVENOR, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "100557",
+    "flagged_line": "19900821\t100557    \tJDG\t05\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "106503",
+    "flagged_line": "19901102\t106503    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "107143",
+    "flagged_line": "19900821\t107143    \tJDG\t05\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "107748",
+    "flagged_line": "19900724\t107748    \tJDG\t05\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "109364",
+    "flagged_line": "19900326\t109364    \tJDG\t05\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "110345",
+    "flagged_line": "19900530\t110345    \tJDG\t05\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "110910",
+    "flagged_line": "19900913\t110910    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "097284",
+    "flagged_line": "19900607\t097284    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "103482",
+    "flagged_line": "19900604\t103482    \tJDG\t05\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "103666",
+    "flagged_line": "19900112\t103666    \tJDG\t04\tI\tRESPONDENT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "103762",
+    "flagged_line": "19900306\t103762    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "104246",
+    "flagged_line": "19900509\t104246    \tJDG\t04\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "104878",
+    "flagged_line": "19900614\t104878    \tJDG\t05\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "102038",
+    "flagged_line": "19900327\t102038    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "094748",
+    "flagged_line": "19900820\t094748    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "102312",
+    "flagged_line": "19901126\t102312    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  }
+]

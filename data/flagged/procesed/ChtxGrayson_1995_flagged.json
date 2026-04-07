@@ -1,0 +1,106 @@
+[
+  {
+    "case_number": "890152",
+    "original_marker": "I",
+    "original_name": "MOVANT,",
+    "reason": "single-token name not in database: 'MOVANT'",
+    "header_line": "19950426\t890152    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19950426\t890152    \tJDG\t05\tI\tMOVANT, \t"
+  },
+  {
+    "case_number": "952106CV",
+    "original_marker": "I",
+    "original_name": "ALLISON-BOUTWELL,",
+    "reason": "hyphenated non-name token: 'ALLISON-BOUTWELL'",
+    "header_line": "19950727\t952106CV  \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19950727\t952106CV  \tJDG\t04\tI\tALLISON-BOUTWELL, \t"
+  },
+  {
+    "case_number": "953173",
+    "original_marker": "B",
+    "original_name": "TEXINS CREDIT UNION LIENHOLDER3",
+    "reason": "B record with alphanumeric token: 'TEXINS CREDIT UNION LIENHOLDER3'",
+    "header_line": "19950607\t953173    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19950607\t953173    \tJDG\t04\tB\tTEXINS CREDIT UNION LIENHOLDER3\t"
+  },
+  {
+    "case_number": "953294",
+    "original_marker": "I",
+    "original_name": "CLARK-JOHNSON,",
+    "reason": "hyphenated non-name token: 'CLARK-JOHNSON'",
+    "header_line": "19950626\t953294    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19950626\t953294    \tJDG\t04\tI\tCLARK-JOHNSON, \t"
+  },
+  {
+    "case_number": "953299",
+    "original_marker": "I",
+    "original_name": "MOVERS-MILLER, HOUSE",
+    "reason": "hyphenated business word in name position: 'MOVERS-MILLER'",
+    "header_line": "19950626\t953299    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19950626\t953299    \tJDG\t04\tI\tMOVERS-MILLER, HOUSE\t"
+  },
+  {
+    "case_number": "953318",
+    "original_marker": "B",
+    "original_name": "MARINE C AND W",
+    "reason": "split part has only single-letter tokens: 'W' in 'MARINE C AND W'",
+    "header_line": "19950626\t953318    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19950626\t953318    \tJDG\t04\tB\tMARINE C AND W\t"
+  },
+  {
+    "case_number": "951210",
+    "original_marker": "I",
+    "original_name": "NONE,",
+    "reason": "single-token name not in database: 'NONE'",
+    "header_line": "19950803\t951210    \tDIV\t02\tALL OTHER FAMILY LAW MATTERS\t\t",
+    "flagged_line": "19950803\t951210    \tDIV\t05\tI\tNONE, \t"
+  },
+  {
+    "case_number": "953391",
+    "original_marker": "B",
+    "original_name": "VENTURES B AND B",
+    "reason": "split part has only single-letter tokens: 'B' in 'VENTURES B AND B'",
+    "header_line": "19950626\t953391    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19950626\t953391    \tJDG\t04\tB\tVENTURES B AND B\t"
+  },
+  {
+    "case_number": "951386",
+    "original_marker": "I",
+    "original_name": "NONE,",
+    "reason": "single-token name not in database: 'NONE'",
+    "header_line": "19950905\t951386    \tDIV\t02\tALL OTHER FAMILY LAW MATTERS\t\t",
+    "flagged_line": "19950905\t951386    \tDIV\t05\tI\tNONE, \t"
+  },
+  {
+    "case_number": "104878",
+    "original_marker": "I",
+    "original_name": "MOVANT,",
+    "reason": "single-token name not in database: 'MOVANT'",
+    "header_line": "19950505\t104878    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19950505\t104878    \tJDG\t05\tI\tMOVANT, \t"
+  },
+  {
+    "case_number": "102038",
+    "original_marker": "I",
+    "original_name": "MOVANT,",
+    "reason": "single-token name not in database: 'MOVANT'",
+    "header_line": "19951206\t102038    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19951206\t102038    \tJDG\t04\tI\tMOVANT, \t"
+  },
+  {
+    "case_number": "3040",
+    "original_marker": "I",
+    "original_name": "NAGELS,",
+    "reason": "single-token name not in database: 'NAGELS'",
+    "header_line": "19951122\t3040      \tJDG\t02\tSMALL CLAIMS\t\t",
+    "flagged_line": "19951122\t3040      \tJDG\t05\tI\tNAGELS, \t"
+  },
+  {
+    "case_number": "JC29549",
+    "original_marker": "B",
+    "original_name": "M AND M RENTALS",
+    "reason": "split part has only single-letter tokens: 'M' in 'M AND M RENTALS'",
+    "header_line": "19950406\tJC29549   \tJDG\t02\tFORCIBLE ENTRY AND DETAINER\t\t",
+    "flagged_line": "19950406\tJC29549   \tJDG\t05\tB\tM AND M RENTALS\t"
+  }
+]

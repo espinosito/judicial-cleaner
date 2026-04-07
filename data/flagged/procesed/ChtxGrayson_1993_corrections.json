@@ -1,0 +1,112 @@
+[
+  {
+    "case_number": "880251",
+    "action": "weird"
+  },
+  {
+    "case_number": "900807",
+    "action": "weird"
+  },
+  {
+    "case_number": "933223",
+    "action": "weird"
+  },
+  {
+    "case_number": "933309",
+    "action": "resolved",
+    "corrected_block": [
+      "19930913\t933309    \tJDG\t02\tTAX CASES\t\t\n",
+      "19930913\t933309    \tJDG\t04\tB\tCONSTRUCTION L AND L\t\n",
+      "19930913\t933309    \tJDG\t04\tI\tPAULEY, SIB\t\n",
+      "19930913\t933309    \tJDG\t05\tB\tCOUNTY OF GRAYSON\t\n",
+      "19930913\t933309    \tJDG\t05\tB\tDENISON ISD\t\n"
+    ]
+  },
+  {
+    "case_number": "933317",
+    "action": "resolved",
+    "corrected_block": [
+      "19931007\t933317    \tJDG\t02\tTAX CASES\t\t\n",
+      "19931007\t933317    \tJDG\t04\tI\tBARTLETT, BIRDIE O\t\n",
+      "19931007\t933317    \tJDG\t04\tI\tBARTLETT, TOMMY\t\n",
+      "19931007\t933317    \tJDG\t04\tB\tCRAFTSMASTER\t\n",
+      "19931007\t933317    \tJDG\t05\tB\tWHITEWRIGHT ISD\t\n"
+    ]
+  },
+  {
+    "case_number": "930850",
+    "action": "resolved",
+    "corrected_block": [
+      "19930524\t930850    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t\n",
+      "19930524\t930850    \tJDG\t04\tB\t1ST GIBRALTAR FSB\t\n",
+      "19930524\t930850    \tJDG\t04\tB\tALLIED MAINTENANCE SERVICES INC\t\n",
+      "19930524\t930850    \tJDG\t04\tB\tOF AMERICA NA USA BANK\t\n",
+      "19930524\t930850    \tJDG\t04\tB\tMANAGEMENT FAILSAFE RISK\t\n",
+      "19930524\t930850    \tJDG\t05\tB\tAMERICAN ENVIRONMENTAL SPECIALTIES INC\t\n"
+    ]
+  },
+  {
+    "case_number": "933381",
+    "action": "resolved",
+    "corrected_block": [
+      "19931117\t933381    \tJDG\t02\tTAX CASES\t\t\n",
+      "19931117\t933381    \tJDG\t04\tB\tDOREENS\t\n",
+      "19931117\t933381    \tJDG\t05\tB\tDENISON ISD\t\n"
+    ]
+  },
+  {
+    "case_number": "931594",
+    "action": "weird"
+  },
+  {
+    "case_number": "933378",
+    "action": "weird"
+  },
+  {
+    "case_number": "931943",
+    "action": "weird"
+  },
+  {
+    "case_number": "932114CV",
+    "action": "resolved",
+    "corrected_block": [
+      "19930915\t932114CV  \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
+      "19930915\t932114CV  \tJDG\t04\tB\tTHE STROH BREWERY COMPANY\t\n",
+      "19930915\t932114CV  \tJDG\t04\tB\tLIQUOR K AND P\t\n",
+      "19930915\t932114CV  \tJDG\t05\tI\tUDEH, EBENEZER\t\n"
+    ]
+  },
+  {
+    "case_number": "104784",
+    "action": "weird"
+  },
+  {
+    "case_number": "103762",
+    "action": "weird"
+  },
+  {
+    "case_number": "102038",
+    "action": "weird"
+  },
+  {
+    "case_number": "2592",
+    "action": "weird"
+  },
+  {
+    "case_number": "2593",
+    "action": "weird"
+  },
+  {
+    "case_number": "099974",
+    "action": "weird"
+  },
+  {
+    "case_number": "2547",
+    "action": "resolved",
+    "corrected_block": [
+      "19930707\t2547      \tJDG\t02\tSMALL CLAIMS\t\t\n",
+      "19930707\t2547      \tJDG\t04\tB\tM AND E CONSTRUCTION\t\n",
+      "19930707\t2547      \tJDG\t05\tI\tHOWE, CONCRETE CO\t\n"
+    ]
+  }
+]

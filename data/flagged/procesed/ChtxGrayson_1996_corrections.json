@@ -1,0 +1,137 @@
+[
+  {
+    "case_number": "930529",
+    "flagged_line": "19961104\t930529    \tDIV\t05\tI\tFATHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "940692",
+    "flagged_line": "19960827\t940692    \tJDG\t04\tI\tFATHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "941393",
+    "flagged_line": "19960911\t941393    \tDIV\t05\tI\tFATHER, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "960736",
+    "flagged_line": "19960503\t960736    \tJDG\t04\tI\tNO-DEFENDANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "960765",
+    "flagged_line": "19960508\t960765    \tJDG\t05\tI\tOUTLAWS, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "961144CV",
+    "flagged_line": "19961120\t961144CV  \tJDG\t05\tB\tA AND J INVESTMENTS A JOINT VENTURE\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19961120\t961144CV  \tJDG\t05\tB\tA AND J INVESTMENTS A JOINT VENTURE\t\n"
+    ]
+  },
+  {
+    "case_number": "961190",
+    "flagged_line": "19960722\t961190    \tDIV\t05\tI\tNONE, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "110910",
+    "flagged_line": "19961226\t110910    \tJDG\t04\tI\tMOVANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "961272",
+    "flagged_line": "19960807\t961272    \tJDG\t04\tI\tNO-DEFENDANT, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "963254",
+    "flagged_line": "19960717\t963254    \tJDG\t04\tB\tMARINE C AND W\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19960717\t963254    \tJDG\t04\tB\tMARINE C AND W\t\n"
+    ]
+  },
+  {
+    "case_number": "963549",
+    "flagged_line": "19961031\t963549    \tJDG\t04\tI\tVEST, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "963136",
+    "flagged_line": "19960424\t963136    \tJDG\t04\tI\tALLISON-BOUTWELL, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "963466",
+    "flagged_line": "19961022\t963466    \tJDG\t04\tI\tHEIRS, \t",
+    "action": "weird"
+  },
+  {
+    "case_number": "3101",
+    "flagged_line": "19960430\t3101      \tJDG\t04\tI\tCHUCK-JOHNSON, \t",
+    "action": "replace",
+    "replacement_lines": [
+      "19960430\t3101      \tJDG\t04\tI\tJOHNSON, CHUCK\t\n"
+    ]
+  },
+  {
+    "case_number": "963437",
+    "flagged_line": "19960930\t963437    \tJDG\t04\tB\tA-1 LANES INC\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19960930\t963437    \tJDG\t04\tB\tA-1 LANES INC\t\n"
+    ]
+  },
+  {
+    "case_number": "963441",
+    "flagged_line": "19960930\t963441    \tJDG\t04\tB\tA-1 LANES INC\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19960930\t963441    \tJDG\t04\tB\tA-1 LANES INC\t\n"
+    ]
+  },
+  {
+    "case_number": "3114",
+    "flagged_line": "19960515\t3114      \tJDG\t05\tB\tF1 COMPUTER CENTER\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19960515\t3114      \tJDG\t05\tB\tF1 COMPUTER CENTER\t\n"
+    ]
+  },
+  {
+    "case_number": "3193",
+    "flagged_line": "19961028\t3193      \tJDG\t04\tI\tSTEVE-BURKHALTER, \t",
+    "action": "replace",
+    "replacement_lines": [
+      "19961028\t3193      \tJDG\t04\tI\tBURKHALTER, STEVE\t\n"
+    ]
+  },
+  {
+    "case_number": "JC296012",
+    "flagged_line": "19960110\tJC296012  \tJDG\t04\tI\tMICHAEL-DAVIS, \t",
+    "action": "replace",
+    "replacement_lines": [
+      "19960110\tJC296012  \tJDG\t04\tI\tDAVIS, MICHAEL\t\n"
+    ]
+  },
+  {
+    "case_number": "JC296027",
+    "flagged_line": "19960129\tJC296027  \tJDG\t05\tB\tG AND F COMPANY\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19960129\tJC296027  \tJDG\t05\tB\tG AND F COMPANY\t\n"
+    ]
+  },
+  {
+    "case_number": "JC296177",
+    "flagged_line": "19960903\tJC296177  \tJDG\t05\tB\tM AND M RENTALS\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19960903\tJC296177  \tJDG\t05\tB\tM AND M RENTALS\t\n"
+    ]
+  }
+]

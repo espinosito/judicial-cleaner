@@ -1,0 +1,194 @@
+[
+  {
+    "case_number": "891520",
+    "action": "weird"
+  },
+  {
+    "case_number": "890603",
+    "action": "resolved",
+    "corrected_block": [
+      "19890331\t890603    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
+      "19890331\t890603    \tJDG\t04\tI\tGRAHAM, DAVID L\t\n",
+      "19890331\t890603    \tJDG\t04\tB\tA-1 HOMES MOBILE\t\n",
+      "19890331\t890603    \tJDG\t05\tI\tCAVENDER, HAZEL\t\n",
+      "19890331\t890603    \tJDG\t05\tI\tCAVENDER, LUTHER\t\n"
+    ]
+  },
+  {
+    "case_number": "891688",
+    "action": "weird"
+  },
+  {
+    "case_number": "890628",
+    "action": "weird"
+  },
+  {
+    "case_number": "890812",
+    "action": "weird"
+  },
+  {
+    "case_number": "893187",
+    "action": "weird"
+  },
+  {
+    "case_number": "890804",
+    "action": "weird"
+  },
+  {
+    "case_number": "893201",
+    "action": "weird"
+  },
+  {
+    "case_number": "893210",
+    "action": "weird"
+  },
+  {
+    "case_number": "893207",
+    "action": "weird"
+  },
+  {
+    "case_number": "893325",
+    "action": "weird"
+  },
+  {
+    "case_number": "890910",
+    "action": "resolved",
+    "corrected_block": [
+      "19890525\t890910    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
+      "19890525\t890910    \tJDG\t04\tB\tBETTER MANUFACTURED HOMES INC\t\n",
+      "19890525\t890910    \tJDG\t04\tI\tCO, FOREMOST INS\t\n",
+      "19890525\t890910    \tJDG\t04\tI\tHAYES, JERRY L\t\n",
+      "19890525\t890910    \tJDG\t04\tB\tA-1 HOMES MOBILE\t\n",
+      "19890525\t890910    \tJDG\t05\tI\tBRUNK, BARBARA\t\n"
+    ]
+  },
+  {
+    "case_number": "890973",
+    "action": "weird"
+  },
+  {
+    "case_number": "891090",
+    "action": "weird"
+  },
+  {
+    "case_number": "893807",
+    "action": "weird"
+  },
+  {
+    "case_number": "891462",
+    "action": "weird"
+  },
+  {
+    "case_number": "893905",
+    "action": "weird"
+  },
+  {
+    "case_number": "891497",
+    "action": "weird"
+  },
+  {
+    "case_number": "891067",
+    "action": "weird"
+  },
+  {
+    "case_number": "891080",
+    "action": "weird"
+  },
+  {
+    "case_number": "891094",
+    "action": "weird"
+  },
+  {
+    "case_number": "891966",
+    "action": "weird"
+  },
+  {
+    "case_number": "891911",
+    "action": "weird"
+  },
+  {
+    "case_number": "890135",
+    "action": "weird"
+  },
+  {
+    "case_number": "891207",
+    "action": "resolved",
+    "corrected_block": [
+      "19890724\t891207    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
+      "19890724\t891207    \tJDG\t04\tI\tBRITTON, HARVEY JACK\t\n",
+      "19890724\t891207    \tJDG\t04\tI\tNORTHERN, TIM\t\n",
+      "19890724\t891207    \tJDG\t04\tI\tSOUTHWESTERN, CARRIERS\t\n",
+      "19890724\t891207    \tJDG\t04\tB\tTRAILBLAZER TRANSPORTATION\t\n",
+      "19890724\t891207    \tJDG\t04\tB\tTRUCKIING J AND G\t\n",
+      "19890724\t891207    \tJDG\t05\tI\tROBINSON, G\t\n"
+    ]
+  },
+  {
+    "case_number": "891215",
+    "action": "weird"
+  },
+  {
+    "case_number": "891232",
+    "action": "weird"
+  },
+  {
+    "case_number": "890364",
+    "action": "weird"
+  },
+  {
+    "case_number": "890382",
+    "action": "weird"
+  },
+  {
+    "case_number": "090356",
+    "action": "weird"
+  },
+  {
+    "case_number": "090838",
+    "action": "weird"
+  },
+  {
+    "case_number": "097175",
+    "action": "weird"
+  },
+  {
+    "case_number": "102881",
+    "action": "weird"
+  },
+  {
+    "case_number": "103041",
+    "action": "weird"
+  },
+  {
+    "case_number": "103319",
+    "action": "weird"
+  },
+  {
+    "case_number": "104363",
+    "action": "weird"
+  },
+  {
+    "case_number": "105420",
+    "action": "weird"
+  },
+  {
+    "case_number": "109683",
+    "action": "weird"
+  },
+  {
+    "case_number": "103579",
+    "action": "weird"
+  },
+  {
+    "case_number": "104569",
+    "action": "weird"
+  },
+  {
+    "case_number": "106143",
+    "action": "weird"
+  },
+  {
+    "case_number": "102528",
+    "action": "weird"
+  }
+]

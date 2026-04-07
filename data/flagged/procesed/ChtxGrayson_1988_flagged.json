@@ -1,0 +1,194 @@
+[
+  {
+    "case_number": "881389",
+    "original_marker": "B",
+    "original_name": "ALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN",
+    "reason": "B record with alphanumeric token: 'ALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN'",
+    "header_line": "19880826\t881389    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19880826\t881389    \tJDG\t05\tB\tALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN\t"
+  },
+  {
+    "case_number": "881389",
+    "original_marker": "B",
+    "original_name": "SUCC IN INT 1ST NATL BANK SHER",
+    "reason": "B record with alphanumeric token: 'SUCC IN INT 1ST NATL BANK SHER'",
+    "header_line": "19880826\t881389    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19880826\t881389    \tJDG\t05\tB\tSUCC IN INT 1ST NATL BANK SHER\t"
+  },
+  {
+    "case_number": "880348",
+    "original_marker": "I",
+    "original_name": "MOVANT,",
+    "reason": "single-token name not in database: 'MOVANT'",
+    "header_line": "19881103\t880348    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19881103\t880348    \tJDG\t04\tI\tMOVANT, \t"
+  },
+  {
+    "case_number": "881552",
+    "original_marker": "B",
+    "original_name": "HOMES A-1 MOBILE",
+    "reason": "B record with alphanumeric token: 'HOMES A-1 MOBILE'",
+    "header_line": "19880928\t881552    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t",
+    "flagged_line": "19880928\t881552    \tJDG\t04\tB\tHOMES A-1 MOBILE\t"
+  },
+  {
+    "case_number": "880533",
+    "original_marker": "B",
+    "original_name": "C P AND ASSOCIIATESINC",
+    "reason": "split part has only single-letter tokens: 'C P' in 'C P AND ASSOCIIATESINC'",
+    "header_line": "19880325\t880533    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19880325\t880533    \tJDG\t04\tB\tC P AND ASSOCIIATESINC\t"
+  },
+  {
+    "case_number": "881642",
+    "original_marker": "I",
+    "original_name": "NONE,",
+    "reason": "single-token name not in database: 'NONE'",
+    "header_line": "19881014\t881642    \tJDG\t02\tSUIT ON TRUST\t\t",
+    "flagged_line": "19881014\t881642    \tJDG\t04\tI\tNONE, \t"
+  },
+  {
+    "case_number": "880645",
+    "original_marker": "B",
+    "original_name": "VENTURE SHERMAN I-75 JOINT",
+    "reason": "B record with alphanumeric token: 'VENTURE SHERMAN I-75 JOINT'",
+    "header_line": "19880418\t880645    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19880418\t880645    \tJDG\t04\tB\tVENTURE SHERMAN I-75 JOINT\t"
+  },
+  {
+    "case_number": "881916",
+    "original_marker": "I",
+    "original_name": "NONE,",
+    "reason": "single-token name not in database: 'NONE'",
+    "header_line": "19881206\t881916    \tJDG\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19881206\t881916    \tJDG\t04\tI\tNONE, \t"
+  },
+  {
+    "case_number": "881934",
+    "original_marker": "I",
+    "original_name": "NONE,",
+    "reason": "single-token name not in database: 'NONE'",
+    "header_line": "19881208\t881934    \tJDG\t02\tREMOVE CLOUD FROM TITLE\t\t",
+    "flagged_line": "19881208\t881934    \tJDG\t04\tI\tNONE, \t"
+  },
+  {
+    "case_number": "881935",
+    "original_marker": "I",
+    "original_name": "NONE,",
+    "reason": "single-token name not in database: 'NONE'",
+    "header_line": "19881209\t881935    \tJDG\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19881209\t881935    \tJDG\t04\tI\tNONE, \t"
+  },
+  {
+    "case_number": "882021",
+    "original_marker": "I",
+    "original_name": "NONE,",
+    "reason": "single-token name not in database: 'NONE'",
+    "header_line": "19881229\t882021    \tJDG\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19881229\t882021    \tJDG\t04\tI\tNONE, \t"
+  },
+  {
+    "case_number": "883122",
+    "original_marker": "B",
+    "original_name": "LEASING C AND M",
+    "reason": "split part has only single-letter tokens: 'M' in 'LEASING C AND M'",
+    "header_line": "19880212\t883122    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880212\t883122    \tJDG\t04\tB\tLEASING C AND M\t"
+  },
+  {
+    "case_number": "883161",
+    "original_marker": "B",
+    "original_name": "G AND G LUMBER CO",
+    "reason": "split part has only single-letter tokens: 'G' in 'G AND G LUMBER CO'",
+    "header_line": "19880226\t883161    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880226\t883161    \tJDG\t04\tB\tG AND G LUMBER CO\t"
+  },
+  {
+    "case_number": "883180",
+    "original_marker": "I",
+    "original_name": "LUCILLES,",
+    "reason": "single-token name not in database: 'LUCILLES'",
+    "header_line": "19880226\t883180    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880226\t883180    \tJDG\t04\tI\tLUCILLES, \t"
+  },
+  {
+    "case_number": "883193",
+    "original_marker": "B",
+    "original_name": "CORPORATION R AND L",
+    "reason": "split part has only single-letter tokens: 'L' in 'CORPORATION R AND L'",
+    "header_line": "19880226\t883193    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880226\t883193    \tJDG\t04\tB\tCORPORATION R AND L\t"
+  },
+  {
+    "case_number": "883384",
+    "original_marker": "I",
+    "original_name": "MOVERS-MILLER, HOUSE",
+    "reason": "hyphenated business word in name position: 'MOVERS-MILLER'",
+    "header_line": "19880531\t883384    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880531\t883384    \tJDG\t04\tI\tMOVERS-MILLER, HOUSE\t"
+  },
+  {
+    "case_number": "883478",
+    "original_marker": "I",
+    "original_name": "WHOPPER-STOPPER,",
+    "reason": "hyphenated non-name token: 'WHOPPER-STOPPER'",
+    "header_line": "19880916\t883478    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19880916\t883478    \tJDG\t04\tI\tWHOPPER-STOPPER, \t"
+  },
+  {
+    "case_number": "883709",
+    "original_marker": "B",
+    "original_name": "VENTURE TWO FB-40 JOINT",
+    "reason": "B record with alphanumeric token: 'VENTURE TWO FB-40 JOINT'",
+    "header_line": "19881031\t883709    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19881031\t883709    \tJDG\t04\tB\tVENTURE TWO FB-40 JOINT\t"
+  },
+  {
+    "case_number": "881840",
+    "original_marker": "I",
+    "original_name": "ANITA-GREEN,",
+    "reason": "hyphenated non-name token: 'ANITA-GREEN'",
+    "header_line": "19881118\t881840    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19881118\t881840    \tJDG\t05\tI\tANITA-GREEN, \t"
+  },
+  {
+    "case_number": "881995",
+    "original_marker": "I",
+    "original_name": "GOSNELL,",
+    "reason": "single-token name not in database: 'GOSNELL'",
+    "header_line": "19881222\t881995    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19881222\t881995    \tJDG\t05\tI\tGOSNELL, \t"
+  },
+  {
+    "case_number": "101624",
+    "original_marker": "I",
+    "original_name": "MOVANT,",
+    "reason": "single-token name not in database: 'MOVANT'",
+    "header_line": "19881101\t101624    \tDIV\t02\tDIVORCE - NO CHILDREN\t\t",
+    "flagged_line": "19881101\t101624    \tDIV\t04\tI\tMOVANT, \t"
+  },
+  {
+    "case_number": "102822",
+    "original_marker": "I",
+    "original_name": "RESPONDENT,",
+    "reason": "single-token name not in database: 'RESPONDENT'",
+    "header_line": "19881209\t102822    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19881209\t102822    \tJDG\t04\tI\tRESPONDENT, \t"
+  },
+  {
+    "case_number": "102822",
+    "original_marker": "I",
+    "original_name": "MOVANT,",
+    "reason": "single-token name not in database: 'MOVANT'",
+    "header_line": "19881209\t102822    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
+    "flagged_line": "19881209\t102822    \tJDG\t05\tI\tMOVANT, \t"
+  },
+  {
+    "case_number": "105793",
+    "original_marker": "I",
+    "original_name": "HOSP,",
+    "reason": "single-token name not in database: 'HOSP'",
+    "header_line": "19880304\t105793    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19880304\t105793    \tJDG\t04\tI\tHOSP, \t"
+  }
+]
