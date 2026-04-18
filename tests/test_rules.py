@@ -20,6 +20,7 @@ from rules_i import (
     apply_all_i_rules, AmbiguousCase, ReclassifyAsB,
     apply_mc_prefix, apply_business_before_comma, apply_business_after_comma,
     check_hyphenated_business_before_comma, apply_maiden_name_rule,
+    single_surname_only,
 )
 from rules_b import apply_all_b_rules, FlagForReview
 from dedup import deduplicate
@@ -92,6 +93,27 @@ class TestI3:
 
     def test_individually(self):
         assert apply_i3("WHITE, MICHELLE MARIE INDIVIDUALLY") == "WHITE, MICHELLE MARIE"
+
+    def test_an_adult_stripped(self):
+        assert apply_i3("SMITH, JOHN AN ADULT") == "SMITH, JOHN"
+
+    def test_in_re_adult_stripped(self):
+        assert apply_i3("JONES, MARY IN RE ADULT") == "JONES, MARY"
+
+    def test_in_re_an_adult_stripped(self):
+        assert apply_i3("DOE, JANE IN RE AN ADULT") == "DOE, JANE"
+
+    def test_guardian_of_stripped(self):
+        assert apply_i3("SMITH, JOHN GUARDIAN OF") == "SMITH, JOHN"
+
+    def test_as_guardian_of_stripped(self):
+        assert apply_i3("JONES, MARY AS GUARDIAN OF") == "JONES, MARY"
+
+    def test_guardian_ad_litem_stripped(self):
+        assert apply_i3("DOE, JANE GUARDIAN AD LITEM") == "DOE, JANE"
+
+    def test_as_guardian_ad_litem_of_stripped(self):
+        assert apply_i3("DOE, JANE AS GUARDIAN AD LITEM OF") == "DOE, JANE"
 
     def test_no_fragment_unchanged(self):
         assert apply_i3("SMITH, JOHN") == "SMITH, JOHN"
@@ -508,18 +530,16 @@ class TestBugFixes:
     # --- rules_i.py: game names → B ---
 
     def test_bingo_reclassified_as_b(self):
-        """BINGO, (gambling name) → ReclassifyAsB"""
-        with pytest.raises(ReclassifyAsB) as exc:
+        """BINGO, has trailing comma → single surname only → AmbiguousCase for human review"""
+        with pytest.raises(AmbiguousCase):
             apply_all_i_rules("BINGO,")
-        assert exc.value.new_name == "BINGO"
 
     # --- rules_i.py: short abbreviation → B ---
 
     def test_mci_short_abbreviation_b(self):
-        """MCI, (≤3 chars, not a first name) → ReclassifyAsB"""
-        with pytest.raises(ReclassifyAsB) as exc:
+        """MCI, has trailing comma → single surname only → AmbiguousCase for human review"""
+        with pytest.raises(AmbiguousCase):
             apply_all_i_rules("MCI,")
-        assert exc.value.new_name == "MCI"
 
     # --- rules_i.py: hyphenated non-name → flag ---
 
@@ -648,6 +668,189 @@ class TestBugFixes20260327:
         assert rule == "B-1"
 
 # ===========================================================================
+# Currency / monetary term detection
+# ===========================================================================
+
+class TestCurrencyDetection:
+    """Tests for contains_currency_terms() — standalone token matching only."""
+
+    @classmethod
+    def setup_class(cls):
+        import sys
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
+    def _check(self, name: str) -> bool:
+        from main import contains_currency_terms
+        return contains_currency_terms(name)
+
+    def test_cents_triggers(self):
+        assert self._check("CENTS FIVE HUNDRED TWENTY-EIGHT DOLLARS AND SEVENTY") is True
+
+    def test_dollars_triggers(self):
+        assert self._check("FIVE HUNDRED DOLLARS AND NO CENTS") is True
+
+    def test_us_currency_triggers(self):
+        assert self._check("ZIRCONIA IN US CURRENCY AND SIX CUBIC") is True
+
+    def test_seized_currency_triggers(self):
+        assert self._check("SEIZED CURRENCY") is True
+
+    def test_money_triggers(self):
+        assert self._check("MONEY DAMAGES AMOUNT") is True
+
+    def test_cash_triggers(self):
+        assert self._check("CASH PROCEEDS FORFEITED") is True
+
+    def test_funds_triggers(self):
+        assert self._check("FUNDS HELD IN TRUST") is True
+
+    def test_proceeds_triggers(self):
+        assert self._check("PROCEEDS OF SALE") is True
+
+    def test_seize_triggers(self):
+        assert self._check("SEIZE ALL ASSETS") is True
+
+    def test_seizure_triggers(self):
+        assert self._check("SEIZURE OF PROPERTY") is True
+
+    def test_dollard_surname_not_triggered(self):
+        """DOLLARD is a surname — DOLLARS token not present."""
+        assert self._check("DOLLARD, JAMES") is False
+
+    def test_centsmith_surname_not_triggered(self):
+        """CENTSMITH is a surname — CENTS token not present."""
+        assert self._check("CENTSMITH, MARY") is False
+
+    def test_plain_name_not_triggered(self):
+        assert self._check("SMITH, JOHN") is False
+
+
+# ===========================================================================
+# AND WIFE + legal suffix detection
+# ===========================================================================
+
+class TestAndWifeDetection:
+    """Tests for contains_and_wife_legal() — AND WIFE with legal suffix detection."""
+
+    @classmethod
+    def setup_class(cls):
+        import sys
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
+    def _check(self, name: str) -> bool:
+        from main import contains_and_wife_legal
+        return contains_and_wife_legal(name)
+
+    def test_winkler_triggers(self):
+        """AND WIFE followed by IND AND and A-N-F → weird"""
+        assert self._check("WINKLER CHARLES K AND WIFE CAROL WINKLER IND AND A-N-F O") is True
+
+    def test_davis_triggers(self):
+        """AND WIFE followed by IND AND → weird"""
+        assert self._check("DAVIS DON AND WIFE SUSIE DAVIS IND AND") is True
+
+    def test_smith_bare_triggers(self):
+        """Bare AND WIFE at end (no name after) → weird"""
+        assert self._check("SMITH JOHN AND WIFE") is True
+
+    def test_mills_not_triggered(self):
+        """Clean B-5 pattern: AND WIFE FIRSTNAME SURNAME → not flagged"""
+        assert self._check("MILLS JAMES E AND WIFE LINDA D MILLS") is False
+
+    def test_midwife_not_triggered(self):
+        """MIDWIFE does not contain standalone AND WIFE phrase"""
+        assert self._check("MIDWIFE MEDICAL CENTER") is False
+
+
+# ===========================================================================
+# Non-name content detection
+# ===========================================================================
+
+class TestNonNameDetection:
+    """Tests for is_non_name_content() — conservative non-name detection."""
+
+    @classmethod
+    def setup_class(cls):
+        import sys
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+
+    def _check(self, name: str) -> bool:
+        from main import is_non_name_content
+        return is_non_name_content(name)
+
+    # --- Lines that MUST trigger ---
+
+    def test_double_dash_plaintiff_defendant_triggers(self):
+        """PLAINTIFF-- --DEFENDANT AND THIRD PARTY → flagged (double dash)"""
+        assert self._check("PLAINTIFF-- --DEFENDANT AND THIRD PARTY") is True
+
+    def test_double_dash_defendant_plaintiff_triggers(self):
+        """DEFENDANT--PLAINTIFF → flagged (double dash)"""
+        assert self._check("DEFENDANT--PLAINTIFF") is True
+
+    def test_restaurants_single_word_triggers(self):
+        """RESTAURANTS (single generic word) → flagged"""
+        assert self._check("RESTAURANTS") is True
+
+    def test_firearms_single_word_triggers(self):
+        """FIREARMS (single generic word) → flagged"""
+        assert self._check("FIREARMS") is True
+
+    def test_defendant_exact_role_triggers(self):
+        """DEFENDANT (pure role label) → flagged"""
+        assert self._check("DEFENDANT") is True
+
+    def test_plaintiff_exact_role_triggers(self):
+        """PLAINTIFF (pure role label) → flagged"""
+        assert self._check("PLAINTIFF") is True
+
+    def test_third_party_exact_role_triggers(self):
+        """THIRD PARTY (pure role phrase) → flagged"""
+        assert self._check("THIRD PARTY") is True
+
+    def test_unknown_parties_triggers(self):
+        """UNKNOWN PARTIES → flagged"""
+        assert self._check("UNKNOWN PARTIES") is True
+
+    def test_all_persons_triggers(self):
+        """ALL PERSONS → flagged"""
+        assert self._check("ALL PERSONS") is True
+
+    def test_unknown_heirs_triggers(self):
+        """UNKNOWN HEIRS (standalone) → flagged"""
+        assert self._check("UNKNOWN HEIRS") is True
+
+    # --- Lines that must NOT trigger ---
+
+    def test_hull_david_and_associates_not_triggered(self):
+        """HULL DAVID AND ASSOCIATES → valid business name, not flagged"""
+        assert self._check("HULL DAVID AND ASSOCIATES") is False
+
+    def test_corroon_and_black_not_triggered(self):
+        """CORROON AND BLACK → valid law firm, not flagged"""
+        assert self._check("CORROON AND BLACK") is False
+
+    def test_cable_post_newsweek_not_triggered(self):
+        """CABLE, POST-NEWSWEEK → valid I record, not flagged"""
+        assert self._check("CABLE, POST-NEWSWEEK") is False
+
+    def test_restaurants_garcia_not_triggered(self):
+        """RESTAURANTS GARCIA → has a proper noun, not flagged"""
+        assert self._check("RESTAURANTS GARCIA") is False
+
+    def test_foltz_roger_not_triggered(self):
+        """FOLTZ, ROGER → plain person name, not flagged"""
+        assert self._check("FOLTZ, ROGER") is False
+
+    def test_lexington_insurance_company_not_triggered(self):
+        """LEXINGTON INSURANCE COMPANY → valid business, not flagged"""
+        assert self._check("LEXINGTON INSURANCE COMPANY") is False
+
+
+# ===========================================================================
 # Integration test: flagged.txt output
 # ===========================================================================
 class TestFlaggedTxt:
@@ -703,6 +906,264 @@ class TestFlaggedTxt:
 
 
 # ===========================================================================
+# Single surname only (I-SS)
+# ===========================================================================
+class TestSingleSurnameOnly:
+    """Tests for single_surname_only() and its integration in apply_all_i_rules."""
+
+    def test_bingo_comma_triggers(self):
+        """BINGO, has no first name → single_surname_only returns True"""
+        assert single_surname_only("BINGO,") is True
+
+    def test_smith_trailing_space_triggers(self):
+        """SMITH,  (trailing space) has no first name → triggers"""
+        assert single_surname_only("SMITH, ") is True
+
+    def test_smith_john_not_triggered(self):
+        """SMITH, JOHN has a first name → not caught"""
+        assert single_surname_only("SMITH, JOHN") is False
+
+    def test_respondent_not_triggered(self):
+        """RESPONDENT is a role label — not caught by this rule"""
+        assert single_surname_only("RESPONDENT, ") is False
+
+    def test_bare_comma_not_triggered(self):
+        """, (just a comma/space) — handled by I-2, not this rule"""
+        assert single_surname_only(", ") is False
+
+    def test_bingo_raises_ambiguous_in_pipeline(self):
+        """BINGO, through apply_all_i_rules → AmbiguousCase (single surname)"""
+        with pytest.raises(AmbiguousCase):
+            apply_all_i_rules("BINGO,")
+
+    def test_smith_comma_raises_ambiguous_in_pipeline(self):
+        """SMITH, through apply_all_i_rules → AmbiguousCase (single surname)"""
+        with pytest.raises(AmbiguousCase):
+            apply_all_i_rules("SMITH,")
+
+
+# ===========================================================================
+# "IND AND AS NEXT FRIEND OF/FOR" — legal role fragment guard
+# ===========================================================================
+class TestNextFriendGuard:
+    def test_b_ind_and_next_friend_of_flagged(self):
+        """B record with IND AND AS NEXT FRIEND OF → FlagForReview"""
+        with pytest.raises(FlagForReview):
+            apply_all_b_rules("THOMAS NANCY IND AND AS NEXT FRIEND OF JERRY")
+
+    def test_b_individually_next_friend_of_flagged(self):
+        """B record with INDIVIDUALLY AND AS NEXT FRIEND OF → FlagForReview"""
+        with pytest.raises(FlagForReview):
+            apply_all_b_rules("JONES MARY INDIVIDUALLY AND AS NEXT FRIEND OF BILLY")
+
+    def test_b_ind_and_next_friend_for_flagged(self):
+        """B record with IND AND AS NEXT FRIEND FOR → FlagForReview"""
+        with pytest.raises(FlagForReview):
+            apply_all_b_rules("SMITH JAMES IND AND AS NEXT FRIEND FOR SUE")
+
+    def test_b_no_regression_acme(self):
+        """ACME CORPORATION is a plain business — not triggered"""
+        result, rule = apply_all_b_rules("ACME CORPORATION")
+        assert result == "ACME CORPORATION"
+
+    def test_i_ind_and_next_friend_of_flagged(self):
+        """I record with IND AND AS NEXT FRIEND OF → AmbiguousCase"""
+        with pytest.raises(AmbiguousCase):
+            apply_all_i_rules("THOMAS NANCY IND AND AS NEXT FRIEND OF JERRY")
+
+    def test_i_individually_next_friend_for_flagged(self):
+        """I record with INDIVIDUALLY AND AS NEXT FRIEND FOR → AmbiguousCase"""
+        with pytest.raises(AmbiguousCase):
+            apply_all_i_rules("DOE JANE INDIVIDUALLY AND AS NEXT FRIEND FOR BILLY")
+
+
+# ===========================================================================
+# Exact weird-name triggers
+# ===========================================================================
+class TestExactWeirdNames:
+    def test_i_texas_savings_of(self):
+        try:
+            apply_all_i_rules("TEXAS, SAVINGS OF")
+            assert False, "expected AmbiguousCase"
+        except AmbiguousCase:
+            pass
+
+    def test_i_defendant_no(self):
+        try:
+            apply_all_i_rules("DEFENDANT, NO")
+            assert False, "expected AmbiguousCase"
+        except AmbiguousCase:
+            pass
+
+    def test_i_defendant_none(self):
+        try:
+            apply_all_i_rules("DEFENDANT, NONE")
+            assert False, "expected AmbiguousCase"
+        except AmbiguousCase:
+            pass
+
+    def test_i_plaintiff_defendant(self):
+        try:
+            apply_all_i_rules("PLAINTIFF--, --DEFENDANT")
+            assert False, "expected AmbiguousCase"
+        except AmbiguousCase:
+            pass
+
+    def test_i_defendant_john_no_raise(self):
+        result, _ = apply_all_i_rules("DEFENDANT, JOHN")
+        assert result is not None
+
+    def test_i_smith_john_no_raise(self):
+        result, _ = apply_all_i_rules("SMITH, JOHN")
+        assert result is not None
+
+    def test_b_texas_savings_of(self):
+        try:
+            apply_all_b_rules("TEXAS, SAVINGS OF")
+            assert False, "expected FlagForReview"
+        except FlagForReview:
+            pass
+
+    def test_b_plaintiff_defendant(self):
+        try:
+            apply_all_b_rules("PLAINTIFF--, --DEFENDANT")
+            assert False, "expected FlagForReview"
+        except FlagForReview:
+            pass
+
+    def test_b_smith_john_no_raise(self):
+        result, _ = apply_all_b_rules("SMITH JOHN")
+        assert result is not None
+
+
+# ===========================================================================
+# TestMergeNoDuplicates
+# ===========================================================================
+class TestMergeNoDuplicates:
+    """Verify that merge_corrections never writes the same case_number twice."""
+
+    def test_weird_dedup_same_case_multiple_entries(self):
+        """A case with 3 weird entries must appear exactly once in weird_blocks."""
+        import tempfile, os
+        from main import merge_corrections
+
+        raw_line = "19900101\t900001    \tJDG\t02\tTEST\t\t\n"
+        flagged_line_1 = "19900101\t900001    \tJDG\t04\tI\tFOO,\t"
+        flagged_line_2 = "19900101\t900001    \tJDG\t04\tI\tBAR,\t"
+        flagged_line_3 = "19900101\t900001    \tJDG\t05\tI\tBAZ,\t"
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            input_path = tmp / "test.txt"
+            output_path = tmp / "test_clean.txt"
+            flagged_path = tmp / "test_flagged.json"
+            flagged_txt_path = tmp / "test_flagged.txt"
+            corrections_path = tmp / "test_corrections.json"
+            review_path = tmp / "test_reviewCases.txt"
+
+            # Write minimal input file (raw block)
+            input_path.write_text(
+                raw_line +
+                f"19900101\t900001    \tJDG\t04\tI\tFOO,\t\n" +
+                f"19900101\t900001    \tJDG\t04\tI\tBAR,\t\n" +
+                f"19900101\t900001    \tJDG\t05\tI\tBAZ,\t\n",
+                encoding="utf-8"
+            )
+
+            # Write flagged.json
+            import json
+            flagged_path.write_text(json.dumps([
+                {"case_number": "900001", "original_marker": "I", "original_name": "FOO,",
+                 "reason": "single surname with no first name: 'FOO,'",
+                 "header_line": raw_line.strip(), "flagged_line": flagged_line_1},
+                {"case_number": "900001", "original_marker": "I", "original_name": "BAR,",
+                 "reason": "single surname with no first name: 'BAR,'",
+                 "header_line": raw_line.strip(), "flagged_line": flagged_line_2},
+                {"case_number": "900001", "original_marker": "I", "original_name": "BAZ,",
+                 "reason": "single surname with no first name: 'BAZ,'",
+                 "header_line": raw_line.strip(), "flagged_line": flagged_line_3},
+            ]), encoding="utf-8")
+
+            # Write flagged.txt (processed block with >>> on all three lines)
+            flagged_txt_path.write_text(
+                raw_line +
+                f">>>{flagged_line_1}\n" +
+                f">>>{flagged_line_2}\n" +
+                f">>>{flagged_line_3}\n" +
+                "\n",
+                encoding="utf-8"
+            )
+
+            # Write corrections.json with 3 weird entries for the same case
+            corrections_path.write_text(json.dumps([
+                {"case_number": "900001", "flagged_line": flagged_line_1, "action": "weird"},
+                {"case_number": "900001", "flagged_line": flagged_line_2, "action": "weird"},
+                {"case_number": "900001", "flagged_line": flagged_line_3, "action": "weird"},
+            ]), encoding="utf-8")
+
+            output_path.write_text("", encoding="utf-8")
+
+            merge_corrections(input_path, output_path, flagged_path, corrections_path)
+
+            # reviewCases must contain the block exactly once
+            review_text = review_path.read_text(encoding="utf-8")
+            case_nums = [l.split("\t")[1].strip() for l in review_text.splitlines()
+                         if "\t" in l and not l.startswith("#")]
+            count = case_nums.count("900001")
+            assert count > 0, "case 900001 was never written to reviewCases"
+            lines_per_block = 4  # header + 3 data lines
+            assert count == lines_per_block, (
+                f"expected case 900001 to appear {lines_per_block} times "
+                f"(1 block × {lines_per_block} lines), got {count}"
+            )
+
+    def test_weird_idempotent_second_run(self):
+        """Running merge_corrections twice must not duplicate weird blocks."""
+        import tempfile, json
+        from main import merge_corrections
+
+        raw_line = "19900101\t900002    \tJDG\t02\tTEST\t\t\n"
+        flagged_line = "19900101\t900002    \tJDG\t04\tI\tFOO,\t"
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            input_path  = tmp / "test.txt"
+            output_path = tmp / "test_clean.txt"
+            flagged_path = tmp / "test_flagged.json"
+            flagged_txt_path = tmp / "test_flagged.txt"
+            corrections_path = tmp / "test_corrections.json"
+            review_path = tmp / "test_reviewCases.txt"
+
+            input_path.write_text(
+                raw_line + f"19900101\t900002    \tJDG\t04\tI\tFOO,\t\n",
+                encoding="utf-8"
+            )
+            flagged_path.write_text(json.dumps([
+                {"case_number": "900002", "original_marker": "I", "original_name": "FOO,",
+                 "reason": "single surname with no first name: 'FOO,'",
+                 "header_line": raw_line.strip(), "flagged_line": flagged_line},
+            ]), encoding="utf-8")
+            flagged_txt_path.write_text(
+                raw_line + f">>>{flagged_line}\n\n", encoding="utf-8"
+            )
+            corrections_path.write_text(json.dumps([
+                {"case_number": "900002", "flagged_line": flagged_line, "action": "weird"},
+            ]), encoding="utf-8")
+            output_path.write_text("", encoding="utf-8")
+
+            merge_corrections(input_path, output_path, flagged_path, corrections_path)
+            merge_corrections(input_path, output_path, flagged_path, corrections_path)
+
+            review_text = review_path.read_text(encoding="utf-8")
+            case_nums = [l.split("\t")[1].strip() for l in review_text.splitlines()
+                         if "\t" in l]
+            count = case_nums.count("900002")
+            assert count == 2, (
+                f"expected 2 lines (1 block of 2 lines) for case 900002, got {count}"
+            )
+
+
+# ===========================================================================
 # Runner (when not using pytest)
 # ===========================================================================
 if __name__ == "__main__":
@@ -712,7 +1173,10 @@ if __name__ == "__main__":
         TestI1, TestI2, TestI3, TestI4, TestI5,
         TestI6, TestI7, TestI8, TestI9, TestI10,
         TestApplyAllIRules, TestBRules, TestDedup, TestBugFixes, TestNewBugFixes,
-        TestBugFixes20260327,
+        TestNextFriendGuard,
+        TestBugFixes20260327, TestCurrencyDetection, TestAndWifeDetection,
+        TestSingleSurnameOnly, TestExactWeirdNames,
+        TestMergeNoDuplicates,
     ]
 
     passed = 0

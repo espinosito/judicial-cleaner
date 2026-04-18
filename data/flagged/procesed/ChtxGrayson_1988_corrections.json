@@ -1,178 +1,164 @@
 [
   {
+    "case_number": "881374",
+    "flagged_line": "19880825\t881374    \tJDG\t04\tI\tBINGO,\t",
+    "action": "weird"
+  },
+  {
     "case_number": "881389",
-    "action": "resolved",
-    "corrected_block": [
-      "19880826\t881389    \tJDG\t02\tDECLARATORY JUDGMENT\t\t\n",
-      "19880826\t881389    \tJDG\t04\tB\tCITIZENS BANK\t\n",
-      "19880826\t881389    \tJDG\t04\tB\tTRUST OF CALVERT TEXAS\t\n",
-      "19880826\t881389    \tJDG\t05\tB\tALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN\t\n",
+    "flagged_line": "19880826\t881389    \tJDG\t05\tB\tALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19880826\t881389    \tJDG\t05\tB\tALSTYNE 1ST SHERMAN BANK BRANCH 1ST NATL BANK VAN\t\n"
+    ]
+  },
+  {
+    "case_number": "881389",
+    "flagged_line": "19880826\t881389    \tJDG\t05\tB\tSUCC IN INT 1ST NATL BANK SHER\t",
+    "action": "replace",
+    "replacement_lines": [
       "19880826\t881389    \tJDG\t05\tB\tSUCC IN INT 1ST NATL BANK SHER\t\n"
     ]
   },
   {
-    "case_number": "880348",
+    "case_number": "881425",
+    "flagged_line": "19880906\t881425    \tJDG\t04\tB\tCURRENCY FOUR HUNDRED SEVENTY FIVE DOLLARS IN US\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "880275",
+    "flagged_line": "19880623\t880275    \tDIV\t04\tI\tINTER,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "881545",
+    "flagged_line": "19880927\t881545    \tJDG\t04\tI\tIN, TWO THOUSAND SEVEN HUNDRED TEN DOLLARS\t",
     "action": "weird"
   },
   {
     "case_number": "881552",
-    "action": "resolved",
-    "corrected_block": [
-      "19880928\t881552    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t\n",
-      "19880928\t881552    \tJDG\t04\tB\tBETTER MANUFACTURED HOMES INC\t\n",
-      "19880928\t881552    \tJDG\t04\tB\tA-1 HOMES MOBILE\t\n",
-      "19880928\t881552    \tJDG\t05\tI\tCARR, WANDA\t\n",
-      "19880928\t881552    \tJDG\t05\tI\tCARR, WAYNE\t\n"
+    "flagged_line": "19880928\t881552    \tJDG\t04\tB\tHOMES A-1 MOBILE\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19880928\t881552    \tJDG\t04\tB\tA-1 HOMES MOBILE\t\n"
     ]
   },
   {
-    "case_number": "880533",
+    "case_number": "881586",
+    "flagged_line": "19881005\t881586    \tORDNMC\t04\tI\tDEFT,\t",
     "action": "weird"
   },
   {
-    "case_number": "881642",
+    "case_number": "880533",
+    "flagged_line": "19880325\t880533    \tJDG\t04\tB\tC P AND ASSOCIIATESINC\t",
     "action": "weird"
   },
   {
     "case_number": "880645",
-    "action": "resolved",
-    "corrected_block": [
-      "19880418\t880645    \tJDG\t02\tDECLARATORY JUDGMENT\t\t\n",
-      "19880418\t880645    \tJDG\t04\tB\tVENTURE SHERMAN I-75 JOINT\t\n",
-      "19880418\t880645    \tJDG\t05\tI\tMURRAY, KEN\t\n"
+    "flagged_line": "19880418\t880645    \tJDG\t04\tB\tVENTURE SHERMAN I-75 JOINT\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19880418\t880645    \tJDG\t04\tB\tVENTURE SHERMAN I-75 JOINT\t\n"
     ]
   },
   {
-    "case_number": "881916",
+    "case_number": "881920",
+    "flagged_line": "19881207\t881920    \tJDG\t04\tB\tCURRENCY EIGHT HUNDRED TEN DOLLARS IN U S\t",
     "action": "weird"
   },
   {
-    "case_number": "881934",
-    "action": "weird"
-  },
-  {
-    "case_number": "881935",
-    "action": "weird"
-  },
-  {
-    "case_number": "882021",
+    "case_number": "880811",
+    "flagged_line": "19880513\t880811    \tJDG\t04\tI\tHUT,\t",
     "action": "weird"
   },
   {
     "case_number": "883122",
-    "action": "resolved",
-    "corrected_block": [
-      "19880212\t883122    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880212\t883122    \tJDG\t04\tB\tLEASING C AND M\t\n",
-      "19880212\t883122    \tJDG\t05\tB\tDENISON ISD\t\n"
+    "flagged_line": "19880212\t883122    \tJDG\t04\tB\tLEASING C AND M\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19880212\t883122    \tJDG\t04\tB\tLEASING C AND M\t\n"
+    ]
+  },
+  {
+    "case_number": "880842",
+    "flagged_line": "19880519\t880842    \tJDG\t05\tI\tMCI,\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19880519\t880842    \tJDG\t05\tB\tMCI\t\n"
     ]
   },
   {
     "case_number": "883161",
-    "action": "resolved",
-    "corrected_block": [
-      "19880226\t883161    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880226\t883161    \tJDG\t04\tB\tG AND G LUMBER CO\t\n",
-      "19880226\t883161    \tJDG\t05\tB\tDENISON ISD\t\n"
+    "flagged_line": "19880226\t883161    \tJDG\t04\tB\tG AND G LUMBER CO\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19880226\t883161    \tJDG\t04\tB\tG AND G LUMBER CO\t\n"
     ]
   },
   {
     "case_number": "883180",
-    "action": "resolved",
-    "corrected_block": [
-      "19880226\t883180    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880226\t883180    \tJDG\t04\tB\tLUCILLES\t\n",
-      "19880226\t883180    \tJDG\t05\tB\tDENISON ISD\t\n"
+    "flagged_line": "19880226\t883180    \tJDG\t04\tI\tLUCILLES,\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19880226\t883180    \tJDG\t04\tB\tLUCILLES\t\n"
     ]
   },
   {
     "case_number": "883193",
-    "action": "resolved",
-    "corrected_block": [
-      "19880226\t883193    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880226\t883193    \tJDG\t04\tB\tR AND L CORPORATION\t\n",
-      "19880226\t883193    \tJDG\t05\tB\tDENISON ISD\t\n"
+    "flagged_line": "19880226\t883193    \tJDG\t04\tB\tCORPORATION R AND L\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19880226\t883193    \tJDG\t04\tB\tR AND L CORPORATION\t\n"
     ]
   },
   {
     "case_number": "883384",
+    "flagged_line": "19880531\t883384    \tJDG\t04\tI\tMOVERS-MILLER, HOUSE\t",
     "action": "weird"
   },
   {
     "case_number": "883478",
-    "action": "resolved",
-    "corrected_block": [
-      "19880916\t883478    \tJDG\t02\tTAX CASES\t\t\n",
-      "19880916\t883478    \tJDG\t04\tI\tLURES, FLIPTAIL\t\n",
-      "19880916\t883478    \tJDG\t04\tB\tMARSHALL BOB IND AND\t\n",
-      "19880916\t883478    \tJDG\t04\tB\tWHOPPER-STOPPER\t\n",
-      "19880916\t883478    \tJDG\t05\tB\tS AND S INDEPENDENT SCHOOL DISTRICT\t\n",
-      "19880916\t883478    \tJDG\t05\tB\tSTATE OF TEXAS\t\n"
+    "flagged_line": "19880916\t883478    \tJDG\t04\tI\tWHOPPER-STOPPER,\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19880916\t883478    \tJDG\t04\tB\tWHOPPER-STOPPER\t\n"
     ]
+  },
+  {
+    "case_number": "883725",
+    "flagged_line": "19881128\t883725    \tJDG\t04\tI\tKING,\t",
+    "action": "weird"
   },
   {
     "case_number": "883709",
-    "action": "resolved",
-    "corrected_block": [
-      "19881031\t883709    \tJDG\t02\tTAX CASES\t\t\n",
-      "19881031\t883709    \tJDG\t04\tB\tVENTURE TWO FB-40 JOINT\t\n",
-      "19881031\t883709    \tJDG\t05\tB\tDENISON ISD\t\n"
+    "flagged_line": "19881031\t883709    \tJDG\t04\tB\tVENTURE TWO FB-40 JOINT\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19881031\t883709    \tJDG\t04\tB\tVENTURE TWO FB-40 JOINT\t\n"
     ]
+  },
+  {
+    "case_number": "881885",
+    "flagged_line": "19881201\t881885    \tJDG\t05\tI\tWILLIS,\t",
+    "action": "delete",
+    "replacement_lines": []
   },
   {
     "case_number": "881840",
-    "action": "resolved",
-    "corrected_block": [
-      "19881118\t881840    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
-      "19881118\t881840    \tJDG\t04\tI\tBARRON, MICHAEL RAY\t\n",
-      "19881118\t881840    \tJDG\t04\tI\tLEWIS, HARVEY\t\n",
-      "19881118\t881840    \tJDG\t04\tI\tMCKINNEY, CARL K\t\n",
-      "19881118\t881840    \tJDG\t04\tI\tTHOMAS, SANDRA LEE\t\n",
-      "19881118\t881840    \tJDG\t05\tI\tGREEN, ANITA\t\n",
-      "19881118\t881840    \tJDG\t05\tI\tGREEN, LINDA\t\n"
+    "flagged_line": "19881118\t881840    \tJDG\t05\tI\tANITA-GREEN,\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19881118\t881840    \tJDG\t05\tI\tGREEN, ANITA\t\n"
     ]
+  },
+  {
+    "case_number": "881860",
+    "flagged_line": "19881123\t881860    \tJDG\t04\tB\tCURRENCY UNITED STATES\t",
+    "action": "weird"
   },
   {
     "case_number": "881995",
-    "action": "resolved",
-    "corrected_block": [
-      "19881222\t881995    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
-      "19881222\t881995    \tJDG\t04\tB\tRESOURCE SAVINGS ASSOCIATION\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tADAMI, DAROLD P\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tALMOND, CLYDE\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tBRENNAN, JOHN H\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tBROWN, BARRETT KEITH\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tCARLYON, GEORGE H\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tELLIS, JOHN W JR\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tFLOYD, JOHN\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tGOSNELL, DORTHEA AS ADM OF SONNY\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tHAUPTRIEF, LARRY D\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tMD-HAYES, CORNELIUS JOHN\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tHILL, JOHN D\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tKELLER, JAMES E\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tLINDSEY, JAMES A\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tMCKEE, EDGAR G\t\n",
-      "19881222\t881995    \tJDG\t05\tI\tNOAMAN, GALIL A MD\t\n"
-    ]
-  },
-  {
-    "case_number": "101624",
+    "flagged_line": "19881222\t881995    \tJDG\t05\tI\tGOSNELL,\t",
     "action": "weird"
-  },
-  {
-    "case_number": "102822",
-    "action": "weird"
-  },
-  {
-    "case_number": "105793",
-    "action": "resolved",
-    "corrected_block": [
-      "19880304\t105793    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
-      "19880304\t105793    \tJDG\t04\tB\tMEDICAL PLAZA HOSPITAL\t\n",
-      "19880304\t105793    \tJDG\t04\tI\tSCHNITKER, EUGENE\t\n",
-      "19880304\t105793    \tJDG\t04\tI\tSCHNITKER, RONALD J\t\n",
-      "19880304\t105793    \tJDG\t04\tI\tSCHNITKER, DOROTHY JEAN\t\n",
-      "19880304\t105793    \tJDG\t05\tB\tTEXAS SOUTHERN GENERAL LIFE INSCO\t\n"
-    ]
   }
 ]

@@ -7,10 +7,10 @@ a pattern not covered by the standard rules in individuals.md or businesses.md.
 
 ## Grayson County, Texas — 1998 files
 
-### FATHER as role label in family law cases → FILENAME_weirdCases.txt
+### FATHER as role label in family law cases → FILENAME_reviewCases.txt
 In DIV (family law) modification cases, `FATHER,` appears as a placeholder for the
 non-custodial parent when the actual name is unknown or not entered.
-Treat identically to RESPONDENT/MOVANT — send whole case block to FILENAME_weirdCases.txt.
+Treat identically to RESPONDENT/MOVANT — send whole case block to FILENAME_reviewCases.txt.
 - `FATHER, ` (marker I) → weird (whole case block)
 Seen in: MODIFICATION OF PRIOR ORDER, ALL OTHER FAMILY LAW MATTERS cases.
 
@@ -30,17 +30,29 @@ Leave as-is; the ordinal is part of the proper name.
 
 ## Grayson County, Texas — 1988 files
 
-### NONE as party placeholder → FILENAME_weirdCases.txt
+### "GUARDIAN OF" / "AS GUARDIAN OF" / "GUARDIAN AD LITEM" → strip (I-3)
+Legal role descriptors appended to a person's name. Strip the phrase,
+keep only the real name.
+- `SMITH, JOHN GUARDIAN OF` → `SMITH, JOHN`
+- `JONES, MARY AS GUARDIAN OF` → `JONES, MARY`
+
+### "AN ADULT" / "IN RE ADULT" legal descriptor → strip (I-3)
+These phrases appear after a person's name as a legal descriptor.
+They are not part of the name — remove them.
+- `SMITH, JOHN AN ADULT` → `SMITH, JOHN`
+- `JONES, MARY IN RE ADULT` → `JONES, MARY`
+
+### NONE as party placeholder → FILENAME_reviewCases.txt
 In ex-parte proceedings (name changes, title petitions), the opposing party field is
 filled with `NONE,` to indicate no opposing party. Do NOT delete the row automatically —
-send the entire case block to FILENAME_weirdCases.txt for manual review.
+send the entire case block to FILENAME_reviewCases.txt for manual review.
 - `NONE, ` (marker I) → weird (whole case block)
 Seen in: NAME CHANGE PETITION, REMOVE CLOUD FROM TITLE, SUIT ON TRUST cases.
 
-### RESPONDENT / MOVANT / LIENHOLDER as role labels → FILENAME_weirdCases.txt
+### RESPONDENT / MOVANT / LIENHOLDER as role labels → FILENAME_reviewCases.txt
 These are legal role labels, not real names. They are ambiguous (the real party name
 may be missing entirely). Do NOT delete the row. Send the entire case block to
-FILENAME_weirdCases.txt for manual review.
+FILENAME_reviewCases.txt for manual review.
 - `RESPONDENT, ` (marker I) → weird (whole case block)
 - `MOVANT, ` (marker I) → weird (whole case block)
 - `LIENHOLDER, ` (marker I) → weird (whole case block)
@@ -182,11 +194,30 @@ be reliably processed and are sent to the flagged file:
 - `HOMES A-1 MOBILE` → flagged
 Exception: pure trailing numbers (ID/license codes) are stripped normally by B-8.
 
+### Single surname with no first name → FILENAME_reviewCases.txt
+When an I record has a last name with a trailing comma but no first name entered,
+the record is ambiguous — it may be a data entry error or an unknown party.
+Send the entire case block to `FILENAME_reviewCases.txt` for human review.
+- `BINGO,` (marker I, no first name) → weird (whole case block)
+- `SMITH, ` (trailing space, no first name) → weird (whole case block)
+
+**Exceptions — NOT caught by this rule:**
+- `, ` — bare comma with no surname (I-2 deletes it)
+- `RESPONDENT, `, `MOVANT, `, `LIENHOLDER, ` — role labels, handled upstream
+
+**Note:** this rule fires before I-3 so the trailing comma is still detectable.
+It takes priority over the game-name and short-abbreviation checks — `BINGO,`
+goes to weird (not B) because the comma signals a person-record entry with a
+missing first name.
+
 ### Gambling / game names in I records → reclassify as B
-Single-token I records containing a known game or gambling name are reclassified to B:
-- `BINGO,` → B: `BINGO`
+Single-token I records (no comma) containing a known game or gambling name are reclassified to B:
+- `BINGO` (no comma, standalone) → B: `BINGO`
 Known names: `BINGO`, `POKER`, `LOTTO`, `LOTTERY`, `KENO`, `BLACKJACK`, `ROULETTE`,
 `CHECKERS`, `CHESS`, `DOMINOES`, `MAHJONG`.
+
+**Note:** `BINGO,` (with trailing comma) is caught by the single-surname-only rule above
+and goes to weird instead of B.
 
 ### Short abbreviations in I records → reclassify as B
 Single-token I records with ≤ 3 alphabetic characters that are not a known first name
@@ -230,6 +261,151 @@ single last name only, produce one B record instead of splitting into two I reco
 - `HEROD AND WIFE STACYE` → B: `HEROD, STACYE`
 This applies only when `person1` is a single token. For full names on the left (e.g.
 `MILLS JAMES E AND WIFE LINDA D MILLS`), the standard B-5 split into two I records applies.
+
+---
+
+### AND WIFE + legal suffix → FILENAME_reviewCases.txt
+B records where "AND WIFE" is followed by legal-role text (IND AND, A-N-F, AS NEXT FRIEND,
+AS ADM, etc.) or where AND WIFE appears alone at the end are too complex to parse
+automatically. The **entire case block** is sent to `FILENAME_reviewCases.txt`.
+
+**Trigger:** name contains `AND WIFE` (standalone phrase, case-insensitive) AND either:
+- nothing follows AND WIFE (incomplete entry), OR
+- the text after AND WIFE contains: `IND AND`, `A-N-F`, `AS NEXT FRIEND`, `AS ADM`,
+  `AS ADMINISTRATOR`, or a trailing single letter `O`
+
+**Examples that trigger:**
+- `WINKLER CHARLES K AND WIFE CAROL WINKLER IND AND A-N-F O` → weird
+- `DAVIS DON AND WIFE SUSIE DAVIS IND AND` → weird
+- `SPARKS JOE E AND WIFE` → weird (bare AND WIFE, no name after)
+
+**Examples that do NOT trigger (B-5 handles these normally):**
+- `MILLS JAMES E AND WIFE LINDA D MILLS` → B-5 splits into two I records
+- `MIDWIFE MEDICAL CENTER` → not triggered (WIFE is part of MIDWIFE, no AND before)
+
+**Detection:** pre-scan fires before any I/B rule, same as currency pre-scan.
+During `--merge`: auto-routed to `FILENAME_reviewCases.txt` without a corrections entry.
+
+Seen in: Grayson County 1989 files (cases 890229, 890359, 891631).
+
+---
+
+## Grayson County, Texas — 1989 files
+
+### "IND AND AS NEXT FRIEND OF/FOR" in B or I record → reviewCases.txt
+These are legal role phrases attached to a person's name that were misclassified as
+B records (or occasionally appear in I records). The real party identity is ambiguous —
+the pipeline cannot determine whose "next friend" this is or whether JERRY/BILLY/etc.
+is a first name, last name, or something else. Send the **entire case block** to
+`FILENAME_reviewCases.txt`.
+
+**Variants caught:**
+- `IND AND AS NEXT FRIEND OF`
+- `INDIVIDUALLY AND AS NEXT FRIEND OF`
+- `IND AND AS NEXT FRIEND FOR`
+- `INDIVIDUALLY AND AS NEXT FRIEND FOR`
+
+**Examples that trigger:**
+- `THOMAS NANCY IND AND AS NEXT FRIEND OF JERRY` (B) → weird (whole case block)
+- `JONES MARY INDIVIDUALLY AND AS NEXT FRIEND OF BILLY` (B) → weird
+- `SMITH JAMES IND AND AS NEXT FRIEND FOR SUE` (B) → weird
+
+**Detection:** `NEXT_FRIEND_RE` regex fires in `apply_all_b_rules` (raises `FlagForReview`)
+and in `apply_all_i_rules` (raises `AmbiguousCase`) before any split or transform logic.
+
+**General reminder:** when reviewing a B record that has no recognizable business
+indicator (INC, CO, CORP, LLC, BANK, ISD, etc.) AND contains a personal name followed
+by legal role text — do NOT leave it as B. Send to weird immediately. When in doubt → weird.
+
+Seen in: case 890842.
+
+### Exact garbled/placeholder names → FILENAME_reviewCases.txt
+These strings appear verbatim and cannot be parsed. Send entire case block
+to reviewCases.txt. Match is exact (stripped), not partial.
+- `TEXAS, SAVINGS OF`        → weird (garbled entity name)
+- `DEFENDANT, NO`            → weird (legal role placeholder)
+- `DEFENDANT, NONE`          → weird (legal role placeholder)
+- `PLAINTIFF--, --DEFENDANT` → weird (malformed dual-role entry)
+
+---
+
+## All files — non-name content detection → FILENAME_reviewCases.txt
+
+### Lines clearly not names → auto-routed to reviewCases (no review needed)
+Cases where any I or B line's name field contains content that is obviously not a person
+or business name are automatically sent to `FILENAME_reviewCases.txt` during `--merge`
+without any entry in `corrections.json`.
+
+Three detection signals (all conservative — if in doubt, do NOT flag):
+
+**Signal 1 — Double dash (`--`) anywhere in the name field:**
+- `PLAINTIFF-- --DEFENDANT AND THIRD PARTY` → weird
+- `DEFENDANT--PLAINTIFF` → weird
+
+**Signal 2 — Single standalone generic category word (entire field = one word):**
+Only triggers when the ENTIRE name field is exactly one of these words. Does NOT trigger
+if the word appears alongside any proper noun.
+- `RESTAURANTS` → weird
+- `FIREARMS` → weird (note: if also contains currency term, currency scan fires first)
+- `RESTAURANTS GARCIA` → NOT flagged (has a proper noun)
+
+**Signal 3 — Exact legal role phrase (entire field = role text, no name present):**
+- `PLAINTIFF` → weird
+- `DEFENDANT` → weird
+- `THIRD PARTY` → weird
+- `UNKNOWN PARTIES` → weird
+- `ALL PERSONS` → weird
+- `UNKNOWN HEIRS` → weird (standalone; the full THE UNKNOWN HEIRS OR DEVISEES OF…
+  phrase is handled by I-9 and does not trigger this rule)
+
+**What does NOT trigger:**
+- `HULL DAVID AND ASSOCIATES` → valid business name (B-1)
+- `CORROON AND BLACK` → valid law firm (B-1)
+- `CABLE, POST-NEWSWEEK` → valid I record (hyphen in token, not double dash)
+- `RESTAURANTS GARCIA` → has a proper noun after the generic word
+- Any name with 2+ meaningful tokens that are not role labels
+
+**Detection order:** fires after currency and AND WIFE pre-scans, before I/B rules.
+During `--merge`: auto-routed to `FILENAME_reviewCases.txt` — no `corrections.json` entry required.
+
+---
+
+## All files — monetary / currency term records → FILENAME_reviewCases.txt
+
+### Currency/monetary terms in name field → auto-routed to reviewCases (no review needed)
+Cases where any I or B line's name field contains a standalone monetary token are
+automatically sent to `FILENAME_reviewCases.txt` during `--merge` without any
+entry in `corrections.json`. No human review step is required.
+
+**Trigger tokens** (case-insensitive, standalone words only):
+`DOLLARS`, `CENTS`, `CURRENCY`, `MONEY`, `CASH`, `FUNDS`,
+`PROCEEDS`, `SEIZED`, `SEIZURE`, `SEIZE`
+
+Multi-word phrases `US CURRENCY` and `UNITED STATES CURRENCY` are covered because
+`CURRENCY` is already in the token list.
+
+**Detection:** split the name field on non-alpha characters and check each token.
+This ensures `DOLLARD` (a surname) and `CENTSMITH` (a surname) do NOT trigger.
+
+**Examples that trigger:**
+- `CENTS FIVE HUNDRED TWENTY-EIGHT DOLLARS AND SEVENTY` (I) → weird
+- `ZIRCONIA IN US CURRENCY AND SIX CUBIC` (B) → weird
+- `FIVE HUNDRED DOLLARS AND NO CENTS` (I) → weird
+- `SEIZED CURRENCY` (B) → weird
+- `CURRENCY, FIVE HUNDRED SEVENTY-TWO DOLLARS IN US` (I) → weird
+
+**Examples that do NOT trigger:**
+- `DOLLARD, JAMES` (DOLLARD is a surname, not the token DOLLARS)
+- `CENTSMITH, MARY` (CENTSMITH is a surname, not the token CENTS)
+
+**Pipeline behavior:**
+- Pre-scan fires before I/B rules — no rule is applied to any line in the case
+- Triggering line gets `>>>` in `flagged.txt`; flagged.json entry has reason
+  `"contains monetary/currency terms — send to weird"`
+- During `--merge`: all cases with that reason are automatically routed to
+  `FILENAME_reviewCases.txt` — no `corrections.json` entry required
+
+Seen in: Grayson County forfeiture cases, e.g. 17 cases in ChtxGrayson_1989.
 
 ---
 

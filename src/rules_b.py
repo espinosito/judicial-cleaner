@@ -95,6 +95,20 @@ BUSINESS_INDICATORS = {
 
 PERSONAL_SUFFIXES = {"JR", "SR", "II", "III", "IV", "MD", "PA", "DDS"}
 
+# Legal role phrases attached to a person's name, misclassified as B records.
+# These are never resolvable automatically — flag the entire case as weird.
+NEXT_FRIEND_RE = re.compile(
+    r"\bIND(?:IVIDUALLY)?\s+AND\s+AS\s+NEXT\s+FRIEND\s+(?:OF|FOR)\b",
+    re.IGNORECASE,
+)
+
+EXACT_WEIRD_NAMES = {
+    "TEXAS, SAVINGS OF",
+    "DEFENDANT, NO",
+    "DEFENDANT, NONE",
+    "PLAINTIFF--, --DEFENDANT",
+}
+
 
 # ---------------------------------------------------------------------------
 # B-1: Default — do not modify
@@ -471,12 +485,21 @@ def apply_b8(name: str, classifier=None) -> dict | None:
 def apply_all_b_rules(name: str, classifier=None) -> tuple:
     original = name
 
+    # Exact weird-name pre-check — garbled/placeholder strings → reviewCases
+    if name.strip() in EXACT_WEIRD_NAMES:
+        raise FlagForReview(f"exact weird name match: {name!r}")
+
     # Early guard: flag B records containing alphanumeric tokens (e.g. A-1, B2)
     # Pure numbers are excluded — only mixed letter+digit tokens trigger this.
     _tokens = name.upper().split()
     _clean = [t for t in _tokens if not re.match(r"^\d+$", t)]
     if any(re.search(r'\d', t) for t in _clean):
         raise FlagForReview(f"B record with alphanumeric token: {name!r}")
+
+    # Early guard: "IND AND AS NEXT FRIEND OF/FOR" — legal role fragment
+    # attached to a person's name misclassified as B. Entire case → reviewCases.txt.
+    if NEXT_FRIEND_RE.search(name):
+        raise FlagForReview(f"B record contains legal role phrase 'NEXT FRIEND': {name!r}")
 
     # B-6 first — N K A splits are unambiguous
     result = apply_b6(name)

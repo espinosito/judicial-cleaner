@@ -1,0 +1,370 @@
+[
+  {
+    "case_number": "900112",
+    "original_marker": "I",
+    "original_name": "DEFENDANT, NO",
+    "reason": "exact weird name match: 'DEFENDANT, NO'",
+    "header_line": "19900104\t900112    \tORDNMC\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19900104\t900112    \tORDNMC\t04\tI\tDEFENDANT, NO\t"
+  },
+  {
+    "case_number": "901911",
+    "original_marker": "I",
+    "original_name": "MISSOURI-KANSAS-TEXAS,",
+    "reason": "single surname with no first name: 'MISSOURI-KANSAS-TEXAS,'",
+    "header_line": "19901226\t901911    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19901226\t901911    \tJDG\t04\tI\tMISSOURI-KANSAS-TEXAS,\t"
+  },
+  {
+    "case_number": "901911",
+    "original_marker": "I",
+    "original_name": "RR,",
+    "reason": "single surname with no first name: 'RR,'",
+    "header_line": "19901226\t901911    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19901226\t901911    \tJDG\t04\tI\tRR,\t"
+  },
+  {
+    "case_number": "901919",
+    "original_marker": "I",
+    "original_name": "BURNETTE,",
+    "reason": "single surname with no first name: 'BURNETTE,'",
+    "header_line": "19901228\t901919    \tDIV\t02\tU R E S A\t\t",
+    "flagged_line": "19901228\t901919    \tDIV\t04\tI\tBURNETTE,\t"
+  },
+  {
+    "case_number": "901081",
+    "original_marker": "I",
+    "original_name": "WILLIS,",
+    "reason": "single surname with no first name: 'WILLIS,'",
+    "header_line": "19900706\t901081    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19900706\t901081    \tJDG\t05\tI\tWILLIS,\t"
+  },
+  {
+    "case_number": "903137",
+    "original_marker": "B",
+    "original_name": "PROPERTIES C AND D",
+    "reason": "split part has only single-letter tokens: 'D' in 'PROPERTIES C AND D'",
+    "header_line": "19900209\t903137    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19900209\t903137    \tJDG\t04\tB\tPROPERTIES C AND D\t"
+  },
+  {
+    "case_number": "901009",
+    "original_marker": "B",
+    "original_name": "BAILEY BARBARA IND AND AS NEXT FRIEND FOR",
+    "reason": "B record contains legal role phrase 'NEXT FRIEND': 'BAILEY BARBARA IND AND AS NEXT FRIEND FOR'",
+    "header_line": "19900622\t901009    \tJDG\t02\tPERINJ\t\t",
+    "flagged_line": "19900622\t901009    \tJDG\t05\tB\tBAILEY BARBARA IND AND AS NEXT FRIEND FOR\t"
+  },
+  {
+    "case_number": "901009",
+    "original_marker": "I",
+    "original_name": "CHILD,",
+    "reason": "single surname with no first name: 'CHILD,'",
+    "header_line": "19900622\t901009    \tJDG\t02\tPERINJ\t\t",
+    "flagged_line": "19900622\t901009    \tJDG\t05\tI\tCHILD,\t"
+  },
+  {
+    "case_number": "901015",
+    "original_marker": "I",
+    "original_name": "DEFENDANT, NO",
+    "reason": "exact weird name match: 'DEFENDANT, NO'",
+    "header_line": "19900625\t901015    \tORDNMC\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19900625\t901015    \tORDNMC\t04\tI\tDEFENDANT, NO\t"
+  },
+  {
+    "case_number": "901898",
+    "original_marker": "B",
+    "original_name": "CONSTRUCTION A AND I",
+    "reason": "split part has only single-letter tokens: 'I' in 'CONSTRUCTION A AND I'",
+    "header_line": "19901220\t901898    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19901220\t901898    \tJDG\t04\tB\tCONSTRUCTION A AND I\t"
+  },
+  {
+    "case_number": "900257",
+    "original_marker": "I",
+    "original_name": "DEFENDANT, NO",
+    "reason": "exact weird name match: 'DEFENDANT, NO'",
+    "header_line": "19900205\t900257    \tORDNMC\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19900205\t900257    \tORDNMC\t04\tI\tDEFENDANT, NO\t"
+  },
+  {
+    "case_number": "900257",
+    "original_marker": "I",
+    "original_name": "MOTHER,",
+    "reason": "single-token name not in database: 'MOTHER'",
+    "header_line": "19900205\t900257    \tORDNMC\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19900205\t900257    \tORDNMC\t04\tI\tMOTHER,\t"
+  },
+  {
+    "case_number": "901098",
+    "original_marker": "I",
+    "original_name": "DEFENDANT, NO",
+    "reason": "exact weird name match: 'DEFENDANT, NO'",
+    "header_line": "19900710\t901098    \tORDNMC\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19900710\t901098    \tORDNMC\t04\tI\tDEFENDANT, NO\t"
+  },
+  {
+    "case_number": "900720",
+    "original_marker": "I",
+    "original_name": "FATHER,",
+    "reason": "single-token name not in database: 'FATHER'",
+    "header_line": "19900426\t900720    \tDIV\t02\tU R E S A\t\t",
+    "flagged_line": "19900426\t900720    \tDIV\t05\tI\tFATHER,\t"
+  },
+  {
+    "case_number": "901109",
+    "original_marker": "B",
+    "original_name": "CORP 1ST FINANCIAL",
+    "reason": "B record with alphanumeric token: 'CORP 1ST FINANCIAL'",
+    "header_line": "19900712\t901109    \tJDG\t02\tSUIT ON AGREEMENT\t\t",
+    "flagged_line": "19900712\t901109    \tJDG\t05\tB\tCORP 1ST FINANCIAL\t"
+  },
+  {
+    "case_number": "901562",
+    "original_marker": "I",
+    "original_name": "INRE,",
+    "reason": "single surname with no first name: 'INRE,'",
+    "header_line": "19901017\t901562    \tDIV\t02\tALL OTHER FAMILY LAW MATTERS\t\t",
+    "flagged_line": "19901017\t901562    \tDIV\t05\tI\tINRE,\t"
+  },
+  {
+    "case_number": "900844",
+    "original_marker": "B",
+    "original_name": "SCALES UNITED STATES CURRENCY 86900 JEWELRY AND",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19900518\t900844    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19900518\t900844    \tJDG\t04\tB\tSCALES UNITED STATES CURRENCY 86900 JEWELRY AND\t"
+  },
+  {
+    "case_number": "901674",
+    "original_marker": "I",
+    "original_name": "DEFENDANT, NO",
+    "reason": "exact weird name match: 'DEFENDANT, NO'",
+    "header_line": "19901107\t901674    \tORDNMC\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19901107\t901674    \tORDNMC\t04\tI\tDEFENDANT, NO\t"
+  },
+  {
+    "case_number": "901770",
+    "original_marker": "I",
+    "original_name": "PLAINTIFF--, --DEFENDANT",
+    "reason": "non-name content detected — send to weird",
+    "header_line": "19901126\t901770    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19901126\t901770    \tJDG\t04\tI\tPLAINTIFF--, --DEFENDANT\t"
+  },
+  {
+    "case_number": "901770",
+    "original_marker": "B",
+    "original_name": "RESTAURANTS",
+    "reason": "non-name content detected — send to weird",
+    "header_line": "19901126\t901770    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19901126\t901770    \tJDG\t04\tB\tRESTAURANTS\t"
+  },
+  {
+    "case_number": "900981",
+    "original_marker": "B",
+    "original_name": "BRUNO DIANA IND AND AS NEXT FRIEND OF MICHAEL",
+    "reason": "B record contains legal role phrase 'NEXT FRIEND': 'BRUNO DIANA IND AND AS NEXT FRIEND OF MICHAEL'",
+    "header_line": "19900619\t900981    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19900619\t900981    \tJDG\t05\tB\tBRUNO DIANA IND AND AS NEXT FRIEND OF MICHAEL\t"
+  },
+  {
+    "case_number": "901788",
+    "original_marker": "I",
+    "original_name": "INTERVENTOR,",
+    "reason": "single surname with no first name: 'INTERVENTOR,'",
+    "header_line": "19901128\t901788    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19901128\t901788    \tJDG\t05\tI\tINTERVENTOR,\t"
+  },
+  {
+    "case_number": "901789",
+    "original_marker": "I",
+    "original_name": "CRISP,",
+    "reason": "single surname with no first name: 'CRISP,'",
+    "header_line": "19901128\t901789    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19901128\t901789    \tJDG\t05\tI\tCRISP,\t"
+  },
+  {
+    "case_number": "901789",
+    "original_marker": "B",
+    "original_name": "CRISP THELMA IND AND AS NEXT FRIEND FOR KIMBERLY",
+    "reason": "B record contains legal role phrase 'NEXT FRIEND': 'CRISP THELMA IND AND AS NEXT FRIEND FOR KIMBERLY'",
+    "header_line": "19901128\t901789    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19901128\t901789    \tJDG\t05\tB\tCRISP THELMA IND AND AS NEXT FRIEND FOR KIMBERLY\t"
+  },
+  {
+    "case_number": "903268",
+    "original_marker": "I",
+    "original_name": "SHERMAN,",
+    "reason": "single surname with no first name: 'SHERMAN,'",
+    "header_line": "19900918\t903268    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19900918\t903268    \tJDG\t04\tI\tSHERMAN,\t"
+  },
+  {
+    "case_number": "900331",
+    "original_marker": "I",
+    "original_name": "US,",
+    "reason": "single surname with no first name: 'US,'",
+    "header_line": "19900219\t900331    \tJDG\t02\tBILL OF REVIEW\t\t",
+    "flagged_line": "19900219\t900331    \tJDG\t05\tI\tUS,\t"
+  },
+  {
+    "case_number": "903304",
+    "original_marker": "I",
+    "original_name": "SHERATON,",
+    "reason": "single surname with no first name: 'SHERATON,'",
+    "header_line": "19901012\t903304    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19901012\t903304    \tJDG\t04\tI\tSHERATON,\t"
+  },
+  {
+    "case_number": "901154",
+    "original_marker": "I",
+    "original_name": "HOSP,",
+    "reason": "single surname with no first name: 'HOSP,'",
+    "header_line": "19900719\t901154    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19900719\t901154    \tJDG\t04\tI\tHOSP,\t"
+  },
+  {
+    "case_number": "903312",
+    "original_marker": "B",
+    "original_name": "CORPORATION 3-G FOODS",
+    "reason": "B record with alphanumeric token: 'CORPORATION 3-G FOODS'",
+    "header_line": "19901030\t903312    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19901030\t903312    \tJDG\t04\tB\tCORPORATION 3-G FOODS\t"
+  },
+  {
+    "case_number": "900352",
+    "original_marker": "I",
+    "original_name": "BROWN,",
+    "reason": "single surname with no first name: 'BROWN,'",
+    "header_line": "19900223\t900352    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19900223\t900352    \tJDG\t04\tI\tBROWN,\t"
+  },
+  {
+    "case_number": "900352",
+    "original_marker": "I",
+    "original_name": "COOK,",
+    "reason": "single surname with no first name: 'COOK,'",
+    "header_line": "19900223\t900352    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19900223\t900352    \tJDG\t04\tI\tCOOK,\t"
+  },
+  {
+    "case_number": "900367",
+    "original_marker": "I",
+    "original_name": "DEFENDANT, NO",
+    "reason": "exact weird name match: 'DEFENDANT, NO'",
+    "header_line": "19900228\t900367    \tORDNMC\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19900228\t900367    \tORDNMC\t04\tI\tDEFENDANT, NO\t"
+  },
+  {
+    "case_number": "900377",
+    "original_marker": "B",
+    "original_name": "INSULATION A AND F",
+    "reason": "split part has only single-letter tokens: 'F' in 'INSULATION A AND F'",
+    "header_line": "19900301\t900377    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t",
+    "flagged_line": "19900301\t900377    \tJDG\t05\tB\tINSULATION A AND F\t"
+  },
+  {
+    "case_number": "901189",
+    "original_marker": "I",
+    "original_name": "DEFENDANT, NO",
+    "reason": "exact weird name match: 'DEFENDANT, NO'",
+    "header_line": "19900726\t901189    \tORDNMC\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19900726\t901189    \tORDNMC\t04\tI\tDEFENDANT, NO\t"
+  },
+  {
+    "case_number": "901272",
+    "original_marker": "I",
+    "original_name": "INTERVENOR,",
+    "reason": "single surname with no first name: 'INTERVENOR,'",
+    "header_line": "19900815\t901272    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19900815\t901272    \tJDG\t05\tI\tINTERVENOR,\t"
+  },
+  {
+    "case_number": "901361",
+    "original_marker": "B",
+    "original_name": "US CURRENCY 43",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19900831\t901361    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19900831\t901361    \tJDG\t04\tB\tUS CURRENCY 43\t"
+  },
+  {
+    "case_number": "901363",
+    "original_marker": "I",
+    "original_name": "DRAPERIES,",
+    "reason": "single surname with no first name: 'DRAPERIES,'",
+    "header_line": "19900904\t901363    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t",
+    "flagged_line": "19900904\t901363    \tJDG\t05\tI\tDRAPERIES,\t"
+  },
+  {
+    "case_number": "901364",
+    "original_marker": "B",
+    "original_name": "CASH FLOW MANAGEMENT INC",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19900904\t901364    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19900904\t901364    \tJDG\t04\tB\tCASH FLOW MANAGEMENT INC\t"
+  },
+  {
+    "case_number": "900583",
+    "original_marker": "B",
+    "original_name": "6100-0081-7850-1935",
+    "reason": "B record with alphanumeric token: '6100-0081-7850-1935'",
+    "header_line": "19900404\t900583    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t",
+    "flagged_line": "19900404\t900583    \tJDG\t04\tB\t6100-0081-7850-1935\t"
+  },
+  {
+    "case_number": "900610",
+    "original_marker": "I",
+    "original_name": "DEFENDANT,",
+    "reason": "single-token name not in database: 'DEFENDANT'",
+    "header_line": "19900409\t900610    \tJDG\t02\tSUIT ON TRUST\t\t",
+    "flagged_line": "19900409\t900610    \tJDG\t04\tI\tDEFENDANT,\t"
+  },
+  {
+    "case_number": "900620",
+    "original_marker": "I",
+    "original_name": "INTERVENORS,",
+    "reason": "single surname with no first name: 'INTERVENORS,'",
+    "header_line": "19900410\t900620    \tDIV\t02\tDIVORCE - NO CHILDREN\t\t",
+    "flagged_line": "19900410\t900620    \tDIV\t04\tI\tINTERVENORS,\t"
+  },
+  {
+    "case_number": "901406",
+    "original_marker": "B",
+    "original_name": "8291-HX VIN 1GCDC14H5CF350697",
+    "reason": "B record with alphanumeric token: '8291-HX VIN 1GCDC14H5CF350697'",
+    "header_line": "19900913\t901406    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19900913\t901406    \tJDG\t04\tB\t8291-HX VIN 1GCDC14H5CF350697\t"
+  },
+  {
+    "case_number": "901444",
+    "original_marker": "I",
+    "original_name": "CASH, GEORGIA JANE",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19900920\t901444    \tDIV\t02\tDIVORCE - NO CHILDREN\t\t",
+    "flagged_line": "19900920\t901444    \tDIV\t04\tI\tCASH, GEORGIA JANE\t"
+  },
+  {
+    "case_number": "901444",
+    "original_marker": "I",
+    "original_name": "CASH, RICHARD LEWIS",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19900920\t901444    \tDIV\t02\tDIVORCE - NO CHILDREN\t\t",
+    "flagged_line": "19900920\t901444    \tDIV\t05\tI\tCASH, RICHARD LEWIS\t"
+  },
+  {
+    "case_number": "900706",
+    "original_marker": "I",
+    "original_name": "MINOR,",
+    "reason": "single surname with no first name: 'MINOR,'",
+    "header_line": "19900425\t900706    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19900425\t900706    \tJDG\t05\tI\tMINOR,\t"
+  },
+  {
+    "case_number": "900608",
+    "original_marker": "I",
+    "original_name": "INTERVENOR,",
+    "reason": "single surname with no first name: 'INTERVENOR,'",
+    "header_line": "19900409\t900608    \tDIV\t02\tDIVORCE - NO CHILDREN\t\t",
+    "flagged_line": "19900409\t900608    \tDIV\t04\tI\tINTERVENOR,\t"
+  }
+]

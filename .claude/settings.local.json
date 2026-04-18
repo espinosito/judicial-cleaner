@@ -5,7 +5,9 @@
       "Bash(git --version)",
       "Bash(PYTHONIOENCODING=utf-8 python tests/test_rules.py 2>&1)",
       "Bash(PYTHONIOENCODING=utf-8 python tests/test_rules.py)",
-      "Bash(PYTHONIOENCODING=utf-8 python src/main.py data/input/ChtxGrayson_1988.txt)"
+      "Bash(PYTHONIOENCODING=utf-8 python src/main.py data/input/ChtxGrayson_1988.txt)",
+      "Bash(PYTHONIOENCODING=utf-8 python src/main.py data/input/ChtxGrayson_1989.txt --merge)",
+      "Bash(PYTHONIOENCODING=utf-8 python src/main.py data/input/ChtxGrayson_1989.txt)"
     ]
   }
 }

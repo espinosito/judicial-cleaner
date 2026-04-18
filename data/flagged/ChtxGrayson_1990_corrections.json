@@ -1,0 +1,213 @@
+[
+  {
+    "case_number": "900112",
+    "flagged_line": "19900104\t900112    \tORDNMC\t04\tI\tDEFENDANT, NO\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901911",
+    "flagged_line": "19901226\t901911    \tJDG\t04\tI\tMISSOURI-KANSAS-TEXAS,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901911",
+    "flagged_line": "19901226\t901911    \tJDG\t04\tI\tRR,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901919",
+    "flagged_line": "19901228\t901919    \tDIV\t04\tI\tBURNETTE,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901081",
+    "flagged_line": "19900706\t901081    \tJDG\t05\tI\tWILLIS,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "903137",
+    "flagged_line": "19900209\t903137    \tJDG\t04\tB\tPROPERTIES C AND D\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19900209\t903137    \tJDG\t04\tB\tPROPERTIES C AND D\t\n"
+    ]
+  },
+  {
+    "case_number": "901009",
+    "flagged_line": "19900622\t901009    \tJDG\t05\tB\tBAILEY BARBARA IND AND AS NEXT FRIEND FOR\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901009",
+    "flagged_line": "19900622\t901009    \tJDG\t05\tI\tCHILD,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901015",
+    "flagged_line": "19900625\t901015    \tORDNMC\t04\tI\tDEFENDANT, NO\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901898",
+    "flagged_line": "19901220\t901898    \tJDG\t04\tB\tCONSTRUCTION A AND I\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19901220\t901898    \tJDG\t04\tB\tCONSTRUCTION A AND I\t\n"
+    ]
+  },
+  {
+    "case_number": "900257",
+    "flagged_line": "19900205\t900257    \tORDNMC\t04\tI\tDEFENDANT, NO\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900257",
+    "flagged_line": "19900205\t900257    \tORDNMC\t04\tI\tMOTHER,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901098",
+    "flagged_line": "19900710\t901098    \tORDNMC\t04\tI\tDEFENDANT, NO\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900720",
+    "flagged_line": "19900426\t900720    \tDIV\t05\tI\tFATHER,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901109",
+    "flagged_line": "19900712\t901109    \tJDG\t05\tB\tCORP 1ST FINANCIAL\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19900712\t901109    \tJDG\t05\tB\t1ST FINANCIAL CORP\t\n"
+    ]
+  },
+  {
+    "case_number": "901562",
+    "flagged_line": "19901017\t901562    \tDIV\t05\tI\tINRE,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901674",
+    "flagged_line": "19901107\t901674    \tORDNMC\t04\tI\tDEFENDANT, NO\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900981",
+    "flagged_line": "19900619\t900981    \tJDG\t05\tB\tBRUNO DIANA IND AND AS NEXT FRIEND OF MICHAEL\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901788",
+    "flagged_line": "19901128\t901788    \tJDG\t05\tI\tINTERVENTOR,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901789",
+    "flagged_line": "19901128\t901789    \tJDG\t05\tI\tCRISP,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901789",
+    "flagged_line": "19901128\t901789    \tJDG\t05\tB\tCRISP THELMA IND AND AS NEXT FRIEND FOR KIMBERLY\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "903268",
+    "flagged_line": "19900918\t903268    \tJDG\t04\tI\tSHERMAN,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900331",
+    "flagged_line": "19900219\t900331    \tJDG\t05\tI\tUS,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "903304",
+    "flagged_line": "19901012\t903304    \tJDG\t04\tI\tSHERATON,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901154",
+    "flagged_line": "19900719\t901154    \tJDG\t04\tI\tHOSP,\t",
+    "action": "delete",
+    "replacement_lines": []
+  },
+  {
+    "case_number": "903312",
+    "flagged_line": "19901030\t903312    \tJDG\t04\tB\tCORPORATION 3-G FOODS\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19901030\t903312    \tJDG\t04\tB\t3-G FOODS CORPORATION\t\n"
+    ]
+  },
+  {
+    "case_number": "900352",
+    "flagged_line": "19900223\t900352    \tJDG\t04\tI\tBROWN,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900352",
+    "flagged_line": "19900223\t900352    \tJDG\t04\tI\tCOOK,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900367",
+    "flagged_line": "19900228\t900367    \tORDNMC\t04\tI\tDEFENDANT, NO\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900377",
+    "flagged_line": "19900301\t900377    \tJDG\t05\tB\tINSULATION A AND F\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19900301\t900377    \tJDG\t05\tB\tINSULATION A AND F\t\n"
+    ]
+  },
+  {
+    "case_number": "901189",
+    "flagged_line": "19900726\t901189    \tORDNMC\t04\tI\tDEFENDANT, NO\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901272",
+    "flagged_line": "19900815\t901272    \tJDG\t05\tI\tINTERVENOR,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901363",
+    "flagged_line": "19900904\t901363    \tJDG\t05\tI\tDRAPERIES,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900583",
+    "flagged_line": "19900404\t900583    \tJDG\t04\tB\t6100-0081-7850-1935\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900610",
+    "flagged_line": "19900409\t900610    \tJDG\t04\tI\tDEFENDANT,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900620",
+    "flagged_line": "19900410\t900620    \tDIV\t04\tI\tINTERVENORS,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "901406",
+    "flagged_line": "19900913\t901406    \tJDG\t04\tB\t8291-HX VIN 1GCDC14H5CF350697\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900706",
+    "flagged_line": "19900425\t900706    \tJDG\t05\tI\tMINOR,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "900608",
+    "flagged_line": "19900409\t900608    \tDIV\t04\tI\tINTERVENOR,\t",
+    "action": "weird"
+  }
+]

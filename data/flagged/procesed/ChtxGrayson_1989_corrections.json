@@ -1,194 +1,164 @@
 [
   {
-    "case_number": "891520",
+    "case_number": "890413",
+    "flagged_line": "19890224\t890413    \tJDG\t05\tI\tROWELL,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "891606",
+    "flagged_line": "19891009\t891606    \tJDG\t05\tI\tETC,\t",
     "action": "weird"
   },
   {
     "case_number": "890603",
-    "action": "resolved",
-    "corrected_block": [
-      "19890331\t890603    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
-      "19890331\t890603    \tJDG\t04\tI\tGRAHAM, DAVID L\t\n",
-      "19890331\t890603    \tJDG\t04\tB\tA-1 HOMES MOBILE\t\n",
-      "19890331\t890603    \tJDG\t05\tI\tCAVENDER, HAZEL\t\n",
-      "19890331\t890603    \tJDG\t05\tI\tCAVENDER, LUTHER\t\n"
+    "flagged_line": "19890331\t890603    \tJDG\t04\tB\tHOMES A-1 MOBILE\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19890331\t890603    \tJDG\t04\tB\tA-1 HOMES MOBILE\t\n"
     ]
   },
   {
-    "case_number": "891688",
-    "action": "weird"
+    "case_number": "890628",
+    "flagged_line": "19890405\t890628    \tJDG\t04\tB\t1 AND 2 AS TRUSTEE OF DON ELLIOTT TRUSTS NO\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19890405\t890628    \tJDG\t04\tB\t1 AND 2 AS TRUSTEE OF DON ELLIOTT TRUSTS NO\t\n"
+    ]
   },
   {
     "case_number": "890628",
+    "flagged_line": "19890405\t890628    \tJDG\t04\tB\t1 AND 2 TRUST NO\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19890405\t890628    \tJDG\t04\tB\t1 AND 2 TRUST NO\t\n"
+    ]
+  },
+  {
+    "case_number": "891766",
+    "flagged_line": "19891113\t891766    \tDIV\t04\tI\tCHILD,\t",
     "action": "weird"
   },
   {
     "case_number": "890812",
+    "flagged_line": "19890505\t890812    \tJDG\t05\tI\tINTEVENOR,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "891867",
+    "flagged_line": "19891130\t891867    \tJDG\t04\tI\tCO,\t",
     "action": "weird"
   },
   {
     "case_number": "893187",
+    "flagged_line": "19890320\t893187    \tJDG\t04\tI\tLEINHOLDER,\t",
     "action": "weird"
   },
   {
     "case_number": "890804",
+    "flagged_line": "19890505\t890804    \tJDG\t05\tI\tINTERVENOR,\t",
     "action": "weird"
   },
   {
+    "case_number": "893242",
+    "flagged_line": "19890619\t893242    \tJDG\t04\tI\tFRANKLIN,\t",
+    "action": "delete",
+    "replacement_lines": []
+  },
+  {
     "case_number": "893201",
+    "flagged_line": "19890331\t893201    \tJDG\t04\tI\tLEINHOLDER,\t",
     "action": "weird"
   },
   {
     "case_number": "893210",
+    "flagged_line": "19890410\t893210    \tJDG\t04\tI\tLEINHOLDER,\t",
     "action": "weird"
   },
   {
     "case_number": "893207",
+    "flagged_line": "19890410\t893207    \tJDG\t04\tI\tLEINHOLDER,\t",
     "action": "weird"
   },
   {
     "case_number": "893325",
+    "flagged_line": "19890831\t893325    \tJDG\t04\tI\tCHAMBERLAIN-ANDERSON,\t",
     "action": "weird"
   },
   {
     "case_number": "890910",
-    "action": "resolved",
-    "corrected_block": [
-      "19890525\t890910    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
-      "19890525\t890910    \tJDG\t04\tB\tBETTER MANUFACTURED HOMES INC\t\n",
-      "19890525\t890910    \tJDG\t04\tI\tCO, FOREMOST INS\t\n",
-      "19890525\t890910    \tJDG\t04\tI\tHAYES, JERRY L\t\n",
-      "19890525\t890910    \tJDG\t04\tB\tA-1 HOMES MOBILE\t\n",
-      "19890525\t890910    \tJDG\t05\tI\tBRUNK, BARBARA\t\n"
+    "flagged_line": "19890525\t890910    \tJDG\t04\tB\tHOMES A-1 MOBILE\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19890525\t890910    \tJDG\t04\tB\tA-1 HOMES MOBILE\t\n"
     ]
   },
   {
     "case_number": "890973",
+    "flagged_line": "19890606\t890973    \tJDG\t04\tI\tRECEIVER,\t",
+    "action": "weird"
+  },
+  {
+    "case_number": "893717",
+    "flagged_line": "19891014\t893717    \tJDG\t04\tI\tANN,\t",
     "action": "weird"
   },
   {
     "case_number": "891090",
-    "action": "weird"
+    "flagged_line": "19890630\t891090    \tJDG\t04\tI\tJEEP-EAGLE,\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19890630\t891090    \tJDG\t04\tB\tJEEP-EAGLE\t\n"
+    ]
   },
   {
     "case_number": "893807",
-    "action": "weird"
-  },
-  {
-    "case_number": "891462",
+    "flagged_line": "19891103\t893807    \tDIV\t05\tI\tSANEZ-ROMAN,\t",
     "action": "weird"
   },
   {
     "case_number": "893905",
-    "action": "weird"
-  },
-  {
-    "case_number": "891497",
-    "action": "weird"
-  },
-  {
-    "case_number": "891067",
-    "action": "weird"
-  },
-  {
-    "case_number": "891080",
+    "flagged_line": "19891120\t893905    \tJDG\t04\tI\tHUTCHERSON-SIMPSON,\t",
     "action": "weird"
   },
   {
     "case_number": "891094",
+    "flagged_line": "19890703\t891094    \tJDG\t05\tI\tGABBERTS,\t",
     "action": "weird"
   },
   {
-    "case_number": "891966",
+    "case_number": "893127",
+    "flagged_line": "19890127\t893127    \tJDG\t04\tI\tBRYAN,\t",
     "action": "weird"
   },
   {
-    "case_number": "891911",
-    "action": "weird"
-  },
-  {
-    "case_number": "890135",
-    "action": "weird"
-  },
-  {
-    "case_number": "891207",
-    "action": "resolved",
-    "corrected_block": [
-      "19890724\t891207    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t\n",
-      "19890724\t891207    \tJDG\t04\tI\tBRITTON, HARVEY JACK\t\n",
-      "19890724\t891207    \tJDG\t04\tI\tNORTHERN, TIM\t\n",
-      "19890724\t891207    \tJDG\t04\tI\tSOUTHWESTERN, CARRIERS\t\n",
-      "19890724\t891207    \tJDG\t04\tB\tTRAILBLAZER TRANSPORTATION\t\n",
-      "19890724\t891207    \tJDG\t04\tB\tTRUCKIING J AND G\t\n",
-      "19890724\t891207    \tJDG\t05\tI\tROBINSON, G\t\n"
+    "case_number": "891271",
+    "flagged_line": "19890804\t891271    \tDIV\t05\tI\tMONEY, SUSIE ANNE\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19890804\t891271    \tDIV\t05\tI\tMONEY, SUSIE ANNE\t\n"
     ]
   },
   {
-    "case_number": "891215",
-    "action": "weird"
+    "case_number": "891207",
+    "flagged_line": "19890724\t891207    \tJDG\t04\tB\tTRUCKIING J AND G\t",
+    "action": "replace",
+    "replacement_lines": [
+      "19890724\t891207    \tJDG\t04\tB\tTRUCKIING J AND G\t\n"
+    ]
   },
   {
     "case_number": "891232",
+    "flagged_line": "19890727\t891232    \tORDNMC\t04\tI\tADULT,\t",
     "action": "weird"
   },
   {
     "case_number": "890364",
+    "flagged_line": "19890217\t890364    \tJDG\t05\tI\tINTERVENOR,\t",
     "action": "weird"
   },
   {
-    "case_number": "890382",
-    "action": "weird"
-  },
-  {
-    "case_number": "090356",
-    "action": "weird"
-  },
-  {
-    "case_number": "090838",
-    "action": "weird"
-  },
-  {
-    "case_number": "097175",
-    "action": "weird"
-  },
-  {
-    "case_number": "102881",
-    "action": "weird"
-  },
-  {
-    "case_number": "103041",
-    "action": "weird"
-  },
-  {
-    "case_number": "103319",
-    "action": "weird"
-  },
-  {
-    "case_number": "104363",
-    "action": "weird"
-  },
-  {
-    "case_number": "105420",
-    "action": "weird"
-  },
-  {
-    "case_number": "109683",
-    "action": "weird"
-  },
-  {
-    "case_number": "103579",
-    "action": "weird"
-  },
-  {
-    "case_number": "104569",
-    "action": "weird"
-  },
-  {
-    "case_number": "106143",
-    "action": "weird"
-  },
-  {
-    "case_number": "102528",
+    "case_number": "890362",
+    "flagged_line": "19890217\t890362    \tJDG\t04\tI\tCO,\t",
     "action": "weird"
   }
 ]

@@ -11,7 +11,7 @@ Flagged case behavior:
   - Flagged line marked with >>> prefix in flagged.txt
   - Clean output excludes the entire case until --merge
   - On --merge: corrected cases → appended to end of clean file
-  - On --merge: weird cases → original raw block written to FILENAME_weirdCases.txt
+  - On --merge: review cases → original raw block written to FILENAME_reviewCases.txt
 """
 from __future__ import annotations
 
@@ -28,6 +28,102 @@ from classifier import get_classifier
 from rules_i import apply_all_i_rules, AmbiguousCase, ReclassifyAsB
 from rules_b import apply_all_b_rules, FlagForReview
 from dedup import deduplicate
+
+
+# ---------------------------------------------------------------------------
+# Currency / monetary term detection
+# ---------------------------------------------------------------------------
+
+CURRENCY_TOKENS = frozenset({
+    "DOLLARS", "CENTS", "CURRENCY", "MONEY", "CASH", "FUNDS",
+    "PROCEEDS", "SEIZED", "SEIZURE", "SEIZE",
+})
+CURRENCY_REASON = "contains monetary/currency terms — send to weird"
+
+
+def contains_currency_terms(name: str) -> bool:
+    """Return True if the name field contains a standalone currency/monetary token."""
+    upper = name.upper()
+    for token in re.split(r"[^A-Z]+", upper):
+        if token in CURRENCY_TOKENS:
+            return True
+    return False
+
+
+# ---------------------------------------------------------------------------
+# Non-name content detection
+# ---------------------------------------------------------------------------
+
+NON_NAME_REASON = "non-name content detected — send to weird"
+
+# Signal 2: single standalone generic category words (entire name field = one of these)
+_NON_NAME_GENERIC_WORDS = frozenset({
+    "RESTAURANTS", "FIREARMS", "PROCEEDS",
+})
+
+# Signal 3: exact legal role phrases (entire name field = one of these, case-insensitive)
+_NON_NAME_ROLE_PHRASES = frozenset({
+    "PLAINTIFF", "DEFENDANT", "THIRD PARTY",
+    "UNKNOWN PARTIES", "ALL PERSONS", "UNKNOWN HEIRS",
+})
+
+
+def is_non_name_content(name: str) -> bool:
+    """
+    Return True when the name field clearly contains non-name content.
+
+    Signal 1 — double dash anywhere in the field.
+    Signal 2 — entire field is a single generic category word.
+    Signal 3 — entire field is a known legal role phrase with no name content.
+    """
+    stripped = name.strip()
+    upper = stripped.upper()
+
+    # Signal 1: double dash
+    if "--" in stripped:
+        return True
+
+    # Signal 2 & 3: exact-match checks (single token or short phrase)
+    if upper in _NON_NAME_GENERIC_WORDS:
+        return True
+    if upper in _NON_NAME_ROLE_PHRASES:
+        return True
+
+    return False
+
+
+# ---------------------------------------------------------------------------
+# AND WIFE + legal suffix detection
+# ---------------------------------------------------------------------------
+
+AND_WIFE_LEGAL_PATTERNS = [
+    r'\bIND\s+AND\b',
+    r'\bA[-\s]N[-\s]F\b',
+    r'\bAS\s+NEXT\s+FRIEND\b',
+    r'\bAS\s+ADM(?:INISTRAT\w*)?\b',
+    r'\bO\s*$',          # single letter O at end (e.g. A-N-F O)
+]
+AND_WIFE_REASON = "contains AND WIFE with legal suffix — send to weird"
+
+
+def contains_and_wife_legal(name: str) -> bool:
+    """
+    Return True when the name contains 'AND WIFE' as a standalone phrase AND
+    the text following it is either empty or contains legal-role suffixes.
+
+    Leaves clean B-5 cases alone (AND WIFE followed by a simple person name).
+    Does NOT match MIDWIFE (no 'AND' before WIFE).
+    """
+    m = re.search(r'\bAND\s+WIFE\b\s*(.*)', name, re.IGNORECASE)
+    if not m:
+        return False
+    extra = m.group(1).strip()
+    if not extra:
+        return True  # bare AND WIFE at end — incomplete
+    for pattern in AND_WIFE_LEGAL_PATTERNS:
+        if re.search(pattern, extra, re.IGNORECASE):
+            return True
+    return False
 
 
 # ---------------------------------------------------------------------------
@@ -67,7 +163,7 @@ def make_split_line(original: Line, new_name: str, new_marker: str) -> str:
 # Returns:
 #   output_lines       : corrected lines ready for clean output (empty if any flagged)
 #   flagged            : list of flagged dicts (empty if all clean)
-#   raw_block          : original raw lines of this case (for weirdCases.txt)
+#   raw_block          : original raw lines of this case (for reviewCases.txt)
 #   flagged_block_lines: processed block with >>> on unresolvable lines
 #                        (empty list if no flags)
 # ---------------------------------------------------------------------------
@@ -75,7 +171,7 @@ def make_split_line(original: Line, new_name: str, new_marker: str) -> str:
 def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str], list[str]]:
     lines, removed = deduplicate(case.lines)
 
-    # Raw block = original lines of this case, used for weirdCases.txt
+    # Raw block = original lines of this case, used for reviewCases.txt
     raw_block = [l.raw for l in case.lines]
 
     # Find the header (02) line for context in flagged.json
@@ -87,6 +183,72 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str], lis
     corrected_lines: list[str] = []
     flagged_block_lines: list[str] = []  # for flagged.txt: processed + >>> markers
     flagged: list[dict] = []
+
+    # Pre-scan: if any I/B line contains currency terms → flag entire case immediately
+    currency_triggering = [
+        line for line in lines
+        if line.needs_processing and contains_currency_terms(line.name)
+    ]
+    if currency_triggering:
+        triggering_raws = {l.raw.rstrip("\n") for l in currency_triggering}
+        for line in lines:
+            if line.raw.rstrip("\n") in triggering_raws:
+                flagged.append({
+                    "case_number": case.case_number,
+                    "original_marker": line.marker,
+                    "original_name": line.name,
+                    "reason": CURRENCY_REASON,
+                    "header_line": header_line,
+                    "flagged_line": line.raw.rstrip("\n"),
+                })
+                flagged_block_lines.append(">>>" + line.raw)
+            else:
+                flagged_block_lines.append(line.raw)
+        return [], flagged, raw_block, flagged_block_lines
+
+    # Pre-scan: if any I/B line contains AND WIFE + legal suffix → flag entire case
+    and_wife_triggering = [
+        line for line in lines
+        if line.needs_processing and contains_and_wife_legal(line.name)
+    ]
+    if and_wife_triggering:
+        triggering_raws = {l.raw.rstrip("\n") for l in and_wife_triggering}
+        for line in lines:
+            if line.raw.rstrip("\n") in triggering_raws:
+                flagged.append({
+                    "case_number": case.case_number,
+                    "original_marker": line.marker,
+                    "original_name": line.name,
+                    "reason": AND_WIFE_REASON,
+                    "header_line": header_line,
+                    "flagged_line": line.raw.rstrip("\n"),
+                })
+                flagged_block_lines.append(">>>" + line.raw)
+            else:
+                flagged_block_lines.append(line.raw)
+        return [], flagged, raw_block, flagged_block_lines
+
+    # Pre-scan: non-name content detection (double dash, generic words, role labels)
+    non_name_triggering = [
+        line for line in lines
+        if line.needs_processing and is_non_name_content(line.name)
+    ]
+    if non_name_triggering:
+        triggering_raws = {l.raw.rstrip("\n") for l in non_name_triggering}
+        for line in lines:
+            if line.raw.rstrip("\n") in triggering_raws:
+                flagged.append({
+                    "case_number": case.case_number,
+                    "original_marker": line.marker,
+                    "original_name": line.name,
+                    "reason": NON_NAME_REASON,
+                    "header_line": header_line,
+                    "flagged_line": line.raw.rstrip("\n"),
+                })
+                flagged_block_lines.append(">>>" + line.raw)
+            else:
+                flagged_block_lines.append(line.raw)
+        return [], flagged, raw_block, flagged_block_lines
 
     for line in lines:
         if not line.needs_processing:
@@ -163,6 +325,22 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str], lis
 # Merge corrections from Claude back into output
 # ---------------------------------------------------------------------------
 
+def _extract_case_numbers_from_file(path: Path) -> set[str]:
+    """Return the set of case_numbers (field 2, stripped) already present in a TSV file."""
+    seen: set[str] = set()
+    if not path.exists():
+        return seen
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.lstrip(">")
+            parts = line.split("\t")
+            if len(parts) > 1:
+                cn = parts[1].strip()
+                if cn:
+                    seen.add(cn)
+    return seen
+
+
 def _parse_flagged_txt(flagged_txt_path: Path) -> dict[str, list[str]]:
     """Parse flagged.txt into a dict of case_number → list of lines (with >>> intact)."""
     lookup: dict[str, list[str]] = {}
@@ -197,40 +375,79 @@ def merge_corrections(input_path: Path, output_path: Path, flagged_path: Path, c
       replacement_lines: list of corrected TSV lines (omit for weird)
 
     replace/split/delete → swap the >>> line, write complete block to clean file.
-    weird              → write original raw block to data/flagged/STEM_weirdCases.txt.
+    weird              → write original raw block to data/flagged/STEM_reviewCases.txt.
     """
-    if not corrections_path.exists():
+    # Load corrections (optional — currency cases don't need a corrections file)
+    corrections: list[dict] = []
+    if corrections_path.exists():
+        with open(corrections_path) as f:
+            corrections = json.load(f)
+    elif not flagged_path.exists():
         print(f"No corrections file found: {corrections_path}")
         return
-
-    with open(corrections_path) as f:
-        corrections: list[dict] = json.load(f)
 
     # Parse flagged.txt for processed blocks (>>> markers intact)
     flagged_txt_path = flagged_path.with_suffix(".txt")
     processed_lookup = _parse_flagged_txt(flagged_txt_path)
 
-    # For weird cases: re-parse input file to get original raw blocks
-    raw_lookup: dict[str, list[str]] = {}
-    if any(str(c.get("action", "")) == "weird" for c in corrections):
-        cases_orig, _ = parse_file(input_path)
-        for c in cases_orig:
-            raw_lookup[c.case_number] = [l.raw for l in c.lines]
+    # Find auto-review cases in flagged.json (currency + AND WIFE legal suffix)
+    AUTO_WEIRD_REASONS = {CURRENCY_REASON, AND_WIFE_REASON, NON_NAME_REASON}
+    currency_case_numbers: set[str] = set()
+    if flagged_path.exists():
+        with open(flagged_path, encoding="utf-8") as f:
+            all_flagged_entries: list[dict] = json.load(f)
+        for entry in all_flagged_entries:
+            if entry.get("reason") in AUTO_WEIRD_REASONS:
+                currency_case_numbers.add(str(entry.get("case_number", "")))
 
     # Group corrections by case_number (a case may have multiple flagged lines)
     corrections_by_case: dict[str, list[dict]] = defaultdict(list)
     for c in corrections:
         corrections_by_case[str(c.get("case_number", ""))].append(c)
 
+    # Currency cases not already in corrections are auto-weird
+    auto_review_cases = currency_case_numbers - set(corrections_by_case.keys())
+
+    # For review cases: re-parse input file to get original raw blocks
+    raw_lookup: dict[str, list[str]] = {}
+    need_raw = (
+        any(str(c.get("action", "")) == "weird" for c in corrections)
+        or bool(auto_review_cases)
+    )
+    if need_raw:
+        cases_orig, _ = parse_file(input_path)
+        for c in cases_orig:
+            raw_lookup[c.case_number] = [l.raw for l in c.lines]
+
     resolved_blocks: list[list[str]] = []
     weird_blocks: list[list[str]] = []
 
+    # Pre-populate seen sets from files already written in prior --merge runs
+    weird_path = flagged_path.parent / f"{input_path.stem}_reviewCases.txt"
+    weird_seen: set[str] = _extract_case_numbers_from_file(weird_path)
+    resolved_seen: set[str] = _extract_case_numbers_from_file(output_path)
+
+    # Auto-route currency cases to weird
+    for cn in auto_review_cases:
+        if cn in weird_seen:
+            continue
+        weird_seen.add(cn)
+        raw = raw_lookup.get(cn, [])
+        if raw:
+            weird_blocks.append(raw)
+
     for cn, case_corrections in corrections_by_case.items():
-        # If any correction for this case is weird → whole case goes to weirdCases.txt
+        # If any correction for this case is weird → whole case goes to reviewCases.txt
         if any(c.get("action") == "weird" for c in case_corrections):
+            if cn in weird_seen:
+                continue
+            weird_seen.add(cn)
             raw = raw_lookup.get(cn, [])
             if raw:
                 weird_blocks.append(raw)
+            continue
+
+        if cn in resolved_seen:
             continue
 
         # Get the processed block from flagged.txt
@@ -270,6 +487,7 @@ def merge_corrections(input_path: Path, output_path: Path, flagged_path: Path, c
             # Unknown action: leave as-is (>>> line stays, will be visible in output)
 
         if block:
+            resolved_seen.add(cn)
             resolved_blocks.append(block)
 
     # Append resolved blocks to clean file
@@ -282,17 +500,16 @@ def merge_corrections(input_path: Path, output_path: Path, flagged_path: Path, c
                     f.write(line)
         print(f"Appended {len(resolved_blocks)} resolved case(s) to {output_path.name}")
 
-    # Write weird blocks to STEM_weirdCases.txt
+    # Write weird blocks to STEM_reviewCases.txt
     if weird_blocks:
-        weird_path = flagged_path.parent / f"{input_path.stem}_weirdCases.txt"
         with open(weird_path, "a", encoding="utf-8") as f:
             for block in weird_blocks:
                 for line in block:
                     if not line.endswith("\n"):
                         line += "\n"
                     f.write(line)
-                f.write("\n")  # blank line between cases
-        print(f"Wrote {len(weird_blocks)} unresolved case(s) to {weird_path.name}")
+        auto_label = f" ({len(auto_review_cases)} auto-routed)" if auto_review_cases else ""
+        print(f"Wrote {len(weird_blocks)} unresolved case(s) to {weird_path.name}{auto_label}")
 
     if not resolved_blocks and not weird_blocks:
         print("Nothing to merge.")
@@ -365,10 +582,9 @@ def main():
     unique_blocks = list(flagged_processed.values())
     if unique_blocks:
         with open(flagged_txt_path, "w", encoding="utf-8") as f:
-            for i, block in enumerate(unique_blocks):
+            for block in unique_blocks:
                 f.writelines(block)
-                if i < len(unique_blocks) - 1:
-                    f.write("\n")
+                f.write("\n")
 
     total_in  = sum(len(c.lines) for c in cases)
     total_out = len(all_output)

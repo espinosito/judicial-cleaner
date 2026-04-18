@@ -33,6 +33,12 @@ KNOWN_INVERTED_FIRST_NAMES = {
 }
 
 # Legal fragments to strip from names (rule I-3)
+# Legal role phrases that make an I record unresolvable — flag entire case as weird.
+NEXT_FRIEND_RE = re.compile(
+    r"\bIND(?:IVIDUALLY)?\s+AND\s+AS\s+NEXT\s+FRIEND\s+(?:OF|FOR)\b",
+    re.IGNORECASE,
+)
+
 LEGAL_FRAGMENTS = [
     r"\bIN REM ONLY\b",
     r"\bLIENHOLDER IN REM ONLY\b",
@@ -42,6 +48,14 @@ LEGAL_FRAGMENTS = [
     r"\bLIENHOLDER\b",
     r"\bINDIVIDUALLY\b",
     r"\bEXTRIX\s+EST\b",         # executrix estate — legal role fragment
+    r"\bIN RE AN ADULT\b",       # legal descriptor — strip (defensive variant)
+    r"\bIN RE ADULT\b",          # legal descriptor — strip
+    r"\bAN ADULT\b",             # legal descriptor — strip
+    r"\bAS GUARDIAN AD LITEM OF\b",  # legal role — strip (most specific first)
+    r"\bGUARDIAN AD LITEM OF\b",
+    r"\bGUARDIAN AD LITEM\b",
+    r"\bAS GUARDIAN OF\b",
+    r"\bGUARDIAN OF\b",
 ]
 
 SUFFIXES = {"JR", "SR", "II", "III", "IV"}
@@ -50,6 +64,13 @@ SUFFIXES = {"JR", "SR", "II", "III", "IV"}
 GAME_NAMES = {
     "BINGO", "POKER", "LOTTO", "LOTTERY", "KENO", "BLACKJACK", "ROULETTE",
     "CHECKERS", "CHESS", "DOMINOES", "MAHJONG",
+}
+
+# Role labels that appear as the "last name" in I records — not real surnames.
+# These are handled upstream (main.py) and should NOT trigger single_surname_only.
+ROLE_LABELS = {
+    "RESPONDENT", "MOVANT", "LIENHOLDER", "PLAINTIFF", "DEFENDANT",
+    "PETITIONER", "APPELLANT", "APPELLEE", "NONE", "FATHER", "MOTHER",
 }
 
 # Tokens that are business indicators when placed BEFORE the comma in an I record
@@ -220,6 +241,35 @@ def apply_maiden_name_rule(name: str, db=None) -> str | None:
 
 
 # ---------------------------------------------------------------------------
+# Single surname only — I record has a last name but no first name.
+# "BINGO," or "SMITH, " → AmbiguousCase (send entire case to reviewCases.txt).
+# Must fire BEFORE I-3 so the trailing comma is still present.
+# ---------------------------------------------------------------------------
+def single_surname_only(name: str) -> bool:
+    """
+    Returns True when the name is "SURNAME," with nothing after the comma
+    (including trailing-space-only variants like "SMITH, ").
+
+    Does NOT fire for:
+    - Just a comma or empty string (handled by I-2)
+    - Known role labels (RESPONDENT, MOVANT, etc.) — handled upstream
+    - Names that have content after the comma (first name is present)
+    """
+    if "," not in name:
+        return False
+    before, after = name.split(",", 1)
+    before = before.strip()
+    after = after.strip()
+    if not before:
+        return False  # bare comma — I-2 handles this
+    if after:
+        return False  # first name present
+    if before.upper() in ROLE_LABELS:
+        return False  # role label — handled upstream
+    return True
+
+
+# ---------------------------------------------------------------------------
 # I-1: Normalize suffix placement — no comma before suffix
 # CHAMBERS, GARY MADOX, JR  →  CHAMBERS, GARY MADOX JR
 # ---------------------------------------------------------------------------
@@ -238,6 +288,13 @@ def apply_i1(name: str) -> str:
 # here — the pipeline flags those cases for manual review instead.
 # ---------------------------------------------------------------------------
 JUNK_NAMES = {",", ", ", ""}
+
+EXACT_WEIRD_NAMES = {
+    "TEXAS, SAVINGS OF",
+    "DEFENDANT, NO",
+    "DEFENDANT, NONE",
+    "PLAINTIFF--, --DEFENDANT",
+}
 
 def apply_i2(name: str) -> str | None:
     stripped = name.strip()
@@ -465,10 +522,19 @@ def apply_i10(name: str) -> str:
 def apply_all_i_rules(name: str, extra_known: set[str] | None = None, db=None) -> tuple[str | None, str]:
     original = name
 
+    # Exact weird-name pre-check — garbled/placeholder strings → reviewCases
+    if name.strip() in EXACT_WEIRD_NAMES:
+        raise AmbiguousCase(f"exact weird name match: {name!r}")
+
     # I-2 first — if it's junk, delete immediately
     result = apply_i2(name)
     if result is None:
         return None, "I-2"
+
+    # Early guard: "IND AND AS NEXT FRIEND OF/FOR" — legal role fragment,
+    # identity of the actual party is ambiguous. Entire case → reviewCases.txt.
+    if NEXT_FRIEND_RE.search(name):
+        raise AmbiguousCase(f"I record contains legal role phrase 'NEXT FRIEND': {name!r}")
 
     # I-9 and I-8 BEFORE I-3 — they need DECEASED and ESTATE intact to match
     if re.match(r"^THE\s+UNKNOWN\s+HEIRS\b", name, re.IGNORECASE):
@@ -476,6 +542,10 @@ def apply_all_i_rules(name: str, extra_known: set[str] | None = None, db=None) -
 
     if re.match(r"^THE\s+ESTA[ET]{2}\s+OF\b", name, re.IGNORECASE):
         return apply_i8(name), "I-8"
+
+    # Single surname only — must check before I-3 strips the trailing comma
+    if single_surname_only(name):
+        raise AmbiguousCase(f"single surname with no first name: {name!r}")
 
     # I-3 — strip legal fragments (after estate/heirs patterns are handled)
     name = apply_i3(name)

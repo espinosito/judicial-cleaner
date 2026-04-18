@@ -16,7 +16,7 @@ Delete the entire row (not the case) only when the name is provably empty:
 
 **Do NOT delete** role labels or legal text (MOVANT, LIENHOLDER, RESPONDENT,
 FOR MOTHER- ATTY GEN, single letter N, etc.). These are ambiguous — the entire
-case block must go to FILENAME_weirdCases.txt for manual review instead.
+case block must go to FILENAME_reviewCases.txt for manual review instead.
 
 ## I-3 — Strip legal fragments
 Remove these fragments, keep only the real name:
@@ -27,6 +27,8 @@ Remove these fragments, keep only the real name:
 - `INDIVIDUALLY`
 - `EXTRIX EST` (executrix of estate — legal role fragment)
 - `AS ADM OF [NAME]` (administrator of an estate — strip entire phrase)
+- `AN ADULT` / `IN RE ADULT` / `IN RE AN ADULT` (legal descriptor — strip)
+- `GUARDIAN OF` / `AS GUARDIAN OF` / `GUARDIAN AD LITEM` / `AS GUARDIAN AD LITEM OF` (legal role — strip)
 
 Examples:
 - `SMITH, IN REM ONLY HARRY` → `SMITH, HARRY`
@@ -156,7 +158,7 @@ birth surname).
 ## MD suffix — medical professional → flag entire case
 When an I record ends with the suffix `MD`, the name belongs to a medical professional.
 These names have complex structures (e.g. `NOAMAN, GALIL A MD`) that require manual review.
-**The entire case block is excluded from clean output and sent to FILENAME_weirdCases.txt.**
+**The entire case block is excluded from clean output and sent to FILENAME_reviewCases.txt.**
 
 - `NOAMAN, GALIL A MD` → entire case flagged (reason: I record ends with MD)
 

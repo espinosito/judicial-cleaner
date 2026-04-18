@@ -80,13 +80,13 @@ If you are not immediately certain → mark as weird.
 3. For each `>>>` line, read surrounding context (same block) and decide:
    - Matches a known rule → `replace` or `split`
    - Line should be removed → `delete`
-   - Cannot decide → `weird` (entire case goes to FILENAME_weirdCases.txt)
+   - Cannot decide → `weird` (entire case goes to FILENAME_reviewCases.txt)
 4. If it's a new pattern not in rules/ — document it in `rules/special_cases.md`
 5. Write corrections to `data/flagged/FILENAME_corrections.json`
    - One entry per `>>>` line (not per case)
    - `flagged_line` must match exactly the text of the `>>>` line (without the `>>>` prefix)
 6. **REQUIRED — do not skip:** Run `python src/main.py data/input/FILENAME.txt --merge`
-   This applies line-level corrections from flagged.txt and writes weird cases to FILENAME_weirdCases.txt.
+   This applies line-level corrections from flagged.txt and writes review cases to FILENAME_reviewCases.txt.
    The task is NOT complete until this command runs and you confirm the output.
 
 ## REQUIRED final step — never skip
@@ -118,10 +118,10 @@ Actions:
 - `replace`  → `replacement_lines` has exactly 1 line
 - `split`    → `replacement_lines` has 2+ lines
 - `delete`   → `replacement_lines` is empty `[]`
-- `weird`    → no `replacement_lines`; entire original case goes to FILENAME_weirdCases.txt
+- `weird`    → no `replacement_lines`; entire original case goes to FILENAME_reviewCases.txt
 
 For replace/split/delete: Python swaps the `>>>` line for your replacement_lines and appends the complete corrected block to the clean file.
-For weird: Python writes the original raw block (from input file) to FILENAME_weirdCases.txt.
+For weird: Python writes the original raw block (from input file) to FILENAME_reviewCases.txt.
 
 ## How to add a new rule to the code
 When you find a pattern that repeats across multiple cases:

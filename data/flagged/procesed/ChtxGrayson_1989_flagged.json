@@ -1,11 +1,67 @@
 [
   {
-    "case_number": "891520",
+    "case_number": "890413",
     "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19890925\t891520    \tJDG\t02\tNAME CHANGE PETITION\t\t",
-    "flagged_line": "19890925\t891520    \tJDG\t04\tI\tNONE, \t"
+    "original_name": "ROWELL,",
+    "reason": "single surname with no first name: 'ROWELL,'",
+    "header_line": "19890224\t890413    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19890224\t890413    \tJDG\t05\tI\tROWELL,\t"
+  },
+  {
+    "case_number": "891506",
+    "original_marker": "B",
+    "original_name": "CURRENCY",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890922\t891506    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890922\t891506    \tJDG\t04\tB\tCURRENCY\t"
+  },
+  {
+    "case_number": "891506",
+    "original_marker": "I",
+    "original_name": "STATES, FOUR HUNDRED FIFTEEN DOLLARS IN UNITED",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890922\t891506    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890922\t891506    \tJDG\t04\tI\tSTATES, FOUR HUNDRED FIFTEEN DOLLARS IN UNITED\t"
+  },
+  {
+    "case_number": "891530",
+    "original_marker": "B",
+    "original_name": "CURRENCY",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890927\t891530    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890927\t891530    \tJDG\t04\tB\tCURRENCY\t"
+  },
+  {
+    "case_number": "891530",
+    "original_marker": "I",
+    "original_name": "STATES, TWO HUNDRED SIXTY DOLLARS IN UNITED",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890927\t891530    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890927\t891530    \tJDG\t04\tI\tSTATES, TWO HUNDRED SIXTY DOLLARS IN UNITED\t"
+  },
+  {
+    "case_number": "890535",
+    "original_marker": "I",
+    "original_name": "TWO, HUNDRED TWENTY-TWO DOLLARS IN US CURRECY",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890317\t890535    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890317\t890535    \tJDG\t04\tI\tTWO, HUNDRED TWENTY-TWO DOLLARS IN US CURRECY\t"
+  },
+  {
+    "case_number": "890590",
+    "original_marker": "B",
+    "original_name": "CURRENCY THREE HUNDRED FIFTY-NINE DOLLARS IN U S",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890330\t890590    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890330\t890590    \tJDG\t04\tB\tCURRENCY THREE HUNDRED FIFTY-NINE DOLLARS IN U S\t"
+  },
+  {
+    "case_number": "891606",
+    "original_marker": "I",
+    "original_name": "ETC,",
+    "reason": "single surname with no first name: 'ETC,'",
+    "header_line": "19891009\t891606    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19891009\t891606    \tJDG\t05\tI\tETC,\t"
   },
   {
     "case_number": "890603",
@@ -16,12 +72,12 @@
     "flagged_line": "19890331\t890603    \tJDG\t04\tB\tHOMES A-1 MOBILE\t"
   },
   {
-    "case_number": "891688",
-    "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19891025\t891688    \tJDG\t02\tNAME CHANGE PETITION\t\t",
-    "flagged_line": "19891025\t891688    \tJDG\t04\tI\tNONE, \t"
+    "case_number": "891631",
+    "original_marker": "B",
+    "original_name": "SPARKS JOE E AND WIFE",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19891013\t891631    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19891013\t891631    \tJDG\t05\tB\tSPARKS JOE E AND WIFE\t"
   },
   {
     "case_number": "890628",
@@ -40,60 +96,100 @@
     "flagged_line": "19890405\t890628    \tJDG\t04\tB\t1 AND 2 TRUST NO\t"
   },
   {
+    "case_number": "890671",
+    "original_marker": "B",
+    "original_name": "CURRENCY FIVE HNDRED SEVENTY-TWO DOLLARS IN US",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890412\t890671    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890412\t890671    \tJDG\t04\tB\tCURRENCY FIVE HNDRED SEVENTY-TWO DOLLARS IN US\t"
+  },
+  {
+    "case_number": "891766",
+    "original_marker": "I",
+    "original_name": "CHILD,",
+    "reason": "single surname with no first name: 'CHILD,'",
+    "header_line": "19891113\t891766    \tDIV\t02\tU R E S A\t\t",
+    "flagged_line": "19891113\t891766    \tDIV\t04\tI\tCHILD,\t"
+  },
+  {
+    "case_number": "890744",
+    "original_marker": "I",
+    "original_name": "FIREARMS, ONE HUNDRED SIXTY-FIVE DOLLARS IN US CURRE",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890427\t890744    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890427\t890744    \tJDG\t04\tI\tFIREARMS, ONE HUNDRED SIXTY-FIVE DOLLARS IN US CURRE\t"
+  },
+  {
     "case_number": "890812",
     "original_marker": "I",
     "original_name": "INTEVENOR,",
-    "reason": "single-token name not in database: 'INTEVENOR'",
+    "reason": "single surname with no first name: 'INTEVENOR,'",
     "header_line": "19890505\t890812    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
-    "flagged_line": "19890505\t890812    \tJDG\t05\tI\tINTEVENOR, \t"
+    "flagged_line": "19890505\t890812    \tJDG\t05\tI\tINTEVENOR,\t"
+  },
+  {
+    "case_number": "891867",
+    "original_marker": "I",
+    "original_name": "CO,",
+    "reason": "single surname with no first name: 'CO,'",
+    "header_line": "19891130\t891867    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19891130\t891867    \tJDG\t04\tI\tCO,\t"
   },
   {
     "case_number": "893187",
     "original_marker": "I",
     "original_name": "LEINHOLDER,",
-    "reason": "single-token name not in database: 'LEINHOLDER'",
+    "reason": "single surname with no first name: 'LEINHOLDER,'",
     "header_line": "19890320\t893187    \tJDG\t02\tTAX CASES\t\t",
-    "flagged_line": "19890320\t893187    \tJDG\t04\tI\tLEINHOLDER, \t"
+    "flagged_line": "19890320\t893187    \tJDG\t04\tI\tLEINHOLDER,\t"
   },
   {
     "case_number": "890804",
     "original_marker": "I",
     "original_name": "INTERVENOR,",
-    "reason": "single-token name not in database: 'INTERVENOR'",
+    "reason": "single surname with no first name: 'INTERVENOR,'",
     "header_line": "19890505\t890804    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
-    "flagged_line": "19890505\t890804    \tJDG\t05\tI\tINTERVENOR, \t"
+    "flagged_line": "19890505\t890804    \tJDG\t05\tI\tINTERVENOR,\t"
+  },
+  {
+    "case_number": "893242",
+    "original_marker": "I",
+    "original_name": "FRANKLIN,",
+    "reason": "single surname with no first name: 'FRANKLIN,'",
+    "header_line": "19890619\t893242    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19890619\t893242    \tJDG\t04\tI\tFRANKLIN,\t"
   },
   {
     "case_number": "893201",
     "original_marker": "I",
     "original_name": "LEINHOLDER,",
-    "reason": "single-token name not in database: 'LEINHOLDER'",
+    "reason": "single surname with no first name: 'LEINHOLDER,'",
     "header_line": "19890331\t893201    \tJDG\t02\tTAX CASES\t\t",
-    "flagged_line": "19890331\t893201    \tJDG\t04\tI\tLEINHOLDER, \t"
+    "flagged_line": "19890331\t893201    \tJDG\t04\tI\tLEINHOLDER,\t"
   },
   {
     "case_number": "893210",
     "original_marker": "I",
     "original_name": "LEINHOLDER,",
-    "reason": "single-token name not in database: 'LEINHOLDER'",
+    "reason": "single surname with no first name: 'LEINHOLDER,'",
     "header_line": "19890410\t893210    \tJDG\t02\tTAX CASES\t\t",
-    "flagged_line": "19890410\t893210    \tJDG\t04\tI\tLEINHOLDER, \t"
+    "flagged_line": "19890410\t893210    \tJDG\t04\tI\tLEINHOLDER,\t"
   },
   {
     "case_number": "893207",
     "original_marker": "I",
     "original_name": "LEINHOLDER,",
-    "reason": "single-token name not in database: 'LEINHOLDER'",
+    "reason": "single surname with no first name: 'LEINHOLDER,'",
     "header_line": "19890410\t893207    \tJDG\t02\tTAX CASES\t\t",
-    "flagged_line": "19890410\t893207    \tJDG\t04\tI\tLEINHOLDER, \t"
+    "flagged_line": "19890410\t893207    \tJDG\t04\tI\tLEINHOLDER,\t"
   },
   {
     "case_number": "893325",
     "original_marker": "I",
     "original_name": "CHAMBERLAIN-ANDERSON,",
-    "reason": "hyphenated non-name token: 'CHAMBERLAIN-ANDERSON'",
+    "reason": "single surname with no first name: 'CHAMBERLAIN-ANDERSON,'",
     "header_line": "19890831\t893325    \tJDG\t02\tTAX CASES\t\t",
-    "flagged_line": "19890831\t893325    \tJDG\t04\tI\tCHAMBERLAIN-ANDERSON, \t"
+    "flagged_line": "19890831\t893325    \tJDG\t04\tI\tCHAMBERLAIN-ANDERSON,\t"
   },
   {
     "case_number": "890910",
@@ -107,97 +203,177 @@
     "case_number": "890973",
     "original_marker": "I",
     "original_name": "RECEIVER,",
-    "reason": "single-token name not in database: 'RECEIVER'",
+    "reason": "single surname with no first name: 'RECEIVER,'",
     "header_line": "19890606\t890973    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
-    "flagged_line": "19890606\t890973    \tJDG\t04\tI\tRECEIVER, \t"
+    "flagged_line": "19890606\t890973    \tJDG\t04\tI\tRECEIVER,\t"
+  },
+  {
+    "case_number": "893717",
+    "original_marker": "I",
+    "original_name": "ANN,",
+    "reason": "single surname with no first name: 'ANN,'",
+    "header_line": "19891014\t893717    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19891014\t893717    \tJDG\t04\tI\tANN,\t"
   },
   {
     "case_number": "891090",
     "original_marker": "I",
     "original_name": "JEEP-EAGLE,",
-    "reason": "hyphenated non-name token: 'JEEP-EAGLE'",
+    "reason": "single surname with no first name: 'JEEP-EAGLE,'",
     "header_line": "19890630\t891090    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
-    "flagged_line": "19890630\t891090    \tJDG\t04\tI\tJEEP-EAGLE, \t"
+    "flagged_line": "19890630\t891090    \tJDG\t04\tI\tJEEP-EAGLE,\t"
   },
   {
     "case_number": "893807",
     "original_marker": "I",
     "original_name": "SANEZ-ROMAN,",
-    "reason": "hyphenated non-name token: 'SANEZ-ROMAN'",
+    "reason": "single surname with no first name: 'SANEZ-ROMAN,'",
     "header_line": "19891103\t893807    \tDIV\t02\tOLD TAX - NO OCA\t\t",
-    "flagged_line": "19891103\t893807    \tDIV\t05\tI\tSANEZ-ROMAN, \t"
+    "flagged_line": "19891103\t893807    \tDIV\t05\tI\tSANEZ-ROMAN,\t"
   },
   {
-    "case_number": "891462",
-    "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19890914\t891462    \tJDG\t02\tNAME CHANGE PETITION\t\t",
-    "flagged_line": "19890914\t891462    \tJDG\t04\tI\tNONE, \t"
+    "case_number": "891029",
+    "original_marker": "B",
+    "original_name": "CURRENCY CENTS IN UNITED STATES",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890616\t891029    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890616\t891029    \tJDG\t04\tB\tCURRENCY CENTS IN UNITED STATES\t"
+  },
+  {
+    "case_number": "891029",
+    "original_marker": "B",
+    "original_name": "TWENTY-FIVE EIGHT HUNDRED NINETY-SEVEN DOLLARS AND",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890616\t891029    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890616\t891029    \tJDG\t04\tB\tTWENTY-FIVE EIGHT HUNDRED NINETY-SEVEN DOLLARS AND\t"
+  },
+  {
+    "case_number": "891487",
+    "original_marker": "B",
+    "original_name": "COUPE CURRENCY AND A 1976 TOYOTA SPORT",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890919\t891487    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890919\t891487    \tJDG\t04\tB\tCOUPE CURRENCY AND A 1976 TOYOTA SPORT\t"
+  },
+  {
+    "case_number": "891487",
+    "original_marker": "B",
+    "original_name": "US EIGHTY-ONE DOLLATRS AND EIGHTY-FIVE CENTS IN",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890919\t891487    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890919\t891487    \tJDG\t04\tB\tUS EIGHTY-ONE DOLLATRS AND EIGHTY-FIVE CENTS IN\t"
   },
   {
     "case_number": "893905",
     "original_marker": "I",
     "original_name": "HUTCHERSON-SIMPSON,",
-    "reason": "hyphenated non-name token: 'HUTCHERSON-SIMPSON'",
+    "reason": "single surname with no first name: 'HUTCHERSON-SIMPSON,'",
     "header_line": "19891120\t893905    \tJDG\t02\tTAX CASES\t\t",
-    "flagged_line": "19891120\t893905    \tJDG\t04\tI\tHUTCHERSON-SIMPSON, \t"
+    "flagged_line": "19891120\t893905    \tJDG\t04\tI\tHUTCHERSON-SIMPSON,\t"
+  },
+  {
+    "case_number": "891491",
+    "original_marker": "B",
+    "original_name": "CURRENCY CENTS IN UNITED STATES",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890920\t891491    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890920\t891491    \tJDG\t04\tB\tCURRENCY CENTS IN UNITED STATES\t"
+  },
+  {
+    "case_number": "891491",
+    "original_marker": "I",
+    "original_name": "FIFTY-EIGHT, THREE HUNDRED TWENTY-TWO DOLLARS",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890920\t891491    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890920\t891491    \tJDG\t04\tI\tFIFTY-EIGHT, THREE HUNDRED TWENTY-TWO DOLLARS\t"
+  },
+  {
+    "case_number": "891493",
+    "original_marker": "B",
+    "original_name": "CENTS FIVE HUNDRED FOURTEEN DOLLARS AND FIFTY-FIVE",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890920\t891493    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890920\t891493    \tJDG\t04\tB\tCENTS FIVE HUNDRED FOURTEEN DOLLARS AND FIFTY-FIVE\t"
+  },
+  {
+    "case_number": "891493",
+    "original_marker": "B",
+    "original_name": "CURRENCY IN UNITED STATES",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890920\t891493    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890920\t891493    \tJDG\t04\tB\tCURRENCY IN UNITED STATES\t"
   },
   {
     "case_number": "891497",
     "original_marker": "B",
     "original_name": "FIREARM CURRENCY AND A",
-    "reason": "split part has only single-letter tokens: 'A' in 'FIREARM CURRENCY AND A'",
+    "reason": "contains monetary/currency terms — send to weird",
     "header_line": "19890921\t891497    \tJDG\t02\tSEIZUR\t\t",
     "flagged_line": "19890921\t891497    \tJDG\t04\tB\tFIREARM CURRENCY AND A\t"
   },
   {
-    "case_number": "891067",
+    "case_number": "891497",
     "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19890626\t891067    \tJDG\t02\tSUIT ON TRUST\t\t",
-    "flagged_line": "19890626\t891067    \tJDG\t04\tI\tNONE, \t"
+    "original_name": "STATES, TWO HUNDRED FIFTY-FOUR DOLLARS UNITED",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890921\t891497    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890921\t891497    \tJDG\t04\tI\tSTATES, TWO HUNDRED FIFTY-FOUR DOLLARS UNITED\t"
   },
   {
-    "case_number": "891080",
+    "case_number": "891068",
+    "original_marker": "B",
+    "original_name": "CURRENCY EIGHT HUNDRED FORTH-ONE DOLLARS IN US",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890626\t891068    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890626\t891068    \tJDG\t04\tB\tCURRENCY EIGHT HUNDRED FORTH-ONE DOLLARS IN US\t"
+  },
+  {
+    "case_number": "891071",
+    "original_marker": "B",
+    "original_name": "ONE THREE HUNDRED NINE DOLLARS IN US CURRENCY",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890627\t891071    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890627\t891071    \tJDG\t04\tB\tONE THREE HUNDRED NINE DOLLARS IN US CURRENCY\t"
+  },
+  {
+    "case_number": "891083",
+    "original_marker": "B",
+    "original_name": "FIREARM CURRENCY AND ONE",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890629\t891083    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890629\t891083    \tJDG\t04\tB\tFIREARM CURRENCY AND ONE\t"
+  },
+  {
+    "case_number": "891083",
     "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19890629\t891080    \tJDG\t02\tNAME CHANGE PETITION\t\t",
-    "flagged_line": "19890629\t891080    \tJDG\t04\tI\tNONE, \t"
+    "original_name": "STATES, TWO HUNDRED NINETY-ONE DOLLARS IN UNITED",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890629\t891083    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890629\t891083    \tJDG\t04\tI\tSTATES, TWO HUNDRED NINETY-ONE DOLLARS IN UNITED\t"
   },
   {
     "case_number": "891094",
     "original_marker": "I",
     "original_name": "GABBERTS,",
-    "reason": "single-token name not in database: 'GABBERTS'",
+    "reason": "single surname with no first name: 'GABBERTS,'",
     "header_line": "19890703\t891094    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t",
-    "flagged_line": "19890703\t891094    \tJDG\t05\tI\tGABBERTS, \t"
+    "flagged_line": "19890703\t891094    \tJDG\t05\tI\tGABBERTS,\t"
   },
   {
-    "case_number": "891966",
+    "case_number": "893127",
     "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19891229\t891966    \tJDG\t02\tSUIT ON TRUST\t\t",
-    "flagged_line": "19891229\t891966    \tJDG\t04\tI\tNONE, \t"
+    "original_name": "BRYAN,",
+    "reason": "single surname with no first name: 'BRYAN,'",
+    "header_line": "19890127\t893127    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19890127\t893127    \tJDG\t04\tI\tBRYAN,\t"
   },
   {
-    "case_number": "891911",
+    "case_number": "891271",
     "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19891213\t891911    \tJDG\t02\tNAME CHANGE PETITION\t\t",
-    "flagged_line": "19891213\t891911    \tJDG\t04\tI\tNONE, \t"
-  },
-  {
-    "case_number": "890135",
-    "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19890110\t890135    \tJDG\t02\tNAME CHANGE PETITION\t\t",
-    "flagged_line": "19890110\t890135    \tJDG\t04\tI\tNONE, \t"
+    "original_name": "MONEY, SUSIE ANNE",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890804\t891271    \tDIV\t02\tDIVORCE - NO CHILDREN\t\t",
+    "flagged_line": "19890804\t891271    \tDIV\t05\tI\tMONEY, SUSIE ANNE\t"
   },
   {
     "case_number": "891207",
@@ -208,147 +384,67 @@
     "flagged_line": "19890724\t891207    \tJDG\t04\tB\tTRUCKIING J AND G\t"
   },
   {
-    "case_number": "891215",
-    "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19890724\t891215    \tJDG\t02\tNAME CHANGE PETITION\t\t",
-    "flagged_line": "19890724\t891215    \tJDG\t04\tI\tNONE, \t"
+    "case_number": "890229",
+    "original_marker": "B",
+    "original_name": "WINKLER CHARLES K AND WIFE CAROL WINKLER IND AND A-N-F O",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19890124\t890229    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19890124\t890229    \tJDG\t05\tB\tWINKLER CHARLES K AND WIFE CAROL WINKLER IND AND A-N-F O\t"
   },
   {
     "case_number": "891232",
     "original_marker": "I",
     "original_name": "ADULT,",
-    "reason": "single-token name not in database: 'ADULT'",
-    "header_line": "19890727\t891232    \tJDG\t02\tNAME CHANGE PETITION\t\t",
-    "flagged_line": "19890727\t891232    \tJDG\t05\tI\tADULT, \t"
+    "reason": "single surname with no first name: 'ADULT,'",
+    "header_line": "19890727\t891232    \tORDNMC\t02\tNAME CHANGE PETITION\t\t",
+    "flagged_line": "19890727\t891232    \tORDNMC\t04\tI\tADULT,\t"
+  },
+  {
+    "case_number": "891247",
+    "original_marker": "B",
+    "original_name": "CURRENCY FOUR HUNDRED EIGHTEEN DOLLARS IN US",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890801\t891247    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890801\t891247    \tJDG\t04\tB\tCURRENCY FOUR HUNDRED EIGHTEEN DOLLARS IN US\t"
+  },
+  {
+    "case_number": "891295",
+    "original_marker": "B",
+    "original_name": "CENTS FIVE HUNDRED TWENTY-EIGHT DOLLARS AND SEVENTY",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890809\t891295    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890809\t891295    \tJDG\t04\tB\tCENTS FIVE HUNDRED TWENTY-EIGHT DOLLARS AND SEVENTY\t"
+  },
+  {
+    "case_number": "891295",
+    "original_marker": "B",
+    "original_name": "ZIRCONIA IN US CURRENCY AND SIX CUBIC",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19890809\t891295    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19890809\t891295    \tJDG\t04\tB\tZIRCONIA IN US CURRENCY AND SIX CUBIC\t"
   },
   {
     "case_number": "890364",
     "original_marker": "I",
     "original_name": "INTERVENOR,",
-    "reason": "single-token name not in database: 'INTERVENOR'",
+    "reason": "single surname with no first name: 'INTERVENOR,'",
     "header_line": "19890217\t890364    \tJDG\t02\tDIVORCE - NO CHILDREN\t\t",
-    "flagged_line": "19890217\t890364    \tJDG\t05\tI\tINTERVENOR, \t"
+    "flagged_line": "19890217\t890364    \tJDG\t05\tI\tINTERVENOR,\t"
   },
   {
-    "case_number": "890382",
-    "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19890221\t890382    \tJDG\t02\tNAME CHANGE PETITION\t\t",
-    "flagged_line": "19890221\t890382    \tJDG\t04\tI\tNONE, \t"
+    "case_number": "890359",
+    "original_marker": "B",
+    "original_name": "DAVIS DON AND WIFE SUSIE DAVIS IND AND",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19890216\t890359    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19890216\t890359    \tJDG\t05\tB\tDAVIS DON AND WIFE SUSIE DAVIS IND AND\t"
   },
   {
-    "case_number": "090356",
+    "case_number": "890362",
     "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "header_line": "19891218\t090356    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19891218\t090356    \tJDG\t04\tI\tMOVANT, \t"
-  },
-  {
-    "case_number": "090838",
-    "original_marker": "I",
-    "original_name": "MOTHER,",
-    "reason": "single-token name not in database: 'MOTHER'",
-    "header_line": "19890825\t090838    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19890825\t090838    \tJDG\t04\tI\tMOTHER, \t"
-  },
-  {
-    "case_number": "097175",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "header_line": "19890601\t097175    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19890601\t097175    \tJDG\t04\tI\tMOVANT, \t"
-  },
-  {
-    "case_number": "102881",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "header_line": "19891012\t102881    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19891012\t102881    \tJDG\t05\tI\tMOVANT, \t"
-  },
-  {
-    "case_number": "103041",
-    "original_marker": "I",
-    "original_name": "MOTHER,",
-    "reason": "single-token name not in database: 'MOTHER'",
-    "header_line": "19890811\t103041    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19890811\t103041    \tJDG\t04\tI\tMOTHER, \t"
-  },
-  {
-    "case_number": "103041",
-    "original_marker": "I",
-    "original_name": "FATHER,",
-    "reason": "single-token name not in database: 'FATHER'",
-    "header_line": "19890811\t103041    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19890811\t103041    \tJDG\t05\tI\tFATHER, \t"
-  },
-  {
-    "case_number": "103319",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "header_line": "19890417\t103319    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19890417\t103319    \tJDG\t05\tI\tMOVANT, \t"
-  },
-  {
-    "case_number": "104363",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "header_line": "19891121\t104363    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19891121\t104363    \tJDG\t05\tI\tMOVANT, \t"
-  },
-  {
-    "case_number": "105420",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "header_line": "19890616\t105420    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19890616\t105420    \tJDG\t05\tI\tMOVANT, \t"
-  },
-  {
-    "case_number": "109683",
-    "original_marker": "I",
-    "original_name": "NONE,",
-    "reason": "single-token name not in database: 'NONE'",
-    "header_line": "19890925\t109683    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19890925\t109683    \tJDG\t04\tI\tNONE, \t"
-  },
-  {
-    "case_number": "103579",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "header_line": "19890111\t103579    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19890111\t103579    \tJDG\t04\tI\tMOVANT, \t"
-  },
-  {
-    "case_number": "104569",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "header_line": "19890327\t104569    \tDIV\t02\tDIVORCE - NO CHILDREN\t\t",
-    "flagged_line": "19890327\t104569    \tDIV\t04\tI\tMOVANT, \t"
-  },
-  {
-    "case_number": "106143",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "header_line": "19890605\t106143    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19890605\t106143    \tJDG\t05\tI\tMOVANT, \t"
-  },
-  {
-    "case_number": "102528",
-    "original_marker": "I",
-    "original_name": "MOVANT,",
-    "reason": "single-token name not in database: 'MOVANT'",
-    "header_line": "19890117\t102528    \tJDG\t02\tMODIFICATION OF PRIOR ORDER\t\t",
-    "flagged_line": "19890117\t102528    \tJDG\t04\tI\tMOVANT, \t"
+    "original_name": "CO,",
+    "reason": "single surname with no first name: 'CO,'",
+    "header_line": "19890217\t890362    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19890217\t890362    \tJDG\t04\tI\tCO,\t"
   }
 ]
