@@ -17,6 +17,11 @@ class AmbiguousCase(Exception):
     pass
 
 
+class DirectToReview(Exception):
+    """Raised when a line should bypass flagged.json and go straight to reviewCases.txt."""
+    pass
+
+
 class ReclassifyAsB(Exception):
     """Raised when an I record is clearly a business — caller changes marker to B."""
     def __init__(self, new_name: str):
@@ -38,6 +43,11 @@ NEXT_FRIEND_RE = re.compile(
     r"\bIND(?:IVIDUALLY)?\s+AND\s+AS\s+NEXT\s+FRIEND\s+(?:OF|FOR)\b",
     re.IGNORECASE,
 )
+
+# Single token followed by a trailing comma and nothing else — no first name.
+# Examples: OF,  INTERVENOR,  MW,  MIKE,
+# Fires before I-2 so the comma is still present for detection.
+_LONE_TOKEN_COMMA_RE = re.compile(r'^[^\s,]+,\s*$')
 
 LEGAL_FRAGMENTS = [
     r"\bIN REM ONLY\b",
@@ -524,7 +534,12 @@ def apply_all_i_rules(name: str, extra_known: set[str] | None = None, db=None) -
 
     # Exact weird-name pre-check — garbled/placeholder strings → reviewCases
     if name.strip() in EXACT_WEIRD_NAMES:
-        raise AmbiguousCase(f"exact weird name match: {name!r}")
+        raise DirectToReview(f"exact weird name match: {name!r}")
+
+    # Lone token with trailing comma and no first name → bypass flagged.json entirely.
+    # Catches OF,  INTERVENOR,  MW,  MIKE,  and any similar placeholder/truncated entry.
+    if _LONE_TOKEN_COMMA_RE.match(name.strip()):
+        raise DirectToReview(f"lone token with trailing comma: {name!r}")
 
     # I-2 first — if it's junk, delete immediately
     result = apply_i2(name)

@@ -201,9 +201,14 @@ Send the entire case block to `FILENAME_reviewCases.txt` for human review.
 - `BINGO,` (marker I, no first name) → weird (whole case block)
 - `SMITH, ` (trailing space, no first name) → weird (whole case block)
 
+Also applies to short tokens, abbreviations, or role-like words (`OF,`, `MW,`,
+`MIKE,`, `INTERVENOR,`). If the entire name field is a single token plus comma
+with no first name, the whole case block goes to reviewCases unconditionally.
+The check (`_LONE_TOKEN_COMMA_RE`) fires before I-2, so it catches these before
+any deletion or stripping can occur.
+
 **Exceptions — NOT caught by this rule:**
 - `, ` — bare comma with no surname (I-2 deletes it)
-- `RESPONDENT, `, `MOVANT, `, `LIENHOLDER, ` — role labels, handled upstream
 
 **Note:** this rule fires before I-3 so the trailing comma is still detectable.
 It takes priority over the game-name and short-abbreviation checks — `BINGO,`

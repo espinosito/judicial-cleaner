@@ -1,0 +1,138 @@
+[
+  {
+    "case_number": "920188",
+    "original_marker": "B",
+    "original_name": "HARBIN KIRBY IND AND AS NEXT FRIEND OF BRANDI L",
+    "reason": "B record contains legal role phrase 'NEXT FRIEND': 'HARBIN KIRBY IND AND AS NEXT FRIEND OF BRANDI L'",
+    "header_line": "19920117\t920188    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19920117\t920188    \tJDG\t05\tB\tHARBIN KIRBY IND AND AS NEXT FRIEND OF BRANDI L\t"
+  },
+  {
+    "case_number": "921844",
+    "original_marker": "B",
+    "original_name": "NATIONAL EXPRESS MONEY ORDERS INC",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19921210\t921844    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t",
+    "flagged_line": "19921210\t921844    \tJDG\t05\tB\tNATIONAL EXPRESS MONEY ORDERS INC\t"
+  },
+  {
+    "case_number": "920391",
+    "original_marker": "B",
+    "original_name": "MORPHEW AL VERNON AND WIFE",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19920224\t920391    \tJDG\t02\tDECLARATORY JUDGMENT\t\t",
+    "flagged_line": "19920224\t920391    \tJDG\t05\tB\tMORPHEW AL VERNON AND WIFE\t"
+  },
+  {
+    "case_number": "923109",
+    "original_marker": "I",
+    "original_name": "AMERITRUST, LIENHOLDER",
+    "reason": "single-token name not in database: 'AMERITRUST'",
+    "header_line": "19920124\t923109    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19920124\t923109    \tJDG\t04\tI\tAMERITRUST, LIENHOLDER\t"
+  },
+  {
+    "case_number": "923112",
+    "original_marker": "B",
+    "original_name": "AL SHERMAN-WEST JOINT VENTURE 14A ET",
+    "reason": "B record with alphanumeric token: 'AL SHERMAN-WEST JOINT VENTURE 14A ET'",
+    "header_line": "19920129\t923112    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19920129\t923112    \tJDG\t04\tB\tAL SHERMAN-WEST JOINT VENTURE 14A ET\t"
+  },
+  {
+    "case_number": "923129",
+    "original_marker": "B",
+    "original_name": "WILER LARRY AND WIFE",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19920302\t923129    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19920302\t923129    \tJDG\t04\tB\tWILER LARRY AND WIFE\t"
+  },
+  {
+    "case_number": "920569",
+    "original_marker": "B",
+    "original_name": "430 US CURRENCY",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19920327\t920569    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19920327\t920569    \tJDG\t04\tB\t430 US CURRENCY\t"
+  },
+  {
+    "case_number": "923130",
+    "original_marker": "B",
+    "original_name": "SCHNEIDER WALTER AND WIFE",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19920302\t923130    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19920302\t923130    \tJDG\t04\tB\tSCHNEIDER WALTER AND WIFE\t"
+  },
+  {
+    "case_number": "923140",
+    "original_marker": "B",
+    "original_name": "WOOTEN BILL M AND WIFE",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19920302\t923140    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19920302\t923140    \tJDG\t04\tB\tWOOTEN BILL M AND WIFE\t"
+  },
+  {
+    "case_number": "923145",
+    "original_marker": "B",
+    "original_name": "CROSBY DON AND WIFE",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19920302\t923145    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19920302\t923145    \tJDG\t04\tB\tCROSBY DON AND WIFE\t"
+  },
+  {
+    "case_number": "923150",
+    "original_marker": "B",
+    "original_name": "SULLIVAN STEPHEN AND WIFE",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19920302\t923150    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19920302\t923150    \tJDG\t04\tB\tSULLIVAN STEPHEN AND WIFE\t"
+  },
+  {
+    "case_number": "923156",
+    "original_marker": "B",
+    "original_name": "BRINKLEY ROBERT L AND WIFE",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19920313\t923156    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19920313\t923156    \tJDG\t04\tB\tBRINKLEY ROBERT L AND WIFE\t"
+  },
+  {
+    "case_number": "923161",
+    "original_marker": "B",
+    "original_name": "TUCKER COY AND WIFE",
+    "reason": "contains AND WIFE with legal suffix — send to weird",
+    "header_line": "19920313\t923161    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19920313\t923161    \tJDG\t04\tB\tTUCKER COY AND WIFE\t"
+  },
+  {
+    "case_number": "921428",
+    "original_marker": "B",
+    "original_name": "COMPANY 3M",
+    "reason": "B record with alphanumeric token: 'COMPANY 3M'",
+    "header_line": "19920916\t921428    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19920916\t921428    \tJDG\t04\tB\tCOMPANY 3M\t"
+  },
+  {
+    "case_number": "920627",
+    "original_marker": "B",
+    "original_name": "LIQUOR K AND P",
+    "reason": "split part has only single-letter tokens: 'P' in 'LIQUOR K AND P'",
+    "header_line": "19920409\t920627    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19920409\t920627    \tJDG\t05\tB\tLIQUOR K AND P\t"
+  },
+  {
+    "case_number": "923223",
+    "original_marker": "B",
+    "original_name": "INVESTMENTS JT AND T",
+    "reason": "split part has only single-letter tokens: 'T' in 'INVESTMENTS JT AND T'",
+    "header_line": "19920508\t923223    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19920508\t923223    \tJDG\t04\tB\tINVESTMENTS JT AND T\t"
+  },
+  {
+    "case_number": "921536",
+    "original_marker": "B",
+    "original_name": "COMPANY 3M",
+    "reason": "B record with alphanumeric token: 'COMPANY 3M'",
+    "header_line": "19921007\t921536    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19921007\t921536    \tJDG\t04\tB\tCOMPANY 3M\t"
+  }
+]

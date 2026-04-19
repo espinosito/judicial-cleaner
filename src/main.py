@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from parser import parse_file, print_summary, Line, Case
 from classifier import get_classifier
-from rules_i import apply_all_i_rules, AmbiguousCase, ReclassifyAsB
+from rules_i import apply_all_i_rules, AmbiguousCase, DirectToReview, ReclassifyAsB
 from rules_b import apply_all_b_rules, FlagForReview
 from dedup import deduplicate
 
@@ -166,9 +166,11 @@ def make_split_line(original: Line, new_name: str, new_marker: str) -> str:
 #   raw_block          : original raw lines of this case (for reviewCases.txt)
 #   flagged_block_lines: processed block with >>> on unresolvable lines
 #                        (empty list if no flags)
+#   direct_to_review   : True when a DirectToReview exception was raised — case
+#                        goes straight to reviewCases.txt, never to flagged.json
 # ---------------------------------------------------------------------------
 
-def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str], list[str]]:
+def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str], list[str], bool]:
     lines, removed = deduplicate(case.lines)
 
     # Raw block = original lines of this case, used for reviewCases.txt
@@ -204,7 +206,7 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str], lis
                 flagged_block_lines.append(">>>" + line.raw)
             else:
                 flagged_block_lines.append(line.raw)
-        return [], flagged, raw_block, flagged_block_lines
+        return [], flagged, raw_block, flagged_block_lines, False
 
     # Pre-scan: if any I/B line contains AND WIFE + legal suffix → flag entire case
     and_wife_triggering = [
@@ -226,7 +228,7 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str], lis
                 flagged_block_lines.append(">>>" + line.raw)
             else:
                 flagged_block_lines.append(line.raw)
-        return [], flagged, raw_block, flagged_block_lines
+        return [], flagged, raw_block, flagged_block_lines, False
 
     # Pre-scan: non-name content detection (double dash, generic words, role labels)
     non_name_triggering = [
@@ -248,7 +250,7 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str], lis
                 flagged_block_lines.append(">>>" + line.raw)
             else:
                 flagged_block_lines.append(line.raw)
-        return [], flagged, raw_block, flagged_block_lines
+        return [], flagged, raw_block, flagged_block_lines, False
 
     for line in lines:
         if not line.needs_processing:
@@ -292,6 +294,9 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str], lis
             corrected_lines.append(cl)
             flagged_block_lines.append(cl)
 
+        except DirectToReview:
+            return [], [], raw_block, [], True
+
         except (AmbiguousCase, FlagForReview) as e:
             flagged.append({
                 "case_number": case.case_number,
@@ -316,9 +321,9 @@ def process_case(case: Case, clf) -> tuple[list[str], list[dict], list[str], lis
 
     # If anything was flagged → exclude whole case from clean output
     if flagged:
-        return [], flagged, raw_block, flagged_block_lines
+        return [], flagged, raw_block, flagged_block_lines, False
 
-    return corrected_lines, [], raw_block, []
+    return corrected_lines, [], raw_block, [], False
 
 
 # ---------------------------------------------------------------------------
@@ -555,13 +560,17 @@ def main():
     print("Processing cases...")
     all_output: list[str] = []
     all_flagged: list[dict] = []
+    direct_review_blocks: list[list[str]] = []
     # Lookup: case_number → processed block with >>> markers (for flagged.txt)
     flagged_processed: dict[str, list[str]] = {}
     # Lookup: case_number → original raw block (not used in main output, kept for reference)
     flagged_raw: dict[str, list[str]] = {}
 
     for case in cases:
-        out_lines, flagged, raw_block, flagged_block_lines = process_case(case, clf)
+        out_lines, flagged, raw_block, flagged_block_lines, direct_to_review = process_case(case, clf)
+        if direct_to_review:
+            direct_review_blocks.append(raw_block)
+            continue
         all_output.extend(out_lines)
         all_flagged.extend(flagged)
         if flagged and case.case_number not in flagged_processed:
@@ -586,6 +595,16 @@ def main():
                 f.writelines(block)
                 f.write("\n")
 
+    # Write direct-to-review cases (lone-token-comma etc.) straight to reviewCases.txt
+    review_path = flagged_dir / f"{stem}_reviewCases.txt"
+    if direct_review_blocks:
+        with open(review_path, "w", encoding="utf-8") as f:
+            for block in direct_review_blocks:
+                for line in block:
+                    if not line.endswith("\n"):
+                        line += "\n"
+                    f.write(line)
+
     total_in  = sum(len(c.lines) for c in cases)
     total_out = len(all_output)
     flagged_cases = len({e["case_number"] for e in all_flagged})
@@ -595,6 +614,8 @@ def main():
     print(f"Output lines  : {total_out}")
     print(f"Difference    : {total_out - total_in:+d}")
     print(f"Flagged cases : {flagged_cases} (flagged lines marked >>> in flagged.txt)")
+    if direct_review_blocks:
+        print(f"Direct review : {len(direct_review_blocks)} case(s) → {review_path.name}")
     print(f"\nOutput  -> {output_path}")
     print(f"Flagged -> {flagged_path}")
     if all_flagged:

@@ -1,0 +1,226 @@
+[
+  {
+    "case_number": "913635",
+    "original_marker": "I",
+    "original_name": "WALTERS, JIM--HOMES",
+    "reason": "non-name content detected — send to weird",
+    "header_line": "19910809\t913635    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910809\t913635    \tJDG\t04\tI\tWALTERS, JIM--HOMES\t"
+  },
+  {
+    "case_number": "913647",
+    "original_marker": "B",
+    "original_name": "RAMAGE AND K",
+    "reason": "split part has only single-letter tokens: 'K' in 'RAMAGE AND K'",
+    "header_line": "19910816\t913647    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910816\t913647    \tJDG\t04\tB\tRAMAGE AND K\t"
+  },
+  {
+    "case_number": "913720",
+    "original_marker": "B",
+    "original_name": "OIL BILLUPS H AND N",
+    "reason": "split part has only single-letter tokens: 'N' in 'OIL BILLUPS H AND N'",
+    "header_line": "19910823\t913720    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910823\t913720    \tJDG\t04\tB\tOIL BILLUPS H AND N\t"
+  },
+  {
+    "case_number": "913763",
+    "original_marker": "B",
+    "original_name": "DEVELOPMENT M AND E",
+    "reason": "split part has only single-letter tokens: 'E' in 'DEVELOPMENT M AND E'",
+    "header_line": "19910823\t913763    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910823\t913763    \tJDG\t04\tB\tDEVELOPMENT M AND E\t"
+  },
+  {
+    "case_number": "913655",
+    "original_marker": "B",
+    "original_name": "2 J AND W MINI MART",
+    "reason": "split part has only single-letter tokens: '2 J' in '2 J AND W MINI MART'",
+    "header_line": "19910816\t913655    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910816\t913655    \tJDG\t04\tB\t2 J AND W MINI MART\t"
+  },
+  {
+    "case_number": "910161",
+    "original_marker": "B",
+    "original_name": "CURRENCY THREE HUNDRED FIVE DOLLARS IN US",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19910114\t910161    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19910114\t910161    \tJDG\t04\tB\tCURRENCY THREE HUNDRED FIVE DOLLARS IN US\t"
+  },
+  {
+    "case_number": "910270",
+    "original_marker": "B",
+    "original_name": "US CURRENCY THREE HUNDRED THOUSAND DOLLARS",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19910205\t910270    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19910205\t910270    \tJDG\t04\tB\tUS CURRENCY THREE HUNDRED THOUSAND DOLLARS\t"
+  },
+  {
+    "case_number": "911940",
+    "original_marker": "B",
+    "original_name": "KRAFT-- EMP PHILIP MORRIS INC",
+    "reason": "non-name content detected — send to weird",
+    "header_line": "19911230\t911940    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19911230\t911940    \tJDG\t04\tB\tKRAFT-- EMP PHILIP MORRIS INC\t"
+  },
+  {
+    "case_number": "911576",
+    "original_marker": "B",
+    "original_name": "UTLEY KEITH AND MARY IND AND AS NEXT FRIEND OF ERIN",
+    "reason": "B record contains legal role phrase 'NEXT FRIEND': 'UTLEY KEITH AND MARY IND AND AS NEXT FRIEND OF ERIN'",
+    "header_line": "19911004\t911576    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19911004\t911576    \tJDG\t05\tB\tUTLEY KEITH AND MARY IND AND AS NEXT FRIEND OF ERIN\t"
+  },
+  {
+    "case_number": "910802",
+    "original_marker": "B",
+    "original_name": "BEEPER 17200 IN US CURRENCY ONE PACTEL",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19910509\t910802    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19910509\t910802    \tJDG\t04\tB\tBEEPER 17200 IN US CURRENCY ONE PACTEL\t"
+  },
+  {
+    "case_number": "910803",
+    "original_marker": "B",
+    "original_name": "BEEPER 63900 US CURRENCY ONE PACTEL",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19910509\t910803    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19910509\t910803    \tJDG\t04\tB\tBEEPER 63900 US CURRENCY ONE PACTEL\t"
+  },
+  {
+    "case_number": "913592",
+    "original_marker": "B",
+    "original_name": "SHIM MATTIE--ESTATE",
+    "reason": "non-name content detected — send to weird",
+    "header_line": "19910809\t913592    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910809\t913592    \tJDG\t04\tB\tSHIM MATTIE--ESTATE\t"
+  },
+  {
+    "case_number": "913850",
+    "original_marker": "B",
+    "original_name": "PROPERTIES E AND G",
+    "reason": "split part has only single-letter tokens: 'G' in 'PROPERTIES E AND G'",
+    "header_line": "19910905\t913850    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910905\t913850    \tJDG\t04\tB\tPROPERTIES E AND G\t"
+  },
+  {
+    "case_number": "913810",
+    "original_marker": "B",
+    "original_name": "LEAKE LORETTA ORR AND K R",
+    "reason": "split part has only single-letter tokens: 'K R' in 'LEAKE LORETTA ORR AND K R'",
+    "header_line": "19910823\t913810    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910823\t913810    \tJDG\t04\tB\tLEAKE LORETTA ORR AND K R\t"
+  },
+  {
+    "case_number": "911058",
+    "original_marker": "B",
+    "original_name": "CURRENCY US 578500 1 SET NEXUS SCALES 1",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19910625\t911058    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19910625\t911058    \tJDG\t05\tB\tCURRENCY US 578500 1 SET NEXUS SCALES 1\t"
+  },
+  {
+    "case_number": "913974",
+    "original_marker": "B",
+    "original_name": "KUBOTA L AND M ET AL",
+    "reason": "split part has only single-letter tokens: 'M' in 'KUBOTA L AND M ET AL'",
+    "header_line": "19911113\t913974    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19911113\t913974    \tJDG\t04\tB\tKUBOTA L AND M ET AL\t"
+  },
+  {
+    "case_number": "911152",
+    "original_marker": "B",
+    "original_name": "B AND M AUTO CO",
+    "reason": "split part has only single-letter tokens: 'B' in 'B AND M AUTO CO'",
+    "header_line": "19910711\t911152    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19910711\t911152    \tJDG\t04\tB\tB AND M AUTO CO\t"
+  },
+  {
+    "case_number": "910398",
+    "original_marker": "B",
+    "original_name": "GARCIA JIMMIE IND AND AS NEXT FRIEND FOR MINOR",
+    "reason": "B record contains legal role phrase 'NEXT FRIEND': 'GARCIA JIMMIE IND AND AS NEXT FRIEND FOR MINOR'",
+    "header_line": "19910226\t910398    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19910226\t910398    \tJDG\t05\tB\tGARCIA JIMMIE IND AND AS NEXT FRIEND FOR MINOR\t"
+  },
+  {
+    "case_number": "913183",
+    "original_marker": "B",
+    "original_name": "PARTS A-1 AUTO",
+    "reason": "B record with alphanumeric token: 'PARTS A-1 AUTO'",
+    "header_line": "19910128\t913183    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910128\t913183    \tJDG\t04\tB\tPARTS A-1 AUTO\t"
+  },
+  {
+    "case_number": "913185",
+    "original_marker": "B",
+    "original_name": "BOZARTH B MANIS AND L",
+    "reason": "split part has only single-letter tokens: 'L' in 'BOZARTH B MANIS AND L'",
+    "header_line": "19910128\t913185    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910128\t913185    \tJDG\t04\tB\tBOZARTH B MANIS AND L\t"
+  },
+  {
+    "case_number": "910478",
+    "original_marker": "I",
+    "original_name": "--,",
+    "reason": "non-name content detected — send to weird",
+    "header_line": "19910308\t910478    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19910308\t910478    \tJDG\t04\tI\t--,\t"
+  },
+  {
+    "case_number": "913231",
+    "original_marker": "B",
+    "original_name": "MATERIALS R AND R",
+    "reason": "split part has only single-letter tokens: 'R' in 'MATERIALS R AND R'",
+    "header_line": "19910131\t913231    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910131\t913231    \tJDG\t04\tB\tMATERIALS R AND R\t"
+  },
+  {
+    "case_number": "910506",
+    "original_marker": "B",
+    "original_name": "GOFF LINDA IND AND AS NEXT FRIEND FOR VANESSA",
+    "reason": "B record contains legal role phrase 'NEXT FRIEND': 'GOFF LINDA IND AND AS NEXT FRIEND FOR VANESSA'",
+    "header_line": "19910313\t910506    \tJDG\t02\tINJURY/DAMAGE: OTHER INJURY OR DAMAGE\t\t",
+    "flagged_line": "19910313\t910506    \tJDG\t05\tB\tGOFF LINDA IND AND AS NEXT FRIEND FOR VANESSA\t"
+  },
+  {
+    "case_number": "910566",
+    "original_marker": "B",
+    "original_name": "CURRENCY US",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19910325\t910566    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19910325\t910566    \tJDG\t04\tB\tCURRENCY US\t"
+  },
+  {
+    "case_number": "911372",
+    "original_marker": "B",
+    "original_name": "JACKSON DILLON AND C",
+    "reason": "split part has only single-letter tokens: 'C' in 'JACKSON DILLON AND C'",
+    "header_line": "19910827\t911372    \tJDG\t02\tACCOUNTS, CONTRACTS & NOTES\t\t",
+    "flagged_line": "19910827\t911372    \tJDG\t05\tB\tJACKSON DILLON AND C\t"
+  },
+  {
+    "case_number": "911412",
+    "original_marker": "B",
+    "original_name": "CURRENCY FOUR HUNDRED FIFTY-EIGHT DOLLARS IN US",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19910904\t911412    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19910904\t911412    \tJDG\t04\tB\tCURRENCY FOUR HUNDRED FIFTY-EIGHT DOLLARS IN US\t"
+  },
+  {
+    "case_number": "913441",
+    "original_marker": "B",
+    "original_name": "D AND HILDA",
+    "reason": "split part has only single-letter tokens: 'D' in 'D AND HILDA'",
+    "header_line": "19910531\t913441    \tJDG\t02\tTAX CASES\t\t",
+    "flagged_line": "19910531\t913441    \tJDG\t04\tB\tD AND HILDA\t"
+  },
+  {
+    "case_number": "911517",
+    "original_marker": "B",
+    "original_name": "US CURRENCY 52100",
+    "reason": "contains monetary/currency terms — send to weird",
+    "header_line": "19910923\t911517    \tJDG\t02\tSEIZUR\t\t",
+    "flagged_line": "19910923\t911517    \tJDG\t04\tB\tUS CURRENCY 52100\t"
+  }
+]

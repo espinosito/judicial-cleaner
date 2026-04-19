@@ -17,7 +17,7 @@ import pytest
 from rules_i import (
     apply_i1, apply_i2, apply_i3, apply_i4, apply_i5,
     apply_i6, apply_i7, apply_i8, apply_i9, apply_i10,
-    apply_all_i_rules, AmbiguousCase, ReclassifyAsB,
+    apply_all_i_rules, AmbiguousCase, DirectToReview, ReclassifyAsB,
     apply_mc_prefix, apply_business_before_comma, apply_business_after_comma,
     check_hyphenated_business_before_comma, apply_maiden_name_rule,
     single_surname_only,
@@ -530,22 +530,22 @@ class TestBugFixes:
     # --- rules_i.py: game names → B ---
 
     def test_bingo_reclassified_as_b(self):
-        """BINGO, has trailing comma → single surname only → AmbiguousCase for human review"""
-        with pytest.raises(AmbiguousCase):
+        """BINGO, has trailing comma → lone-token-comma → DirectToReview"""
+        with pytest.raises(DirectToReview):
             apply_all_i_rules("BINGO,")
 
     # --- rules_i.py: short abbreviation → B ---
 
     def test_mci_short_abbreviation_b(self):
-        """MCI, has trailing comma → single surname only → AmbiguousCase for human review"""
-        with pytest.raises(AmbiguousCase):
+        """MCI, has trailing comma → lone-token-comma → DirectToReview"""
+        with pytest.raises(DirectToReview):
             apply_all_i_rules("MCI,")
 
     # --- rules_i.py: hyphenated non-name → flag ---
 
     def test_hyphenated_nonname_flagged(self):
-        """WHOPPER-STOPPER → AmbiguousCase"""
-        with pytest.raises(AmbiguousCase):
+        """WHOPPER-STOPPER, has trailing comma → lone-token-comma → DirectToReview"""
+        with pytest.raises(DirectToReview):
             apply_all_i_rules("WHOPPER-STOPPER,")
 
 
@@ -932,13 +932,13 @@ class TestSingleSurnameOnly:
         assert single_surname_only(", ") is False
 
     def test_bingo_raises_ambiguous_in_pipeline(self):
-        """BINGO, through apply_all_i_rules → AmbiguousCase (single surname)"""
-        with pytest.raises(AmbiguousCase):
+        """BINGO, through apply_all_i_rules → DirectToReview (lone-token-comma)"""
+        with pytest.raises(DirectToReview):
             apply_all_i_rules("BINGO,")
 
     def test_smith_comma_raises_ambiguous_in_pipeline(self):
-        """SMITH, through apply_all_i_rules → AmbiguousCase (single surname)"""
-        with pytest.raises(AmbiguousCase):
+        """SMITH, through apply_all_i_rules → DirectToReview (lone-token-comma)"""
+        with pytest.raises(DirectToReview):
             apply_all_i_rules("SMITH,")
 
 
@@ -984,29 +984,29 @@ class TestExactWeirdNames:
     def test_i_texas_savings_of(self):
         try:
             apply_all_i_rules("TEXAS, SAVINGS OF")
-            assert False, "expected AmbiguousCase"
-        except AmbiguousCase:
+            assert False, "expected DirectToReview"
+        except DirectToReview:
             pass
 
     def test_i_defendant_no(self):
         try:
             apply_all_i_rules("DEFENDANT, NO")
-            assert False, "expected AmbiguousCase"
-        except AmbiguousCase:
+            assert False, "expected DirectToReview"
+        except DirectToReview:
             pass
 
     def test_i_defendant_none(self):
         try:
             apply_all_i_rules("DEFENDANT, NONE")
-            assert False, "expected AmbiguousCase"
-        except AmbiguousCase:
+            assert False, "expected DirectToReview"
+        except DirectToReview:
             pass
 
     def test_i_plaintiff_defendant(self):
         try:
             apply_all_i_rules("PLAINTIFF--, --DEFENDANT")
-            assert False, "expected AmbiguousCase"
-        except AmbiguousCase:
+            assert False, "expected DirectToReview"
+        except DirectToReview:
             pass
 
     def test_i_defendant_john_no_raise(self):
@@ -1020,15 +1020,15 @@ class TestExactWeirdNames:
     def test_b_texas_savings_of(self):
         try:
             apply_all_b_rules("TEXAS, SAVINGS OF")
-            assert False, "expected FlagForReview"
-        except FlagForReview:
+            assert False, "expected DirectToReview"
+        except DirectToReview:
             pass
 
     def test_b_plaintiff_defendant(self):
         try:
             apply_all_b_rules("PLAINTIFF--, --DEFENDANT")
-            assert False, "expected FlagForReview"
-        except FlagForReview:
+            assert False, "expected DirectToReview"
+        except DirectToReview:
             pass
 
     def test_b_smith_john_no_raise(self):
@@ -1164,6 +1164,38 @@ class TestMergeNoDuplicates:
 
 
 # ===========================================================================
+# Lone token with trailing comma — no first name (new rule)
+# ===========================================================================
+class TestLoneTokenCommaRule:
+    """_LONE_TOKEN_COMMA_RE fires before I-2: single token + comma → DirectToReview."""
+
+    def test_of_comma_raises(self):
+        """OF, → DirectToReview (legal preposition, not a name)"""
+        with pytest.raises(DirectToReview):
+            apply_all_i_rules("OF,")
+
+    def test_intervenor_comma_raises(self):
+        """INTERVENOR, → DirectToReview (legal role label)"""
+        with pytest.raises(DirectToReview):
+            apply_all_i_rules("INTERVENOR,")
+
+    def test_mw_comma_raises(self):
+        """MW, → DirectToReview (initials only, no first name)"""
+        with pytest.raises(DirectToReview):
+            apply_all_i_rules("MW,")
+
+    def test_mike_comma_raises(self):
+        """MIKE, → DirectToReview (first name only, no surname)"""
+        with pytest.raises(DirectToReview):
+            apply_all_i_rules("MIKE,")
+
+    def test_smith_john_not_triggered(self):
+        """SMITH, JOHN has a first name → no exception"""
+        result, _ = apply_all_i_rules("SMITH, JOHN")
+        assert result == "SMITH, JOHN"
+
+
+# ===========================================================================
 # Runner (when not using pytest)
 # ===========================================================================
 if __name__ == "__main__":
@@ -1176,7 +1208,7 @@ if __name__ == "__main__":
         TestNextFriendGuard,
         TestBugFixes20260327, TestCurrencyDetection, TestAndWifeDetection,
         TestSingleSurnameOnly, TestExactWeirdNames,
-        TestMergeNoDuplicates,
+        TestMergeNoDuplicates, TestLoneTokenCommaRule,
     ]
 
     passed = 0

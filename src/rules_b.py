@@ -11,6 +11,8 @@ Each rule receives a name string and returns either:
 from __future__ import annotations
 import re
 
+from rules_i import DirectToReview
+
 
 class FlagForReview(Exception):
     """Raised when a B record is too ambiguous or weird to process automatically."""
@@ -487,7 +489,7 @@ def apply_all_b_rules(name: str, classifier=None) -> tuple:
 
     # Exact weird-name pre-check — garbled/placeholder strings → reviewCases
     if name.strip() in EXACT_WEIRD_NAMES:
-        raise FlagForReview(f"exact weird name match: {name!r}")
+        raise DirectToReview(f"exact weird name match: {name!r}")
 
     # Early guard: flag B records containing alphanumeric tokens (e.g. A-1, B2)
     # Pure numbers are excluded — only mixed letter+digit tokens trigger this.
